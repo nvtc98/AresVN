@@ -8,49 +8,34 @@
   },
   "Gallery": [
     {
-      "title": "Project Title",
-      "largeImage": "img/portfolio/01-large.jpg",
-      "smallImage": "img/portfolio/01-small.jpg"
+      "title": "Four horsemen of not leaving the match",
+      "largeImage": "img/portfolio/1.png",
+      "smallImage": "img/portfolio/1.png"
     },
     {
-      "title": "Project Title",
-      "largeImage": "img/portfolio/02-large.jpg",
-      "smallImage": "img/portfolio/02-small.jpg"
+      "title": "What is 4K camera for?",
+      "largeImage": "img/portfolio/2.png",
+      "smallImage": "img/portfolio/2.png"
     },
     {
-      "title": "Project Title",
-      "largeImage": "img/portfolio/03-large.jpg",
-      "smallImage": "img/portfolio/03-small.jpg"
+      "title": "This is a horror game",
+      "largeImage": "img/portfolio/3.png",
+      "smallImage": "img/portfolio/3.png"
     },
     {
-      "title": "Project Title",
-      "largeImage": "img/portfolio/04-large.jpg",
-      "smallImage": "img/portfolio/04-small.jpg"
+      "title": "How to live like the Na'vi?",
+      "largeImage": "img/portfolio/4.png",
+      "smallImage": "img/portfolio/4.png"
     },
     {
-      "title": "Project Title",
-      "largeImage": "img/portfolio/05-large.jpg",
-      "smallImage": "img/portfolio/05-small.jpg"
+      "title": "Four horsemen of circus",
+      "largeImage": "img/portfolio/5.png",
+      "smallImage": "img/portfolio/5.png"
     },
     {
-      "title": "Project Title",
-      "largeImage": "img/portfolio/06-large.jpg",
-      "smallImage": "img/portfolio/06-small.jpg"
-    },
-    {
-      "title": "Project Title",
-      "largeImage": "img/portfolio/07-large.jpg",
-      "smallImage": "img/portfolio/07-small.jpg"
-    },
-    {
-      "title": "Project Title",
-      "largeImage": "img/portfolio/08-large.jpg",
-      "smallImage": "img/portfolio/08-small.jpg"
-    },
-    {
-      "title": "Project Title",
-      "largeImage": "img/portfolio/09-large.jpg",
-      "smallImage": "img/portfolio/09-small.jpg"
+      "title": "Don't AFK when the enemies is nearby",
+      "largeImage": "img/portfolio/6.png",
+      "smallImage": "img/portfolio/6.png"
     }
   ],
   "Services": [
