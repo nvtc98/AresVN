@@ -155,39 +155,39 @@
   "Features": [
     {
       "icon": "fa fa-comments-o",
-      "image": "img/introduction/video-game-controller.png",
+      "image": "img/introduction/gift.png",
       "title": "AWP benefactors",
       "text": "We give away thousands of AWPs every day."
     },
     {
       "icon": "fa fa-bullhorn",
-      "image": "img/introduction/circus.png",
+      "image": "img/introduction/running.png",
       "title": "Rush B",
       "text": "We rush B whenever we have little cash, we have lots of cash, we are happy, we are depressed."
     },
     {
       "icon": "fa fa-group",
-      "image": "img/introduction/communities.png",
+      "image": "img/introduction/deaf.png",
       "title": "Earless",
       "text": "We are totally deaf."
     },
     {
       "icon": "fa fa-magic",
-      "image": "img/introduction/letter-o.png",
+      "image": "img/introduction/shooting-game.png",
       "title": "Silencer Removal",
       "text": "We remove silencers."
     },
     {
       "icon": "fa fa-magic",
-      "image": "img/introduction/letter-o.png",
+      "image": "img/introduction/victory.png",
       "title": "Victory for enemies",
       "text": "Yes."
     },
     {
       "icon": "fa fa-magic",
-      "image": "img/introduction/letter-o.png",
-      "title": "Non-prime",
-      "text": "We behave like true non-prime people."
+      "image": "img/introduction/game-cheat.png",
+      "title": "Nó hack rồi",
+      "text": "We always say this when the enemy is cheating, better than us, or Ching Chong."
     }
   ],
   "Relationships": [
