@@ -20,7 +20,7 @@ export const Relationships = (props) => {
                     className="col-md-3 col-sm-6 team"
                     style={{ marginBottom: 20 }}
                   >
-                    <div className="thumbnail" style={{ background: "#000" }}>
+                    <div className="thumbnail" style={{ background: "#222" }}>
                       {" "}
                       <img src={team.img} alt="..." className="team-img" />
                       <div className="caption">

@@ -16,10 +16,8 @@ export const Header = (props) => {
           // poster={Poster}
           style={{ height: "100%", width: "100%" }}
           onEnded={onEnded}
-        >
-          <source src={clip} type="video/mp4" />
-          <source src={clip} type="video/ogg" />
-        </video>
+          src={clip}
+        />
         {/* <div className="overlay">
           <div className="container">
             <div className="row">

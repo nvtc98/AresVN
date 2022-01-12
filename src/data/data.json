@@ -4,7 +4,32 @@
     "paragraph": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis sed dapibus leo nec ornare diam sed commodo nibh ante facilisis bibendum."
   },
   "About": {
-    "paragraph": "AresVN is a Vietnamese esports team. The team was originally created in 2019 as a Counter-Strike team, then expanded to include more games like Valorant, Rainbow Six: Siege. The team's name is taken from the name of the god of war in Greek mythology, so the team is also known as Việt Chiến Thần. With the motto \"The circus is not born or destroyed, but only changes from game to game\", the team has left a deep comedy mark from competitive games to entertaining PvE games."
+    "paragraph": "AresVN is a Vietnamese esports team. The team was originally created in 2019 as a Counter-Strike team, then expanded to include more games like Valorant, Rainbow Six: Siege. The team's name is taken from the name of the god of war in Greek mythology, so the team is also known as Việt Chiến Thần. With the motto \"The circus is not born or destroyed, but only changes from game to game\", the team has left a deep comedy mark from competitive games to entertaining PvE games.",
+    "details": [
+      {
+        "icon": "fa fa-wordpress",
+        "name": "Date Of Establishment",
+        "text": ["2019 - 02 - 21", "February 21, 2019"]
+      },
+      {
+        "icon": "fa fa-cart-arrow-down",
+        "name": "Names",
+        "text": ["ARESVN", "ARVN", "Việt Chiến Thần", "越戰神", "ArếtVN"]
+      },
+      {
+        "icon": "fa fa-cloud-download",
+        "name": "Popular Esports Games",
+        "text": [
+          "Counter-Strike: Global Offensive",
+          "Tom Clancy's Rainbow Six Siege",
+          "Valorant",
+          "Grand Theft Auto V",
+          "StarCraft II",
+          "Left 4 Dead 2",
+          "Phasmophobia"
+        ]
+      }
+    ]
   },
   "Gallery": [
     {
@@ -80,26 +105,6 @@
       "img": "img/testimonials/02.jpg",
       "text": "AresVN noob team.",
       "name": "Johnathan Doe"
-    },
-    {
-      "img": "img/testimonials/03.jpg",
-      "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis sed dapibus leo nec ornare diam sedasd commodo nibh ante facilisis bibendum dolor feugiat at.",
-      "name": "John Doe"
-    },
-    {
-      "img": "img/testimonials/04.jpg",
-      "text": "\"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis sed dapibus leo nec ornare diam sedasd commodo nibh ante facilisis bibendum dolor feugiat at.\"",
-      "name": "Johnathan Doe"
-    },
-    {
-      "img": "img/testimonials/05.jpg",
-      "text": "\"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis sed dapibus leo nec ornare diam sedasd commodo nibh ante facilisis bibendum dolor feugiat at.\"",
-      "name": "John Doe"
-    },
-    {
-      "img": "img/testimonials/06.jpg",
-      "text": "\"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis sed dapibus leo nec ornare diam sedasd commodo nibh ante facilisis bibendum dolor feugiat at.\"",
-      "name": "Johnathan Doe"
     }
   ],
   "Team": [
@@ -135,7 +140,9 @@
     "email": "info@company.com",
     "facebook": "fb.com",
     "twitter": "twitter.com",
-    "youtube": "youtube.com"
+    "youtube": "https://www.youtube.com/channel/UC4ffEmP-5LrK3jj9QUwmEcw",
+    "discord": "https://discord.com/invite/Yvfn9wvNXq",
+    "steam": "https://steamcommunity.com/groups/aresvn"
   },
   "Features": [
     {

@@ -1,4 +1,5 @@
 export const About = (props) => {
+  console.log("props.data", props.data);
   return (
     <div id="about">
       <div className="container">
@@ -20,29 +21,26 @@ export const About = (props) => {
             <div className="about-text">
               <h2>About Us</h2>
               <p>{props.data ? props.data.paragraph : "loading..."}</p>
-              {/* <h3>Why Choose Us?</h3>
-              <div className="list-style">
-                <div className="col-lg-6 col-sm-6 col-xs-12">
-                  <ul>
-                    {props.data
-                      ? props.data.Why.map((d, i) => (
-                          <li key={`${d}-${i}`}>{d}</li>
-                        ))
-                      : "loading"}
-                  </ul>
-                </div>
-                <div className="col-lg-6 col-sm-6 col-xs-12">
-                  <ul>
-                    {props.data
-                      ? props.data.Why2.map((d, i) => (
-                          <li key={`${d}-${i}`}> {d}</li>
-                        ))
-                      : "loading"}
-                  </ul>
-                </div>
-              </div> */}
             </div>
           </div>
+        </div>
+        <div className="row text-center" style={{ marginTop: 40 }} id="details">
+          {props.data
+            ? props.data.details.map((d, i) => (
+                <div key={`${d.name}-${i}`} className="col-md-4">
+                  {" "}
+                  <i className={d.icon}></i>
+                  <div className="service-desc">
+                    <h3>{d.name}</h3>
+                    {d.text.map((t, i) => (
+                      <p key={i} className="text-left">
+                        {t}
+                      </p>
+                    ))}
+                  </div>
+                </div>
+              ))
+            : "loading"}
         </div>
       </div>
     </div>
