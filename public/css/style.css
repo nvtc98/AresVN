@@ -7,7 +7,7 @@ html {
   font-weight: 400;
   width: 100% !important;
   height: 100% !important;
-  background: #000;
+  background: #222;
 }
 h2,
 h3,
@@ -78,7 +78,7 @@ hr {
 }
 #menu.navbar-default {
   background-color: #d3d3d3;
-  border-color: rgba(231, 231, 231, 0);
+  border-color: rgba(0, 0, 0, 0);
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.15);
 }
 #menu a.navbar-brand {
@@ -264,6 +264,7 @@ header .intro-text {
 /* About Section */
 #about {
   padding: 100px 0;
+  background: #111;
 }
 #about h3 {
   font-size: 22px;
@@ -308,19 +309,20 @@ header .intro-text {
   line-height: 24px;
   margin: 30px 0;
 }
-/* Services Section */
-#services {
+/* details Section */
+#details {
   padding: 100px 0;
-  background: linear-gradient(to right, #ff4e00 0%, #f7b42c 100%);
-  color: #fff;
+  /* background: linear-gradient(to right, #ff4e00 0%, #f7b42c 100%); */
+  /* background: #222; */
+  /* color: #fff; */
 }
-#services .service-desc {
+#details .service-desc {
   margin: 10px 10px 20px;
 }
-#services h2 {
+#details h2 {
   color: #fff;
 }
-#services .section-title h2::after {
+#details .section-title h2::after {
   position: absolute;
   content: "";
   background: rgba(255, 255, 255, 0.3);
@@ -330,7 +332,7 @@ header .intro-text {
   margin-left: -30px;
   left: 50%;
 }
-#services i.fa {
+#details i.fa {
   font-size: 42px;
   width: 120px;
   height: 120px;
@@ -340,15 +342,17 @@ header .intro-text {
   color: #fff;
   box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.05);
 }
-#services h3 {
+#details h3 {
   font-weight: 500;
   padding: 5px 0;
   color: #fff;
 }
-#services p {
-  color: rgba(255, 255, 255, 0.75);
+#details p {
+  /* color: rgba(255, 255, 255, 0.75); */
+  line-height: 24px;
+  margin: 0;
 }
-#services .service-desc {
+#details .service-desc {
   margin-bottom: 40px;
 }
 /* Portfolio Section */
@@ -403,7 +407,8 @@ header .intro-text {
 /* Testimonials Section */
 #testimonials {
   padding: 100px 0;
-  background: #f6f6f6;
+  /* background: #f6f6f6; */
+  background: #111;
 }
 #testimonials i {
   color: #e6e6e6;
@@ -443,6 +448,7 @@ header .intro-text {
 /* Team Section */
 #team {
   padding: 100px 0;
+  background: #111;
 }
 #team h4 {
   margin: 5px 0;
@@ -461,7 +467,7 @@ header .intro-text {
 /* Contact Section */
 #contact {
   padding: 100px 0 60px;
-  background: linear-gradient(to right, #ff4e00 0%, #f7b42c 100%);
+  /* background: linear-gradient(to right, #ff4e00 0%, #f7b42c 100%); */
   color: rgba(255, 255, 255, 0.75);
 }
 #contact .section-title {
