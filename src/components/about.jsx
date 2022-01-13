@@ -32,11 +32,22 @@ export const About = (props) => {
                   <i className={d.icon}></i>
                   <div className="service-desc">
                     <h3>{d.name}</h3>
-                    {d.text.map((t, i) => (
-                      <p key={i} className="text-left">
-                        {t}
-                      </p>
-                    ))}
+                    <div
+                      style={{
+                        display: "flex",
+                        justifyContent: "center",
+                      }}
+                    >
+                      <div>
+                        {d.text.map((t, i) => (
+                          <>
+                            <p key={i} style={{ textAlign: "left" }}>
+                              {t}
+                            </p>
+                          </>
+                        ))}
+                      </div>
+                    </div>
                   </div>
                 </div>
               ))

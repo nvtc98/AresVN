@@ -7,10 +7,7 @@ import { motion } from "framer-motion";
 
 export const Team = (props) => {
   const [selectedIndex, setSelectedIndex] = useState(0);
-  const contentRef = useRef({
-    currentItem: null,
-    nextItem: null,
-  });
+  const [isAnimating, setAnimating] = useState(false);
 
   return (
     <div id="team" className="text-center">
@@ -28,7 +25,7 @@ export const Team = (props) => {
           <div className="col-md-12">
             <motion.div
               key={selectedIndex}
-              // animate={{ x: selectedIndex * 100 }}
+              animate={{ x: selectedIndex * 100 }}
               className="col-md-1 col-sm-1 team"
               onClick={() => setSelectedIndex(selectedIndex + 1)}
             >
