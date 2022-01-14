@@ -111,27 +111,27 @@
     {
       "img": "img/team/feb2ad6b53565c540c00884534311df77a855241_full.jpeg",
       "name": "h1enle",
-      "job": "In-Game Leader / Playmaker"
+      "role": "In-Game Leader / Playmaker"
     },
     {
       "img": "img/team/75768da644bb6f1048d3d06c740fdcef189cb4e9_full.jpeg",
       "name": "Hyle",
-      "job": "AWPer / Lurker"
+      "role": "AWPer / Lurker"
     },
     {
       "img": "img/team/865905eb2f44cd5f7364d637e86fdcc789b4fc3c_full.jpeg",
       "name": "Breezee",
-      "job": "Playmaker / AWPer"
+      "role": "Playmaker / AWPer"
     },
     {
       "img": "img/team/a85fbc3e572a5d81a4d4542d8d49407cad0a33a0_full.jpeg",
       "name": "env1",
-      "job": "Support / Anchor"
+      "role": "Support / Anchor"
     },
     {
       "img": "img/team/00c5fa176210c7306a7eca9ef8e4ff05ba4fc700_full.jpeg",
       "name": "Dorm",
-      "job": "Entry Fragger / Support"
+      "role": "Entry Fragger / Support"
     }
   ],
   "Contact": {
