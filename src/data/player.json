@@ -22,23 +22,28 @@
       ]
     },
     {
-      "name": "Stats",
+      "name": "Guns",
       "data": [
         {
-          "name": "Skills",
-          "data": ["Aiming", "Movement", "Utilities"]
+          "name": "Melee"
         },
         {
-          "name": "Thinking",
-          "data": ["Spending", "Timing", "Handling", "Strategy"]
+          "name": "Pistols"
         },
         {
-          "name": "Teamwork",
-          "data": ["Trading", "Assist", "Boosting", "Communication"]
+          "name": "Shotguns"
         },
         {
-          "name": "Morale",
-          "data": ["Stability", "Concentration", "Progressive", "Positivity"]
+          "name": "SMG"
+        },
+        {
+          "name": "Rifles"
+        },
+        {
+          "name": "Snipers"
+        },
+        {
+          "name": "Machine Guns"
         }
       ]
     },
@@ -46,49 +51,109 @@
       "name": "Roles",
       "data": [
         {
-          "name": "Skills",
-          "data": ["Aiming", "Movement", "Utilities"]
+          "name": "In-Game Leader"
         },
         {
-          "name": "Thinking",
-          "data": ["Spending", "Timing", "Handling", "Strategy"]
+          "name": "Entry Fragger"
         },
         {
-          "name": "Teamwork",
-          "data": ["Trading", "Assist", "Boosting", "Communication"]
+          "name": "Playmaker"
         },
         {
-          "name": "Morale",
-          "data": ["Stability", "Concentration", "Progressive", "Positivity"]
+          "name": "Support"
+        },
+        {
+          "name": "Lurker"
+        },
+        {
+          "name": "Anchor"
         }
       ]
+    }
+  ],
+  "chart": {
+    "chart": { "type": "donut" },
+    "legend": { "show": false },
+    "dataLabels": { "enabled": false },
+    "stroke": { "show": false, "width": 0 },
+    "plotOptions": {
+      "pie": {
+        "donut": {
+          "size": "85%",
+          "labels": { "show": true, "name": { "show": true } }
+        },
+        "expandOnClick": false,
+        "customScale": 1.1
+      }
+    }
+  },
+  "level": [
+    {
+      "name": "Branded"
+    },
+    {
+      "name": "Impressive"
+    },
+    {
+      "name": "Good"
+    },
+    {
+      "name": "Ordinarily"
+    },
+    {
+      "name": "Insignificant"
     }
   ],
   "data": [
     {
       "img": "img/team/feb2ad6b53565c540c00884534311df77a855241_full.jpeg",
       "name": "h1enle",
-      "role": "In-Game Leader / Playmaker"
+      "role": "In-Game Leader / Playmaker",
+      "chart": [
+        [25, 28, 26, 21],
+        [3, 26, 3, 23, 33, 9, 3],
+        [25, 15, 19, 17, 7, 17]
+      ]
     },
     {
       "img": "img/team/75768da644bb6f1048d3d06c740fdcef189cb4e9_full.jpeg",
       "name": "Hyle",
-      "role": "AWPer / Lurker"
+      "role": "AWPer / Lurker",
+      "chart": [
+        [29, 24, 23, 24],
+        [11, 13, 11, 10, 17, 25, 13],
+        [17, 15, 19, 14, 19, 16]
+      ]
     },
     {
       "img": "img/team/865905eb2f44cd5f7364d637e86fdcc789b4fc3c_full.jpeg",
       "name": "Breezee",
-      "role": "Playmaker / AWPer"
+      "role": "Playmaker / AWPer",
+      "chart": [
+        [34, 21, 21, 24],
+        [5, 19, 3, 23, 26, 22, 2],
+        [12, 21, 22, 12, 17, 16]
+      ]
     },
     {
       "img": "img/team/a85fbc3e572a5d81a4d4542d8d49407cad0a33a0_full.jpeg",
       "name": "env1",
-      "role": "Support / Anchor"
+      "role": "Support / Anchor",
+      "chart": [
+        [19, 30, 28, 23],
+        [6, 15, 10, 23, 25, 19, 2],
+        [17, 15, 11, 21, 17, 19]
+      ]
     },
     {
       "img": "img/team/00c5fa176210c7306a7eca9ef8e4ff05ba4fc700_full.jpeg",
       "name": "Dorm",
-      "role": "Entry Fragger / Support"
+      "role": "Entry Fragger / Support",
+      "chart": [
+        [26, 23, 24, 27],
+        [3, 20, 3, 26, 26, 19, 3],
+        [10, 18, 21, 19, 14, 18]
+      ]
     }
   ]
 }

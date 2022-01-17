@@ -1,9 +1,7 @@
-import { useRef, useState } from "react";
+import { useRef, useState, useEffect } from "react";
 import ApexCharts from "apexcharts";
-import { motion } from "framer-motion";
-//https://www.npmjs.com/package/framer-motion
-//react-animations
-//https://github.com/brunnolou/react-morph    https://codesandbox.io/s/jpnq33q47w?from-embed=&file=/src/Components/PlayerMini.js:96-102
+import { motion, AnimatePresence } from "framer-motion";
+import playerData from "../data/player.json";
 
 export const Team = (props) => {
   const [selectedIndex, setSelectedIndex] = useState(0);
@@ -11,16 +9,46 @@ export const Team = (props) => {
 
   const contentRef = useRef({
     lastIndex: 0,
+    lastTimeout: null,
+    charts: [],
   });
 
   const onChangePlayer = (index) => {
-    contentRef.current.lastIndex = selectedIndex;
+    contentRef.current.lastTimeout &&
+      clearTimeout(contentRef.current.lastTimeout);
     setSelectedIndex(index);
     setAnimating(true);
-    setTimeout(() => {
+    contentRef.current.lastTimeout = setTimeout(() => {
+      contentRef.current.lastIndex = index;
       setAnimating(false);
     }, 500);
   };
+
+  useEffect(() => {
+    for (let i = 0; i < 3; ++i) {
+      const element = document.querySelector("#player-chart-" + i);
+      if (!element) {
+        return;
+      }
+      const chart = new ApexCharts(element, {
+        ...playerData.chart,
+        labels: playerData.label[i].data.map((x) => x.name),
+        series: playerData.data[selectedIndex].chart[i],
+      });
+      chart.render();
+      contentRef.current.charts.push(chart);
+      var chartLabel = document.createTextNode(playerData.label[i].name);
+      element.appendChild(chartLabel);
+    }
+  }, [props]);
+
+  useEffect(() => {
+    for (let i = 0; i < 3; ++i) {
+      contentRef.current.charts?.[i]?.updateSeries(
+        playerData.data[selectedIndex].chart[i]
+      );
+    }
+  }, [selectedIndex]);
 
   return (
     <div id="team" className="text-center">
@@ -40,37 +68,54 @@ export const Team = (props) => {
               className="card col-md-10 col-md-offset-1"
               style={{ padding: 40 }}
             >
-              <div className="col-md-4 col-sm-4 team">
-                <motion.img
-                  animate={{ x: selectedIndex * 100 }}
-                  src={props.data[selectedIndex].img}
-                  className="team-img text-left"
-                  style={{ borderRadius: 10 }}
-                  onClick={() => setSelectedIndex(selectedIndex + 1)}
-                />
+              <div className="col-md-4 col-sm-12 team">
+                <AnimatePresence exitBeforeEnter>
+                  <motion.img
+                    key={selectedIndex}
+                    src={props.data[selectedIndex].img}
+                    className="team-img text-left"
+                    style={{ borderRadius: 10 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    initial={{ opacity: 0, y: 20 }}
+                    exit={{ opacity: 0, y: -20 }}
+                    transition={{ duration: 0.1 }}
+                  />
+                </AnimatePresence>
                 <div className="animation-block">
-                  <motion.h3
-                    // animate={{ x: isAnimating ? -200 : 0 }}
-                    style={{ opacity: 1 }}
-                  >
+                  <motion.h3 style={{ opacity: isAnimating ? 0 : 1 }}>
                     {props.data[contentRef.current.lastIndex].name}
                   </motion.h3>
                   <motion.h3
-                    {...(isAnimating
-                      ? {
-                          animate: {
-                            x: isAnimating ? 0 : 200,
-                          },
-                        }
-                      : {})}
+                    animate={{ x: isAnimating ? 0 : 200 }}
                     style={{ x: 200, opacity: isAnimating ? 1 : 0 }}
                   >
                     {props.data[selectedIndex].name}
                   </motion.h3>
                 </div>
-                <motion.p>{props.data[selectedIndex].role}</motion.p>
+                <div className="animation-block">
+                  <motion.p style={{ opacity: isAnimating ? 0 : 1 }}>
+                    {props.data[contentRef.current.lastIndex].role}
+                  </motion.p>
+                  <motion.p
+                    animate={{ x: isAnimating ? 0 : -200 }}
+                    style={{ x: -200, opacity: isAnimating ? 1 : 0 }}
+                  >
+                    {props.data[selectedIndex].role}
+                  </motion.p>
+                </div>
               </div>
-              <div className="col-md-8 col-sm-8">hehe</div>
+              <div className="col-md-8 col-sm-12">
+                {playerData.label.map((chart, index) => (
+                  <>
+                    <div
+                      key={index}
+                      className="col-md-4 col-sm-4"
+                      id={"player-chart-" + index}
+                    />
+                    {/* <div>{chart.name}</div> */}
+                  </>
+                ))}
+              </div>
             </div>
           </div>
         ) : (
