@@ -154,6 +154,46 @@
         [3, 20, 3, 26, 26, 19, 3],
         [10, 18, 21, 19, 14, 18]
       ]
+    },
+    {
+      "img": "img/team/c21456b2da1ad2c47be91d026a5d81d0b2f59b8a_full.jpeg",
+      "name": "Kalibi",
+      "role": "In-Game Leader / Playmaker",
+      "chart": [
+        [25, 28, 26, 21],
+        [3, 26, 3, 23, 33, 9, 3],
+        [25, 15, 19, 17, 7, 17]
+      ]
+    },
+    {
+      "img": "img/team/16bf38fcd3a9a4650de94b7e63d8ed63f9ed43ca_full.jpeg",
+      "name": "Nomad",
+      "role": "Lurker / Support",
+      "chart": [
+        [23, 31, 23, 23],
+        [3, 20, 3, 36, 32, 3, 3],
+        [16, 14, 15, 19, 17, 17]
+      ]
+    },
+    {
+      "img": "img/team/9f532d54152ac97d142a9b2394715d837943b6f7_full.jpeg",
+      "name": "TrieuIkoma",
+      "role": "In-Game Leader / Playmaker",
+      "chart": [
+        [25, 28, 26, 21],
+        [3, 26, 3, 23, 33, 9, 3],
+        [25, 15, 19, 17, 7, 17]
+      ]
+    },
+    {
+      "img": "img/team/6b5e22123aa2c0e66a390c70dd6b2074e96859f4_full.jpg",
+      "name": "yuugata",
+      "role": "In-Game Leader / Playmaker",
+      "chart": [
+        [25, 28, 26, 21],
+        [3, 26, 3, 23, 33, 9, 3],
+        [25, 15, 19, 17, 7, 17]
+      ]
     }
   ]
 }
