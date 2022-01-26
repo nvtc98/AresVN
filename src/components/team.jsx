@@ -117,17 +117,41 @@ export const Team = (props) => {
             </div>
           </div>
         </div>
-        <div id="row" className="col-md-12 section-title">
+        <div
+          id="row"
+          className="col-md-12 section-title"
+          style={{
+            display: "flex",
+            justifyContent: "center",
+            marginTop: 20,
+            flexWrap: "wrap",
+          }}
+        >
           {playerData.data.map((d, i) => (
             <div
               key={`${d.name}-${i}`}
-              className="col-md-1 col-sm-1 team"
+              className="team"
               onClick={() => onChangePlayer(i)}
+              style={{ width: 80, marginLeft: i ? 10 : 0 }}
             >
-              <div className="thumbnail">
-                {" "}
+              <div
+                className="thumbnail"
+                style={{
+                  border:
+                    "2px solid " + (selectedIndex === i ? "#bbb" : "#222"),
+                  borderRadius: 10,
+                  display: "flex",
+                  flexDirection: "column",
+                  justifyContent: "center",
+                  overflow: "hidden",
+                  padding: 0,
+                }}
+              >
                 <img src={d.img} alt={d.name} className="team-img" />
-                <div className="caption">
+                <div
+                  className="caption"
+                  style={{ color: selectedIndex === i ? "#bbb" : null }}
+                >
                   <div>{d.name}</div>
                 </div>
               </div>
