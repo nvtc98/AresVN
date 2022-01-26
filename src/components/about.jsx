@@ -1,5 +1,4 @@
 export const About = (props) => {
-  console.log("props.data", props.data);
   return (
     <div id="about">
       <div className="container">
@@ -12,9 +11,9 @@ export const About = (props) => {
               height="315"
               src="https://www.youtube.com/embed/l4i9Wmx-CWU"
               title="YouTube video player"
-              frameborder="0"
+              frameBorder="0"
               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-              allowfullscreen
+              allowFullScreen
             />
           </div>
           <div className="col-xs-12 col-md-6">
@@ -40,11 +39,9 @@ export const About = (props) => {
                     >
                       <div>
                         {d.text.map((t, i) => (
-                          <>
-                            <p key={i} style={{ textAlign: "left" }}>
-                              {t}
-                            </p>
-                          </>
+                          <p key={i} style={{ textAlign: "left" }}>
+                            {t}
+                          </p>
                         ))}
                       </div>
                     </div>

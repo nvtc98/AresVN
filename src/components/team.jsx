@@ -3,6 +3,23 @@ import ApexCharts from "apexcharts";
 import { motion, AnimatePresence } from "framer-motion";
 import playerData from "../data/player.json";
 
+const getChart = () => {
+  const chart = playerData.chart;
+  chart.plotOptions.pie.donut.labels.value.formatter = (
+    value,
+    { config: { series } }
+  ) => {
+    const rate = value / (100 / series.length);
+    for (let i = 0; i < playerData.level.length; ++i) {
+      const { value, name } = playerData.level[i];
+      if (rate > value) {
+        return name;
+      }
+    }
+  };
+  return chart;
+};
+
 export const Team = (props) => {
   const [selectedIndex, setSelectedIndex] = useState(0);
   const [isAnimating, setAnimating] = useState(false);
@@ -31,7 +48,7 @@ export const Team = (props) => {
         return;
       }
       const chart = new ApexCharts(element, {
-        ...playerData.chart,
+        ...getChart(),
         labels: playerData.label[i].data.map((x) => x.name),
         series: playerData.data[selectedIndex].chart[i],
       });

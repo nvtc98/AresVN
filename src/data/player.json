@@ -80,7 +80,16 @@
       "pie": {
         "donut": {
           "size": "85%",
-          "labels": { "show": true, "name": { "show": true } }
+          "labels": {
+            "show": true,
+            "name": { "show": true, "fontSize": 11, "offsetY": 2 },
+            "value": {
+              "show": true,
+              "fontSize": 10,
+              "offsetY": -2,
+              "color": "#ccc"
+            }
+          }
         },
         "expandOnClick": false,
         "customScale": 1.1
@@ -89,19 +98,24 @@
   },
   "level": [
     {
-      "name": "Branded"
+      "name": "Branded",
+      "value": 1.2
     },
     {
-      "name": "Impressive"
+      "name": "Impressive",
+      "value": 1.05
     },
     {
-      "name": "Good"
+      "name": "Good",
+      "value": 0.95
     },
     {
-      "name": "Ordinarily"
+      "name": "Ordinarily",
+      "value": 0.8
     },
     {
-      "name": "Insignificant"
+      "name": "Insignificant",
+      "value": 0
     }
   ],
   "data": [
