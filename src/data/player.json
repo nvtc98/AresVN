@@ -122,7 +122,7 @@
     {
       "img": "img/team/feb2ad6b53565c540c00884534311df77a855241_full.jpeg",
       "name": "h1enle",
-      "role": "In-Game Leader / Playmaker",
+      "role": "In-Game Leader",
       "chart": [
         [25, 28, 26, 21],
         [3, 26, 3, 23, 33, 9, 3],
@@ -133,44 +133,46 @@
     {
       "img": "img/team/75768da644bb6f1048d3d06c740fdcef189cb4e9_full.jpeg",
       "name": "Hyle",
-      "role": "AWPer / Lurker",
+      "role": "AWPer",
       "chart": [
         [29, 24, 23, 24],
         [11, 13, 11, 10, 17, 25, 13],
         [17, 15, 19, 14, 19, 16]
       ],
-      "description": "AresVN Hyle, who as part of the core-team, is considered the most impressive player on the team. Hyle owns incredible game sense with decades of FPS experience. Therefore, his ability to lurk, clutch or handle situations is very smooth. His sniper ability is the most trademark of the team with magical flicks that go straight into the enemy's heart. Hyle is a great warrior that AresVN can't be without."
+      "description": "AresVN Hyle, an essential part of the team's firepower, is considered the most impressive player on the team. Hyle owns incredible game sense with decades of FPS experience. Therefore, his ability to lurk, clutch or handle situations is very smooth. His sniper ability is the most trademark of the team with magical flicks that go straight into the enemy's heart. Hyle is a great warrior that AresVN can't be without."
     },
     {
       "img": "img/team/865905eb2f44cd5f7364d637e86fdcc789b4fc3c_full.jpeg",
       "name": "Breezee",
-      "role": "Playmaker / AWPer",
+      "role": "Playmaker",
       "chart": [
         [34, 21, 21, 24],
         [5, 19, 3, 23, 26, 22, 2],
         [12, 21, 22, 12, 17, 16]
       ],
-      "description": "AresVN Breezee, who as part of the core-team, has trained very hard and is considered to have an extremely remarkable aiming technique. Breezee never misses an opportunity to receive teacher who can help him improve his technique. With a very calm and sturdy shooting style, Breezee is considered a ace machine and is very important with the team as he has the ability to break solid enemy chokepoints."
+      "description": "AresVN Breezee, as a high-class skills player of the team, has trained very hard and is considered to have an extremely remarkable aiming technique. Breezee never misses an opportunity to receive teacher who can help him improve his technique. With a terribly calm and sturdy shooting style, Breezee is considered a ace machine and is very important with the team as he has the ability to break solid enemy chokepoints."
     },
     {
       "img": "img/team/a85fbc3e572a5d81a4d4542d8d49407cad0a33a0_full.jpeg",
       "name": "env1",
-      "role": "Support / Anchor",
+      "role": "Support",
       "chart": [
         [19, 30, 28, 23],
         [6, 15, 10, 23, 25, 19, 2],
         [17, 15, 11, 21, 17, 19]
-      ]
+      ],
+      "description": "AresVN env1, as a key background of the team, has a has less combat-oriented playstyle, but more supportive. As such, he makes a strong mark on utilities, magical handling and movement. env1 is also a highly mischievous player with plenty of moves that paralyze the opponent's judgment. However, that does not mean that his ability to win is underestimated. AresVN's brilliant victories have never lacked env1 standing behind."
     },
     {
       "img": "img/team/00c5fa176210c7306a7eca9ef8e4ff05ba4fc700_full.jpeg",
-      "name": "Dorm",
-      "role": "Entry Fragger / Support",
+      "name": "D O R M",
+      "role": "Entry Fragger",
       "chart": [
         [26, 23, 24, 27],
         [3, 20, 3, 26, 26, 19, 3],
         [10, 18, 21, 19, 14, 18]
-      ]
+      ],
+      "description": "AresVN D O R M, the most exemplary player of the team, is a man of confidence, integrity and many good qualities. Although his training time is not much, he has a amazing ability to sweep and clear the field. D O R M's brightest point is his attitude, a cool head and obedience to the game's progress. His aim placement is also an noticeable thing, with the brand of killing at thousands miles with just SMG. He is respected by everyone for spreading a positive spirit even during tough matches."
     },
     {
       "img": "img/team/c21456b2da1ad2c47be91d026a5d81d0b2f59b8a_full.jpeg",
