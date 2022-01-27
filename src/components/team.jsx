@@ -72,12 +72,12 @@ export const Team = (props) => {
       <div className="container">
         <div className="col-md-8 col-md-offset-2 section-title">
           <h2>Meet the Team</h2>
-          <p>
+          {/* <p>
             AresVN splits into 2 groups: core-team (the main members of the
             team, playing since the team's founding) and sub-team (members who
             join the team later through the Steam group application ceremony,
             mainly in 2021).
-          </p>
+          </p> */}
         </div>
         <div className="col-md-12">
           <div
@@ -122,15 +122,36 @@ export const Team = (props) => {
             </div>
             <div className="col-md-8 col-sm-12">
               {playerData.label.map((chart, index) => (
-                <>
-                  <div
-                    key={index}
-                    className="col-md-4 col-sm-4"
-                    id={"player-chart-" + index}
-                  />
-                  {/* <div>{chart.name}</div> */}
-                </>
+                <div
+                  key={index}
+                  className="col-md-4 col-sm-4"
+                  id={"player-chart-" + index}
+                />
               ))}
+            </div>
+            {/* <p class="col-md-8 col-sm-12 text-left" style={{ marginTop: 30 }}>
+              {playerData.data[selectedIndex].description}
+            </p> */}
+            <div
+              className="animation-block col-md-8 col-sm-12 text-left"
+              style={{ marginTop: 30 }}
+            >
+              <motion.p style={{ opacity: isAnimating ? 0 : 1 }}>
+                {playerData.data[contentRef.current.lastIndex].description}
+              </motion.p>
+              <motion.p
+                animate={{
+                  scaleX: isAnimating ? 1 : 1.5,
+                }}
+                style={{
+                  left: 15,
+                  right: 15,
+                  scaleX: 1.5,
+                  opacity: isAnimating ? 1 : 0,
+                }}
+              >
+                {playerData.data[selectedIndex].description}
+              </motion.p>
             </div>
           </div>
         </div>
