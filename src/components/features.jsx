@@ -23,7 +23,6 @@ export const Features = (props) => {
                         width: "100%",
                         height: "100%",
                       }}
-                      tintColor="red"
                     />
                   </div>
                   <h3>{d.title}</h3>
