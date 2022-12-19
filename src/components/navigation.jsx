@@ -1,6 +1,15 @@
+import { useEffect, useRef } from "react";
+
+export let navigationHeight = null;
+
 export const Navigation = (props) => {
+  const ref = useRef(null);
+  useEffect(() => {
+    navigationHeight = ref.current.offsetHeight;
+  }, []);
+
   return (
-    <nav id="menu" className="navbar navbar-default navbar-fixed-top">
+    <nav id="menu" className="navbar navbar-default navbar-fixed-top" ref={ref}>
       <div className="container">
         <div className="navbar-header">
           <button
