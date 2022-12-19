@@ -36,12 +36,12 @@ export const Navigation = (props) => {
           <ul className="nav navbar-nav navbar-right">
             <li>
               <a href="#introduction" className="page-scroll">
-                Introduction
+                Chào mừng
               </a>
             </li>
             <li>
               <a href="#about" className="page-scroll">
-                About
+                Giới thiệu
               </a>
             </li>
             {/* <li>
@@ -51,27 +51,27 @@ export const Navigation = (props) => {
             </li> */}
             <li>
               <a href="#portfolio" className="page-scroll">
-                Gallery
+                Bộ sưu tập
               </a>
             </li>
             <li>
               <a href="#team" className="page-scroll">
-                Team
+                Thành viên
               </a>
             </li>
             <li>
               <a href="#relationships" className="page-scroll">
-                Relationships
+                Quan hệ
               </a>
             </li>
             <li>
               <a href="#testimonials" className="page-scroll">
-                Testimonials
+                Bình luận
               </a>
             </li>
             <li>
               <a href="#contact" className="page-scroll">
-                Contact
+                Liên hệ
               </a>
             </li>
           </ul>

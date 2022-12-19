@@ -6,7 +6,7 @@ export const Relationships = (props) => {
         style={{ paddingTop: 100, paddingBottom: 100 }}
       >
         <div className="col-md-8 col-md-offset-2 section-title">
-          <h2>Relationships</h2>
+          <h2>Mối quan hệ</h2>
         </div>
         <div>
           {props.data

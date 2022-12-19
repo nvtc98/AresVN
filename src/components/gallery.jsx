@@ -5,8 +5,8 @@ export const Gallery = (props) => {
     <div id="portfolio" className="text-center">
       <div className="container">
         <div className="section-title">
-          <h2>Gallery</h2>
-          <p>Several moments captured during gameplay.</p>
+          <h2>Bộ sưu tập</h2>
+          <p>Những chiến tích và kỷ niệm trong AresVN</p>
         </div>
         <div className="row">
           <div className="portfolio-items">

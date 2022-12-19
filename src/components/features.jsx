@@ -6,7 +6,7 @@ export const Features = (props) => {
         style={{ paddingTop: 100, paddingBottom: 100 }}
       >
         <div className="col-md-10 col-md-offset-1 section-title">
-          <h4>welcome to</h4>
+          <h4>chào mừng đến với</h4>
           <h2>AresVN</h2>
         </div>
         <div className="row">

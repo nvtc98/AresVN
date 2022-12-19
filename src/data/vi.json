@@ -1,0 +1,200 @@
+{
+  "Header": {
+    "videoId": "1WYTTNxiAlA",
+    "videoSize": {
+      "width": 1920,
+      "height": 1080
+    },
+    "image": "img/header/intro.png"
+  },
+  "About": {
+    "paragraph": "AresVN là một đội thể thao điện tử Việt Nam. Đội ban đầu được lập vào năm 2019 với tư cách là một đội Counter-Strike, sau đó mở rộng thêm nhiều tựa game như Valorant, Rainbow Six: Siege. Tên đội được lấy từ tên vị thần chiến tranh trong thần thoại Hy Lạp nên đội còn được gọi với cái tên Việt Chiến Thần. Với phương châm \"Rạp xiếc không tự sinh ra hay mất đi mà chỉ chuyển từ game này sang game khác\", đội đã để lại dấu ấn tấu hài sâu đậm từ các tựa game thi đấu cho đến các tựa game PvE giải trí.",
+    "details": [
+      {
+        "icon": "fa fa-wordpress",
+        "name": "Ngày thành lập",
+        "text": ["2019 - 02 - 21", "February 21, 2019"]
+      },
+      {
+        "icon": "fa fa-cart-arrow-down",
+        "name": "Tên khác và cách viết tên khác",
+        "text": ["ARESVN", "ARVN", "Việt Chiến Thần", "越戰神", "ArếtVN"]
+      },
+      {
+        "icon": "fa fa-cloud-download",
+        "name": "Game phổ biến",
+        "text": [
+          "Counter-Strike: Global Offensive",
+          "Tom Clancy's Rainbow Six Siege",
+          "Valorant",
+          "Grand Theft Auto V",
+          "StarCraft II",
+          "Left 4 Dead 2",
+          "Phasmophobia"
+        ]
+      }
+    ]
+  },
+  "Gallery": [
+    {
+      "title": "Four horsemen of not leaving the match",
+      "largeImage": "img/portfolio/1.png",
+      "smallImage": "img/portfolio/1.png"
+    },
+    {
+      "title": "Có camera 4K để làm gì?",
+      "largeImage": "img/portfolio/2.png",
+      "smallImage": "img/portfolio/2.png"
+    },
+    {
+      "title": "Đây là game kinh dị, hãy tin tôi",
+      "largeImage": "img/portfolio/3.png",
+      "smallImage": "img/portfolio/3.png"
+    },
+    {
+      "title": "Sống như người Na'vi",
+      "largeImage": "img/portfolio/4.png",
+      "smallImage": "img/portfolio/4.png"
+    },
+    {
+      "title": "Đừng bao giờ AFK khi kẻ địch ở gần",
+      "largeImage": "img/portfolio/5.png",
+      "smallImage": "img/portfolio/5.png"
+    },
+    {
+      "title": "AresVN Est. 2019",
+      "largeImage": "img/portfolio/6.png",
+      "smallImage": "img/portfolio/6.png"
+    }
+  ],
+  "Services": [
+    {
+      "icon": "fa fa-wordpress",
+      "name": "Lorem ipsum dolor",
+      "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis sed dapibus leo nec ornare diam sedasd commodo nibh ante facilisis bibendum dolor feugiat at."
+    },
+    {
+      "icon": "fa fa-cart-arrow-down",
+      "name": "Consectetur adipiscing",
+      "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis sed dapibus leo nec ornare diam sedasd commodo nibh ante facilisis bibendum dolor feugiat at."
+    },
+    {
+      "icon": "fa fa-cloud-download",
+      "name": "Lorem ipsum dolor",
+      "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis sed dapibus leo nec ornare diam sedasd commodo nibh ante facilisis bibendum dolor feugiat at."
+    },
+    {
+      "icon": "fa fa-language",
+      "name": "Consectetur adipiscing",
+      "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis sed dapibus leo nec ornare diam sedasd commodo nibh ante facilisis bibendum dolor feugiat at."
+    },
+    {
+      "icon": "fa fa-plane",
+      "name": "Lorem ipsum dolor",
+      "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis sed dapibus leo nec ornare diam sedasd commodo nibh ante facilisis bibendum dolor feugiat at."
+    },
+    {
+      "icon": "fa fa-pie-chart",
+      "name": "Consectetur adipiscing",
+      "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis sed dapibus leo nec ornare diam sedasd commodo nibh ante facilisis bibendum dolor feugiat at."
+    }
+  ],
+  "Testimonials": [
+    {
+      "img": "img/testimonials/01.jpg",
+      "text": "Delete clan pls.",
+      "name": "John Doe"
+    },
+    {
+      "img": "img/testimonials/02.jpg",
+      "text": "AresVN noob team.",
+      "name": "Johnathan Doe"
+    }
+  ],
+  "Team": [
+    {
+      "img": "img/team/feb2ad6b53565c540c00884534311df77a855241_full.jpeg",
+      "name": "h1enle",
+      "job": "In-Game Leader / Playmaker"
+    },
+    {
+      "img": "img/team/75768da644bb6f1048d3d06c740fdcef189cb4e9_full.jpeg",
+      "name": "Hyle",
+      "job": "AWPer / Lurker"
+    },
+    {
+      "img": "img/team/865905eb2f44cd5f7364d637e86fdcc789b4fc3c_full.jpeg",
+      "name": "Breezee",
+      "job": "Playmaker / AWPer"
+    },
+    {
+      "img": "img/team/a85fbc3e572a5d81a4d4542d8d49407cad0a33a0_full.jpeg",
+      "name": "env1",
+      "job": "Support / Anchor"
+    },
+    {
+      "img": "img/team/00c5fa176210c7306a7eca9ef8e4ff05ba4fc700_full.jpeg",
+      "name": "Dorm",
+      "job": "Entry Fragger / Support"
+    }
+  ],
+  "Contact": {
+    "address": "4321 California St, San Francisco, CA 12345 ",
+    "phone": "+1 123 456 1234",
+    "email": "info@company.com",
+    "facebook": "fb.com",
+    "twitter": "twitter.com",
+    "youtube": "https://www.youtube.com/channel/UC4ffEmP-5LrK3jj9QUwmEcw",
+    "discord": "https://discord.com/invite/Yvfn9wvNXq",
+    "steam": "https://steamcommunity.com/groups/aresvn"
+  },
+  "Features": [
+    {
+      "icon": "fa fa-comments-o",
+      "image": "img/introduction/gift.png",
+      "title": "AWP benefactors",
+      "text": "Chúng tôi làm từ thiện hàng ngàn khẩu AWP mỗi ngày."
+    },
+    {
+      "icon": "fa fa-bullhorn",
+      "image": "img/introduction/running.png",
+      "title": "Rush B",
+      "text": "Chúng tôi rush B bất cứ khi nào yếu tiền, nhiều tiền, đang vui hay trầm cảm."
+    },
+    {
+      "icon": "fa fa-group",
+      "image": "img/introduction/deaf.png",
+      "title": "Earless",
+      "text": "Chúng tôi hoàn toàn điếc."
+    },
+    {
+      "icon": "fa fa-magic",
+      "image": "img/introduction/shooting-game.png",
+      "title": "Silencer Removal",
+      "text": "Có nòng nhắm là gỡ."
+    },
+    {
+      "icon": "fa fa-magic",
+      "image": "img/introduction/victory.png",
+      "title": "Victory for enemies",
+      "text": "Đúng vậy."
+    },
+    {
+      "icon": "fa fa-magic",
+      "image": "img/introduction/game-cheat.png",
+      "title": "Nó hack rồi",
+      "text": "Chúng tôi luôn nói vậy khi gặp ai hack, chơi giỏi hơn, hoặc Ching Chong."
+    }
+  ],
+  "Relationships": [
+    {
+      "img": "img/relationships/g3esports.png",
+      "name": "G3 Esports",
+      "relationship": "Rival / Ally",
+      "descriptions": [
+        "As a rival team, AresVN and G3 Esports once held a fiery match in Counter-Strike: Global Offensive on February 19, 2021. G3 Esports used the strongest lineup while AresVN's lineup was half of sub-team. The match resulted in the victory going to G3 Esports.",
+        "As an ally team, AresVN and G3 Esports have a supportive relationship with each other. G3 Esports regularly sends members to fill the slots for AresVN. The two also have matches together, and there is a 5vs5 match with members of both teams mixed."
+      ]
+    }
+  ]
+}

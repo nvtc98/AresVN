@@ -71,7 +71,7 @@ export const Team = (props) => {
     <div id="team" className="text-center">
       <div className="container">
         <div className="col-md-8 col-md-offset-2 section-title">
-          <h2>Meet the Team</h2>
+          <h2>Thành viên</h2>
           {/* <p>
             AresVN splits into 2 groups: core-team (the main members of the
             team, playing since the team's founding) and sub-team (members who
@@ -183,6 +183,7 @@ export const Team = (props) => {
                   justifyContent: "center",
                   overflow: "hidden",
                   padding: 0,
+                  cursor: "pointer",
                 }}
               >
                 <img src={d.img} alt={d.name} className="team-img" />

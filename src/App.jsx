@@ -9,7 +9,7 @@ import { Testimonials } from "./components/testimonials";
 import { Team } from "./components/team";
 import { Relationships } from "./components/relationships";
 import { Contact } from "./components/contact";
-import JsonData from "./data/data.json";
+import JsonData from "./data/vi.json";
 import SmoothScroll from "smooth-scroll";
 import "./App.css";
 
