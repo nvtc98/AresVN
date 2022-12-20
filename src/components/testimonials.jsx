@@ -3,7 +3,7 @@ export const Testimonials = (props) => {
     <div id="testimonials">
       <div className="container">
         <div className="section-title text-center">
-          <h2>Kẻ địch {"&"} bạn bè nói gì về chúng tôi</h2>
+          <h2>Kẻ địch {"&"} người chơi cùng nói gì về chúng tôi</h2>
         </div>
         <div className="row">
           {props.data

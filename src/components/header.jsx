@@ -19,17 +19,18 @@ export const Header = (props) => {
   return (
     <header id="header">
       <div>
-        {isEnded ? (
-          <img
-            src={props.data.image}
-            alt="..."
-            style={{
-              width: videoWidth,
-              height: videoHeight,
-              objectFit: "contain",
-            }}
-          />
-        ) : props.data ? (
+        <img
+          src={props.data?.image}
+          alt="..."
+          style={{
+            width: videoWidth,
+            height: videoHeight,
+            objectFit: "contain",
+            position: isEnded ? "relative" : "absolute",
+            zIndex: isEnded ? 0 : -1,
+          }}
+        />
+        {!isEnded && !!props.data && (
           <YouTube
             videoId={"1WYTTNxiAlA"}
             id={"1WYTTNxiAlA"}
@@ -63,7 +64,7 @@ export const Header = (props) => {
             // onPlaybackRateChange={func}       // defaults -> noop
             // onPlaybackQualityChange={func}    // defaults -> noop
           />
-        ) : null}
+        )}
       </div>
     </header>
   );
