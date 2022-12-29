@@ -8,7 +8,7 @@ export const Header = (props) => {
   const [isEnded, setEnded] = useState(false);
   const onVideoEnd = () => {
     setEnded(true);
-    scroll.animateScroll(document.querySelector("#introduction"));
+    scroll.animateScroll(document.querySelector("#welcome"));
   };
 
   const videoWidth = window.innerWidth;
@@ -17,7 +17,7 @@ export const Header = (props) => {
     navigationHeight * 2;
 
   return (
-    <header id="header">
+    <header id="header" style={{ marginBottom: -navigationHeight }}>
       <div>
         <img
           src={props.data?.image}
@@ -26,11 +26,11 @@ export const Header = (props) => {
             width: videoWidth,
             height: videoHeight,
             objectFit: "contain",
-            position: isEnded ? "relative" : "absolute",
-            zIndex: isEnded ? 0 : -1,
+            position: "absolute",
+            zIndex: isEnded ? 1 : -1,
           }}
         />
-        {!isEnded && !!props.data && (
+        {!!props.data && (
           <YouTube
             videoId={"1WYTTNxiAlA"}
             id={"1WYTTNxiAlA"}

@@ -1,6 +1,6 @@
 export const Features = (props) => {
   return (
-    <div id="introduction" className="text-center">
+    <div id="welcome" className="text-center">
       <div
         className="container"
         style={{ paddingTop: 100, paddingBottom: 100 }}

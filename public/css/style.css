@@ -246,8 +246,9 @@ header .intro-text {
   text-align: center;
 }
 /* Features Section */
-#features {
+#welcome {
   background: #2e2f30;
+  position: relative;
 }
 #features i.fa {
   font-size: 38px;
