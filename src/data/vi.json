@@ -108,7 +108,12 @@
     {
       "img": "img/testimonials/02.jpg",
       "text": "AresVN noob team.",
-      "name": "Johnathan Doe"
+      "name": "Johnathan"
+    },
+    {
+      "img": "img/testimonials/killernavx.jpg",
+      "text": "They are cute.",
+      "name": "KillerNavx"
     }
   ],
   "Team": [
@@ -190,20 +195,14 @@
     {
       "img": "img/relationships/g3esports.png",
       "name": "G3 Esports",
-      "relationship": "Rival / Ally",
-      "descriptions": [
-        "As a rival team, AresVN and G3 Esports once held a fiery match in Counter-Strike: Global Offensive on February 19, 2021. G3 Esports used the strongest lineup while AresVN's lineup was half of sub-team. The match resulted in the victory going to G3 Esports.",
-        "As an ally team, AresVN and G3 Esports have a supportive relationship with each other. G3 Esports regularly sends members to fill the slots for AresVN. The two also have matches together, and there is a 5vs5 match with members of both teams mixed."
-      ]
+      "relationship": "Đối thủ / Đồng minh",
+      "descriptions": ["Coming soon..."]
     },
     {
       "img": "img/relationships/paragames.png",
       "name": "Paragames Team",
-      "relationship": "Ally",
-      "descriptions": [
-        "As a rival team, AresVN and G3 Esports once held a fiery match in Counter-Strike: Global Offensive on February 19, 2021. G3 Esports used the strongest lineup while AresVN's lineup was half of sub-team. The match resulted in the victory going to G3 Esports.",
-        "As an ally team, AresVN and G3 Esports have a supportive relationship with each other. G3 Esports regularly sends members to fill the slots for AresVN. The two also have matches together, and there is a 5vs5 match with members of both teams mixed."
-      ]
+      "relationship": "Đồng minh",
+      "descriptions": ["Coming soon..."]
     }
   ]
 }
