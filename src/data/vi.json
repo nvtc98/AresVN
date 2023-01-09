@@ -8,7 +8,7 @@
     "image": "img/header/intro.png"
   },
   "About": {
-    "paragraph": "AresVN là một đội thể thao điện tử Việt Nam. Đội ban đầu được lập vào năm 2019 với tư cách là một đội Counter-Strike, sau đó mở rộng thêm nhiều tựa game như Valorant, Rainbow Six: Siege. Tên đội được lấy từ tên vị thần chiến tranh trong thần thoại Hy Lạp nên đội còn được gọi với cái tên Việt Chiến Thần. Với phương châm \"Rạp xiếc không tự sinh ra hay mất đi mà chỉ chuyển từ game này sang game khác\", đội đã để lại dấu ấn tấu hài sâu đậm từ các tựa game thi đấu cho đến các tựa game PvE giải trí.",
+    "paragraph": "AresVN là một đội thể thao điện tử Việt Nam. Đội được thành lập vào 2019 với tư cách ban đầu là một đội Counter-Strike: Global Offensive, sau đó mở rộng thêm nhiều tựa game như Valorant, Rainbow Six: Siege. Tên đội được lấy từ tên vị thần chiến tranh trong thần thoại Hy Lạp nên đội còn được gọi với cái tên Việt Chiến Thần. Với phương châm \"Rạp xiếc không tự sinh ra hay mất đi mà chỉ chuyển từ game này sang game khác\", đội đã để lại dấu ấn tấu hài sâu đậm từ các tựa game thi đấu cho đến các tựa game PvE giải trí.",
     "details": [
       {
         "icon": "fa fa-wordpress",
@@ -157,14 +157,14 @@
     {
       "icon": "fa fa-comments-o",
       "image": "img/introduction/gift.png",
-      "title": "AWP benefactors",
-      "text": "Chúng tôi làm từ thiện khi cho đi hàng ngàn khẩu AWP mỗi ngày."
+      "title": "AWP rớt đầy sân",
+      "text": "Chúng tôi là những nhà hảo tâm khi cho đi hàng ngàn khẩu AWP mỗi ngày."
     },
     {
       "icon": "fa fa-bullhorn",
       "image": "img/introduction/running.png",
       "title": "Rush B",
-      "text": "Chúng tôi rush B bất cứ khi nào yếu tiền, nhiều tiền, đang vui hay trầm cảm."
+      "text": "Chúng tôi rush B bất cứ khi nào yếu tiền và nhiều tiền."
     },
     {
       "icon": "fa fa-group",
@@ -175,20 +175,20 @@
     {
       "icon": "fa fa-magic",
       "image": "img/introduction/shooting-game.png",
-      "title": "Silencer Removal",
-      "text": "Có giảm thanh là gỡ."
+      "title": "Súng lỗi à?",
+      "text": "Đúng vậy."
     },
     {
       "icon": "fa fa-magic",
       "image": "img/introduction/victory.png",
-      "title": "Victory for enemies",
-      "text": "Đúng vậy."
+      "title": "Vãi cả -99",
+      "text": ""
     },
     {
       "icon": "fa fa-magic",
       "image": "img/introduction/game-cheat.png",
       "title": "Nó hack rồi",
-      "text": "Chúng tôi luôn nói vậy khi gặp ai hack, chơi giỏi hơn, hoặc Ching Chong."
+      "text": "Thắng làm vua, thua thì team địch hack."
     }
   ],
   "Relationships": [
@@ -196,13 +196,18 @@
       "img": "img/relationships/g3esports.png",
       "name": "G3 Esports",
       "relationship": "Đối thủ / Đồng minh",
-      "descriptions": ["Coming soon..."]
+      "descriptions": [
+        "G3 Esports là một đối thủ nặng ký của AresVN. Giữa cả hai đã diễn ra một trận đấu nảy lửa trong Counter-Strike: Global Offensive vào ngày 19/02/2021. G3 Esports sử dụng hàng pháo dàn mạnh nhất trong khi đội hình của AresVN sử dụng các thành viên chưa có sự ăn khớp nhuần nhuyễn tại thời điểm đó. Trận đấu dẫn đến chiến thắng thuộc về G3 Esports.",
+        "AresVN và G3 Esports cũng là hai đội chiến hữu của nhau, có mối quan hệ tương trợ vô cùng tốt đẹp. G3 Esports thường xuyên cử thành viên vào trám các vị trí còn thiếu cho AresVN. Cả hai cũng có những trận đấu với nhau, trong đó điển hình có một trận đấu 5vs5 với các thành viên của cả hai đội trộn lẫn với nhau."
+      ]
     },
     {
       "img": "img/relationships/paragames.png",
       "name": "Paragames Team",
       "relationship": "Đồng minh",
-      "descriptions": ["Coming soon..."]
+      "descriptions": [
+        "Paragames Team có mối quan hệ tốt đẹp với AresVN. AresVN thường xuyên bổ sung kịp thời lực lượng những khi Paragames thiếu hụt. Giữa cả hai cũng đã diễn ra một trận giao hữu lẫn nhau vào ngày 27/12/2022."
+      ]
     }
   ]
 }

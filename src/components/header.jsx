@@ -8,7 +8,12 @@ export const Header = (props) => {
   const [isEnded, setEnded] = useState(false);
   const onVideoEnd = () => {
     setEnded(true);
-    scroll.animateScroll(document.querySelector("#welcome"));
+    if (
+      window.scrollY < videoHeight &&
+      document.documentElement.scrollTop < videoHeight
+    ) {
+      scroll.animateScroll(document.querySelector("#welcome"));
+    }
   };
 
   const videoWidth = window.innerWidth;
