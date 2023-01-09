@@ -16,14 +16,17 @@ export const Features = (props) => {
                   {" "}
                   {/* <i className={d.icon}></i> */}
                   <div className="icon">
-                    <img
+                    {/* <img
                       src={d.image}
                       style={{
                         objectFit: "contain",
                         width: "100%",
                         height: "100%",
                       }}
-                    />
+                    /> */}
+                    <h2 style={{ color: "#333", fontWeight: "normal" }}>
+                      {d.title.substr(0, 1)}
+                    </h2>
                   </div>
                   <h3>{d.title}</h3>
                   <p>{d.text}</p>
