@@ -25,6 +25,8 @@ export const Team = (props) => {
   const [isAnimating, setAnimating] = useState(false);
   const [showExtraPlayers, setShowExtraPlayers] = useState(false);
 
+  const activePlayers = playerData.data.filter((player) => !player.isHidden);
+
   const contentRef = useRef({
     lastIndex: 0,
     lastTimeout: null,
@@ -40,6 +42,10 @@ export const Team = (props) => {
       contentRef.current.lastIndex = index;
       setAnimating(false);
     }, 500);
+  };
+
+  const onExpand = () => {
+    setShowExtraPlayers(true);
   };
 
   useEffect(() => {
@@ -67,6 +73,37 @@ export const Team = (props) => {
       );
     }
   }, [selectedIndex]);
+
+  const renderPlayers = (d, i) => (
+    <div
+      key={`${d.name}-${i}`}
+      className="team"
+      onClick={() => onChangePlayer(i)}
+      style={{ width: 80, marginLeft: i ? 10 : 0 }}
+    >
+      <div
+        className="thumbnail"
+        style={{
+          border: "2px solid " + (selectedIndex === i ? "#bbb" : "#222"),
+          borderRadius: 10,
+          display: "flex",
+          flexDirection: "column",
+          justifyContent: "center",
+          overflow: "hidden",
+          padding: 0,
+          cursor: "pointer",
+        }}
+      >
+        <img src={d.img} alt={d.name} className="team-img" />
+        <div
+          className="caption"
+          style={{ color: selectedIndex === i ? "#bbb" : null }}
+        >
+          <div>{d.name}</div>
+        </div>
+      </div>
+    </div>
+  );
 
   return (
     <div id="team" className="text-center">
@@ -160,37 +197,35 @@ export const Team = (props) => {
             flexWrap: "wrap",
           }}
         >
-          {playerData.data.map((d, i) => (
+          {activePlayers.map(renderPlayers)}
+          {showExtraPlayers ? (
+            playerData.data
+              .filter((player) => player.isHidden)
+              .map((d, i) => renderPlayers(d, i + activePlayers.length))
+          ) : (
             <div
-              key={`${d.name}-${i}`}
               className="team"
-              onClick={() => onChangePlayer(i)}
-              style={{ width: 80, marginLeft: i ? 10 : 0 }}
+              onClick={() => onExpand()}
+              style={{ width: 80, marginLeft: 10, alignSelf: "center" }}
             >
               <div
-                className="thumbnail"
                 style={{
-                  border:
-                    "2px solid " + (selectedIndex === i ? "#bbb" : "#222"),
+                  border: "2px solid #222",
                   borderRadius: 10,
-                  display: "flex",
-                  flexDirection: "column",
-                  justifyContent: "center",
-                  overflow: "hidden",
-                  padding: 0,
-                  cursor: "pointer",
                 }}
               >
-                <img src={d.img} alt={d.name} className="team-img" />
-                <div
-                  className="caption"
-                  style={{ color: selectedIndex === i ? "#bbb" : null }}
-                >
-                  <div>{d.name}</div>
-                </div>
+                <i
+                  className="fa fa-angle-double-right"
+                  style={{
+                    fontSize: 40,
+                    width: 40,
+                    height: 40,
+                    border: 0,
+                  }}
+                ></i>
               </div>
             </div>
-          ))}
+          )}
         </div>
       </div>
     </div>
