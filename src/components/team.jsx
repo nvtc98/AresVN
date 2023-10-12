@@ -23,6 +23,7 @@ const getChart = () => {
 export const Team = (props) => {
   const [selectedIndex, setSelectedIndex] = useState(0);
   const [isAnimating, setAnimating] = useState(false);
+  const [showExtraPlayers, setShowExtraPlayers] = useState(false);
 
   const contentRef = useRef({
     lastIndex: 0,
@@ -72,12 +73,6 @@ export const Team = (props) => {
       <div className="container">
         <div className="col-md-8 col-md-offset-2 section-title">
           <h2>Thành viên</h2>
-          {/* <p>
-            AresVN splits into 2 groups: core-team (the main members of the
-            team, playing since the team's founding) and sub-team (members who
-            join the team later through the Steam group application ceremony,
-            mainly in 2021).
-          </p> */}
         </div>
         <div className="col-md-12">
           <div

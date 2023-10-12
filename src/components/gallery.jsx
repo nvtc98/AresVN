@@ -20,6 +20,7 @@ export const Gallery = (props) => {
                       title={d.title}
                       largeImage={d.largeImage}
                       smallImage={d.smallImage}
+                      setShowPopup={props.setShowPopup}
                     />
                   </div>
                 ))

@@ -9,6 +9,7 @@ import { Testimonials } from "./components/testimonials";
 import { Team } from "./components/team";
 import { Relationships } from "./components/relationships";
 import { Contact } from "./components/contact";
+import Popup from "./components/popup";
 import JsonData from "./data/vi.json";
 import SmoothScroll from "smooth-scroll";
 import "./App.css";
@@ -20,6 +21,7 @@ export const scroll = new SmoothScroll('a[href*="#"]', {
 
 const App = () => {
   const [landingPageData, setLandingPageData] = useState({});
+  const [showPopup, setShowPopup] = useState(null);
   useEffect(() => {
     setLandingPageData(JsonData);
   }, []);
@@ -32,10 +34,14 @@ const App = () => {
       <About data={landingPageData.About} />
       {/* <Services data={landingPageData.Services} /> */}
       <Team data={landingPageData.Team} />
-      <Gallery data={landingPageData.Gallery} />
+      <Gallery data={landingPageData.Gallery} setShowPopup={setShowPopup} />
       <Relationships data={landingPageData.Relationships} />
-      <Testimonials data={landingPageData.Testimonials} />
+      <Testimonials
+        data={landingPageData.Testimonials}
+        setShowPopup={setShowPopup}
+      />
       <Contact data={landingPageData.Contact} />
+      <Popup showPopup={showPopup} setShowPopup={setShowPopup} />
     </div>
   );
 };
