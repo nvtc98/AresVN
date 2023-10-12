@@ -3,37 +3,35 @@ import { useRef } from "react";
 export const Testimonials = (props) => {
   const isJumpingScareRef = useRef(false);
 
-  const onMouseOver = (d, i) => {
-    if (i === 3 && !isJumpingScareRef.current) {
-      isJumpingScareRef.current = true;
-      props.setShowPopup({
-        content: (
-          <div
-            style={{
-              width: "100%",
-              height: "100%",
-              background: "#000A",
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "center",
-            }}
-          >
-            <img
-              src={d.img}
-              className="img-responsive col-md-12 col-sm-12"
-              style={{ height: "80%", objectFit: "contain" }}
-            />
-          </div>
-        ),
-        animated: false,
-      });
-      setTimeout(() => {
-        props.setShowPopup(null);
-      }, 100);
-      setTimeout(() => {
-        isJumpingScareRef.current = false;
-      }, 2000);
-    }
+  const onJumpScare = (d) => {
+    isJumpingScareRef.current = true;
+    props.setShowPopup({
+      content: (
+        <div
+          style={{
+            width: "100%",
+            height: "100%",
+            background: "#000A",
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+          }}
+        >
+          <img
+            src={d.img}
+            className="img-responsive col-md-12 col-sm-12"
+            style={{ height: "80%", objectFit: "contain" }}
+          />
+        </div>
+      ),
+      animated: false,
+    });
+    setTimeout(() => {
+      props.setShowPopup(null);
+    }, 100);
+    setTimeout(() => {
+      isJumpingScareRef.current = false;
+    }, 2000);
   };
 
   return (
@@ -47,14 +45,14 @@ export const Testimonials = (props) => {
             ? props.data.map((d, i) => (
                 <div key={`${d.name}-${i}`} className="col-md-4">
                   <div className="testimonial">
-                    {i === 3 && (
+                    {i === 3 && !isJumpingScareRef.current && (
                       <div
                         style={{
                           position: "absolute",
                           width: "50%",
                           height: "100%",
                         }}
-                        onMouseOver={() => onMouseOver(d, i)}
+                        onMouseOver={() => onJumpScare(d, i)}
                       ></div>
                     )}
                     <div className="testimonial-image">
