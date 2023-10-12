@@ -4,7 +4,7 @@ export const Testimonials = (props) => {
   const isJumpingScareRef = useRef(false);
 
   const onJumpScare = (d) => {
-    if (isJumpingScareRef.current) {
+    if (true || isJumpingScareRef.current) {
       return;
     }
     isJumpingScareRef.current = true;
@@ -48,22 +48,13 @@ export const Testimonials = (props) => {
             ? props.data.map((d, i) => (
                 <div key={`${d.name}-${i}`} className="col-md-4">
                   <div className="testimonial">
-                    {i === 3 && (
-                      <div
-                        style={{
-                          position: "absolute",
-                          width: "50%",
-                          height: "100%",
-                        }}
-                        onMouseOver={() => onJumpScare(d)}
-                      ></div>
-                    )}
                     <div className="testimonial-image">
                       {" "}
                       <img
                         src={d.img}
                         alt=""
                         style={{ objectFit: "cover" }}
+                        {...(i === 3 ? { id: "jumpscare" } : {})}
                       />{" "}
                     </div>
                     <div className="testimonial-content">

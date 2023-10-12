@@ -126,17 +126,23 @@ export const Contact = (props) => {
                 <ul>
                   <li>
                     <a href={props.data ? props.data.steam : "/"}>
-                      <i className="fa fa-steam"></i>
+                      <div>
+                        <img src="img/contact/Steam.png" />
+                      </div>
                     </a>
                   </li>
                   <li>
                     <a href={props.data ? props.data.discord : "/"}>
-                      <i className="fa fa-discord"></i>
+                      <div>
+                        <img src="img/contact/Asset_3.png" />
+                      </div>
                     </a>
                   </li>
                   <li>
                     <a href={props.data ? props.data.youtube : "/"}>
-                      <i className="fa fa-youtube"></i>
+                      <div>
+                        <img src="img/contact/Asset_4.png" />
+                      </div>
                     </a>
                   </li>
                 </ul>

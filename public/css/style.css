@@ -430,6 +430,11 @@ header .intro-text {
   width: 64px;
   height: 64px;
   border-radius: 50%;
+  transition: all .1s ease-in-out;
+}
+.testimonial-image #jumpscare:hover {
+  display: block;
+  transform: scale(5);
 }
 .testimonial-content {
   position: relative;
@@ -567,6 +572,9 @@ label {
 #contact .contact-item i.fa {
   margin-right: 10px;
 }
+#contact .contact-item img {
+  margin-right: 10px;
+}
 #contact .social {
   border-top: 1px solid rgba(255, 255, 255, 0.15);
   padding-top: 50px;
@@ -587,9 +595,30 @@ label {
   border-radius: 50%;
   transition: all 0.3s;
 }
+#contact .social div {
+  border: 1px solid #fff;
+  border-radius: 50%;
+  transition: all 0.3s;
+  opacity: 0.7;
+}
+#contact .social img {
+  width: 48px;
+  height: 48px;
+  padding: 10px;
+  transition: all 0.3s;
+  object-fit: contain;
+  opacity: 0.7;
+}
 #contact .social i.fa:hover {
   color: #608dfd;
   background: #fff;
+}
+#contact .social div:hover {
+  opacity: 1;
+}
+#contact .social img:hover {
+  opacity: 1;
+  transform: scale(1.4);
 }
 /* Footer Section*/
 #footer {
