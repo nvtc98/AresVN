@@ -4,25 +4,25 @@
       "name": "Stats",
       "data": [
         {
-          "name": "Skills",
+          "name": "Kỹ thuật",
           "data": ["Aiming", "Movement", "Utilities"]
         },
         {
-          "name": "Thinking",
+          "name": "Tư duy",
           "data": ["Spending", "Timing", "Handling", "Strategy"]
         },
         {
-          "name": "Teamwork",
+          "name": "Đồng đội",
           "data": ["Trading", "Assist", "Boosting", "Communication"]
         },
         {
-          "name": "Morale",
+          "name": "Tinh thần",
           "data": ["Stability", "Concentration", "Progressive", "Positivity"]
         }
       ]
     },
     {
-      "name": "Guns",
+      "name": "Vũ khí",
       "data": [
         {
           "name": "Melee"
@@ -48,7 +48,7 @@
       ]
     },
     {
-      "name": "Roles",
+      "name": "Tố chất (vai trò)",
       "data": [
         {
           "name": "In-Game Leader"
@@ -98,23 +98,31 @@
   },
   "level": [
     {
-      "name": "Extraordinary",
+      "name": "Phi thường",
+      "value": 1.4
+    },
+    {
+      "name": "Đặc sản",
       "value": 1.2
     },
     {
-      "name": "Impressive",
+      "name": "Bao gắt",
       "value": 1.05
     },
     {
-      "name": "Good",
+      "name": "Ngon",
       "value": 0.95
     },
     {
-      "name": "Ordinarily",
+      "name": "Trung bình",
       "value": 0.8
     },
     {
-      "name": "Insignificant",
+      "name": "Không nổi trội",
+      "value": 0.6
+    },
+    {
+      "name": "Chấp",
       "value": 0
     }
   ],
@@ -149,7 +157,7 @@
       "role": "Playmaker",
       "chart": [
         [34, 21, 21, 24],
-        [5, 19, 3, 23, 26, 22, 2],
+        [5, 19, 3, 25, 27, 19, 2],
         [12, 21, 22, 12, 17, 16],
         50
       ],
@@ -161,7 +169,7 @@
       "role": "Support",
       "chart": [
         [19, 30, 28, 23],
-        [6, 15, 10, 23, 25, 19, 2],
+        [5, 8, 8, 23, 25, 13, 18],
         [17, 15, 11, 21, 17, 19],
         30
       ],
@@ -180,13 +188,13 @@
       "description": "AresVN D O R M, thành viên mẫu mực nhất của đội. Mặc dù không nhiều thời gian luyện tập, anh có khả năng càn quét đáng kinh ngạc, đặc biệt khi trong tay là những khẩu tiểu liên. Chiếc máy ủi này có thể tiếp cận và dọn sạch chiến trường với tốc độ thần sầu, còn kẻ thù tầm xa cũng không tránh khỏi số phận với thương hiệu giết người hàng ngàn dặm chỉ với SMG của anh. Là một tuyển thủ đầy tự tin, quả cảm, chính trực, điểm sáng nhất của D O R M chính là bản lĩnh, một cái đầu lạnh và ra quyết định cực kỳ gãy gọn. D O R M luôn được mọi người tôn trọng vì khả năng lan tỏa tinh thần tích cực ngay cả trong những trận đấu khó khăn nhất."
     },
     {
-      "img": "img/team/16bf38fcd3a9a4650de94b7e63d8ed63f9ed43ca_full.jpeg",
+      "img": "img/team/new2023/Nomad.png",
       "name": "Nomad",
       "role": "Support",
       "chart": [
         [23, 31, 23, 23],
         [3, 20, 3, 36, 32, 3, 3],
-        [16, 14, 15, 19, 17, 17],
+        [18, 14, 15, 20, 14, 17],
         55
       ],
       "description": "AresVN Nomad là một phiên bản nâng cấp cho tuyến hậu phương của đội. Với khả năng tính toán khủng khiếp, Nomad có thể đọc vanh vách mọi thông tin trong trận đấu từ vĩ mô đến vi mô, đem về rất nhiều lợi thế thông tin cho cả đội. Nomad cũng là một nhà kiến tạo với nhiều hỗ trợ mượt mà và làm suy yếu lớp phòng thủ của địch. Cách mà kẻ địch ngã xuống khi đối đầu với anh cũng rất thú vị, có khi đó là một trận địa hỏa thiêu, có khi đó là cây \"súng nước\" đầy phong trần. Nomad được xem là chiếc la bàn quý cho nhiều chiến thắng của AresVN."
@@ -196,9 +204,9 @@
       "name": "sund0wn",
       "role": "Playmaker",
       "chart": [
-        [25, 28, 26, 21],
-        [3, 26, 3, 23, 33, 9, 3],
-        [25, 15, 19, 17, 7, 17],
+        [30, 25, 20, 25],
+        [4, 14, 10, 14, 39, 18, 1],
+        [11, 16, 30, 16, 16, 11],
         80
       ],
       "description": "sund0wn là thành viên đắt giá của đội với kỹ thuật thượng thừa. Số lượng đóng góp cho chiến thắng của anh thật khó mà đếm nổi. Sở hữu game sense của một vị thánh, sund0wn có thể phát vé hàng loạt cho địch chuyển sang góc nhìn người khác. sund0wn thông thạo nhiều kỹ thuật ngắm bắn, di chuyển và rất am hiểu map. Tinh thần thép cũng là một điểm đáng chú ý khi anh xuất sắc vượt qua không ít tình huống thử thách tinh thần cao độ. Nhắc đến hình tượng sức mạnh của đội, sund0wn chưa bao giờ là lỗi thời."
