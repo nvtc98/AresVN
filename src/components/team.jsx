@@ -85,6 +85,7 @@ export const Team = (props) => {
         className="thumbnail"
         style={{
           border: "2px solid " + (selectedIndex === i ? "#bbb" : "#222"),
+          backgroundColor: "#111",
           borderRadius: 10,
           display: "flex",
           flexDirection: "column",
@@ -106,7 +107,17 @@ export const Team = (props) => {
   );
 
   return (
-    <div id="team" className="text-center">
+    <motion.div
+      id="team"
+      className="text-center"
+      animate={
+        playerData.data[selectedIndex].color
+          ? {
+              backgroundColor: playerData.data[selectedIndex].color,
+            }
+          : {}
+      }
+    >
       <div className="container">
         <div className="col-md-8 col-md-offset-2 section-title">
           <h2>Thành viên</h2>
@@ -228,6 +239,6 @@ export const Team = (props) => {
           )}
         </div>
       </div>
-    </div>
+    </motion.div>
   );
 };
