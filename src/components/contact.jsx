@@ -32,9 +32,9 @@ export const Contact = (props) => {
   };
   return (
     <div>
-      <div id="contact">
+      <div id="contact" className="text-center">
         <div className="container">
-          <div className="col-md-8">
+          <div className="col-md-8 col-md-offset-2 section-title">
             <div className="row">
               <div className="section-title">
                 <h2>Liên hệ</h2>
@@ -121,32 +121,30 @@ export const Contact = (props) => {
             </div>
           </div> */}
           <div className="col-md-12">
-            <div className="row">
-              <div className="social">
-                <ul>
-                  <li>
-                    <a href={props.data ? props.data.steam : "/"}>
-                      <div>
-                        <img src="img/contact/Steam.png" />
-                      </div>
-                    </a>
-                  </li>
-                  <li>
-                    <a href={props.data ? props.data.discord : "/"}>
-                      <div>
-                        <img src="img/contact/Asset_3.png" />
-                      </div>
-                    </a>
-                  </li>
-                  <li>
-                    <a href={props.data ? props.data.youtube : "/"}>
-                      <div>
-                        <img src="img/contact/Asset_4.png" />
-                      </div>
-                    </a>
-                  </li>
-                </ul>
-              </div>
+            <div className="social">
+              <ul>
+                <li>
+                  <a href={props.data ? props.data.steam : "/"}>
+                    <div>
+                      <img src="img/contact/Steam.png" />
+                    </div>
+                  </a>
+                </li>
+                <li>
+                  <a href={props.data ? props.data.discord : "/"}>
+                    <div>
+                      <img src="img/contact/Asset_3.png" />
+                    </div>
+                  </a>
+                </li>
+                <li>
+                  <a href={props.data ? props.data.youtube : "/"}>
+                    <div>
+                      <img src="img/contact/Asset_4.png" />
+                    </div>
+                  </a>
+                </li>
+              </ul>
             </div>
           </div>
         </div>

@@ -75,6 +75,10 @@ export const Team = (props) => {
     }
   }, [selectedIndex]);
 
+  const onChangeGame = () => {
+    alert("cumin soon");
+  };
+
   const renderPlayers = (d, i) => (
     <div
       key={`${d.name}-${i}`}
@@ -123,9 +127,24 @@ export const Team = (props) => {
         <div className="col-md-8 col-md-offset-2 section-title">
           <h2>Thành viên</h2>
         </div>
-        <div className="col-md-12">
+        <div className="col-md-12" style={{ display: "flex" }}>
           <div
-            className="card col-md-10 col-md-offset-1"
+            className="col-md-1"
+            style={{
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "flex-end",
+              cursor: "pointer",
+            }}
+          >
+            <i
+              className="fa fa-angle-left"
+              style={{ fontSize: 40 }}
+              onClick={() => onChangeGame(-1)}
+            ></i>
+          </div>
+          <div
+            className="card col-md-10 align-self-center"
             style={{ padding: 40 }}
           >
             <div className="col-md-4 col-sm-12 team">
@@ -173,9 +192,6 @@ export const Team = (props) => {
                 />
               ))}
             </div>
-            {/* <p class="col-md-8 col-sm-12 text-left" style={{ marginTop: 30 }}>
-              {playerData.data[selectedIndex].description}
-            </p> */}
             <div
               className="animation-block col-md-8 col-sm-12 text-left"
               style={{ marginTop: 30 }}
@@ -197,6 +213,16 @@ export const Team = (props) => {
                 {playerData.data[selectedIndex].description}
               </motion.p>
             </div>
+          </div>
+          <div
+            className="col-md-1"
+            style={{ display: "flex", alignItems: "center", cursor: "pointer" }}
+          >
+            <i
+              className="fa fa-angle-right"
+              style={{ fontSize: 40 }}
+              onClick={() => onChangeGame(1)}
+            ></i>
           </div>
         </div>
         <div

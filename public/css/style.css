@@ -476,19 +476,19 @@ header .intro-text {
   /* background: linear-gradient(to right, #ff4e00 0%, #f7b42c 100%); */
   color: rgba(255, 255, 255, 0.75);
 }
-#contact .section-title {
+/* #contact .section-title {
   margin-bottom: 40px;
 }
 #contact .section-title p {
   font-size: 16px;
-}
+} */
 #contact h2 {
   color: #fff;
   margin-top: 10px;
   margin-bottom: 15px;
   padding-bottom: 15px;
 }
-#contact .section-title h2::after {
+/* #contact .section-title h2::after {
   position: absolute;
   content: "";
   background: rgba(255, 255, 255, 0.3);
@@ -496,7 +496,7 @@ header .intro-text {
   width: 60px;
   bottom: 0;
   left: 30px;
-}
+} */
 #contact h3 {
   color: #fff;
   margin-top: 80px;
@@ -576,9 +576,9 @@ label {
   margin-right: 10px;
 }
 #contact .social {
-  border-top: 1px solid rgba(255, 255, 255, 0.15);
-  padding-top: 50px;
-  margin-top: 50px;
+  /* border-top: 1px solid rgba(255, 255, 255, 0.15); */
+  /* padding-top: 50px; */
+  /* margin-top: 50px; */
   text-align: center;
 }
 #contact .social ul li {

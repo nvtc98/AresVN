@@ -44,3 +44,6 @@ You can also change styles by modifying the `public/css` files.
 
 Freevnn
 http://cpanel.freevnn.com
+
+Icon:
+https://fontawesome.com/v4/icons/
