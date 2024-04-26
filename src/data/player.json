@@ -98,11 +98,11 @@
   },
   "level": [
     {
-      "name": "Phi thường",
+      "name": "Quái vật",
       "value": 1.4
     },
     {
-      "name": "Đặc sản",
+      "name": "Thương hiệu",
       "value": 1.2
     },
     {
@@ -114,11 +114,11 @@
       "value": 0.95
     },
     {
-      "name": "Trung bình",
+      "name": "Được",
       "value": 0.8
     },
     {
-      "name": "Không nổi trội",
+      "name": "Chưa thể hiện",
       "value": 0.6
     },
     {
@@ -212,29 +212,29 @@
       "description": "sund0wn là thành viên đắt giá của đội với kỹ thuật thượng thừa. Số lượng đóng góp cho chiến thắng của anh thật khó mà đếm nổi. Sở hữu game sense của một vị thánh, sund0wn có thể phát vé hàng loạt cho địch chuyển sang góc nhìn người khác. sund0wn thông thạo nhiều kỹ thuật ngắm bắn, di chuyển và rất am hiểu map. Tinh thần thép cũng là một điểm đáng chú ý khi anh xuất sắc vượt qua không ít tình huống thử thách tinh thần cao độ. Nhắc đến hình tượng sức mạnh của đội, sund0wn chưa bao giờ là lỗi thời."
     },
     {
-      "img": "img/team/c21456b2da1ad2c47be91d026a5d81d0b2f59b8a_full.jpeg",
-      "name": "Kalibi",
-      "role": "Playmaker",
-      "chart": [
-        [25, 28, 26, 21],
-        [3, 26, 3, 23, 33, 9, 3],
-        [25, 15, 19, 17, 7, 17],
-        90
-      ],
-      "description": "AresVN Kalibi là cựu thành viên siêu việt bậc nhất của đội. Với kỹ thuật aim từ một thế giới khác, những pha xuyên táo lạnh lùng là những gì mà người ta không thể không nhắc tới khi nói về Kalibi. Anh còn là một tuyển thủ cẩn trọng và điềm tĩnh với không ít tình huống cứu thua cho cả đội dù bị đưa vào tình thế cực kỳ bất lợi. Kalibi xứng đáng là cây nỏ thần mà bất cứ một đội nào cũng ao ước.",
-      "isHidden": "true"
-    },
-    {
       "img": "img/team/9f532d54152ac97d142a9b2394715d837943b6f7_full.jpeg",
       "name": "TrieuIkoma",
       "role": "Lurker",
       "chart": [
-        [25, 28, 26, 21],
-        [3, 26, 3, 23, 33, 9, 3],
-        [25, 15, 19, 17, 7, 17],
+        [27, 23, 23, 27],
+        [5, 19, 6, 26, 23, 18, 3],
+        [11, 22, 21, 13, 19, 14],
         50
       ],
-      "description": "TrieuIkoma là cựu thành viên hòa đồng, hoạt bát, đem lại nhiều niềm vui và năng lượng cho toàn đội. Anh có kỹ thuật chiến đấu rất ấn tượng, nhưng không chỉ ở rifle, ngay cả với SMG hay SSG anh cũng đều cho thấy khả năng quái vật của mình. Không chỉ dừng lại ở sự thành thạo súng ống, TrieuIkoma còn rất tinh quái trong những quyết định chiến lược cá nhân bất ngờ tiễn kẻ địch không kịp trăng trối. TrieuIkoma luôn khẳng định vị thế trong việc khai thông mọi con đường tiến site cũng như tinh thần cho đội.",
+      "description": "TrieuIkoma là thành viên hòa đồng, hoạt bát, đem lại nhiều niềm vui và năng lượng cho toàn đội. Anh có kỹ thuật chiến đấu rất ấn tượng, nhưng không chỉ ở rifle, ngay cả với SMG hay SSG anh cũng đều cho thấy khả năng quái vật của mình. Không chỉ dừng lại ở sự thành thạo súng ống, TrieuIkoma còn rất tinh quái trong những quyết định chiến lược cá nhân bất ngờ tiễn kẻ địch không kịp trăng trối. TrieuIkoma luôn khẳng định vị thế trong việc khai thông mọi con đường tiến site cũng như tinh thần cho đội.",
+      "isHidden": "true"
+    },
+    {
+      "img": "img/team/c21456b2da1ad2c47be91d026a5d81d0b2f59b8a_full.jpeg",
+      "name": "Kalibi",
+      "role": "Playmaker",
+      "chart": [
+        [37, 21, 21, 21],
+        [4, 25, 3, 18, 30, 17, 3],
+        [10, 16, 25, 16, 17, 16],
+        90
+      ],
+      "description": "AresVN Kalibi là cựu thành viên siêu việt bậc nhất của đội. Với kỹ thuật aim từ một thế giới khác, những pha xuyên táo lạnh lùng là những gì mà người ta không thể không nhắc tới khi nói về Kalibi. Anh còn là một tuyển thủ cẩn trọng và điềm tĩnh với không ít tình huống cứu thua cho cả đội dù bị đưa vào tình thế cực kỳ bất lợi. Kalibi xứng đáng là cây nỏ thần mà bất cứ một đội nào cũng ao ước.",
       "isHidden": "true"
     }
   ]
