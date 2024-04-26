@@ -5,19 +5,23 @@
       "data": [
         {
           "name": "Kỹ thuật",
-          "data": ["Aiming", "Movement", "Utilities"]
+          "data": ["Aiming", "Movement", "Utilities"],
+          "color": "#E74C3C"
         },
         {
           "name": "Tư duy",
-          "data": ["Spending", "Timing", "Handling", "Strategy"]
+          "data": ["Spending", "Timing", "Handling", "Strategy"],
+          "color": "#3498DB"
         },
         {
           "name": "Đồng đội",
-          "data": ["Trading", "Assist", "Boosting", "Communication"]
+          "data": ["Trading", "Assist", "Boosting", "Communication"],
+          "color": "#9B59B6"
         },
         {
           "name": "Tinh thần",
-          "data": ["Stability", "Concentration", "Progressive", "Positivity"]
+          "data": ["Stability", "Concentration", "Progressive", "Positivity"],
+          "color": "#F1C40F"
         }
       ]
     },
@@ -25,25 +29,32 @@
       "name": "Vũ khí",
       "data": [
         {
-          "name": "Melee"
+          "name": "Melee",
+          "color": "#D6EAF8"
         },
         {
-          "name": "Pistols"
+          "name": "Pistols",
+          "color": "#AED6F1"
         },
         {
-          "name": "Shotguns"
+          "name": "Shotguns",
+          "color": "#F4ECF7"
         },
         {
-          "name": "SMG"
+          "name": "SMG",
+          "color": "#76D7C4"
         },
         {
-          "name": "Rifles"
+          "name": "Rifles",
+          "color": "#3498DB"
         },
         {
-          "name": "Snipers"
+          "name": "Snipers",
+          "color": "#117864"
         },
         {
-          "name": "Machine Guns"
+          "name": "Machine Guns",
+          "color": "#5B2C6F"
         }
       ]
     },
@@ -51,22 +62,28 @@
       "name": "Tố chất (vai trò)",
       "data": [
         {
-          "name": "In-Game Leader"
+          "name": "In-Game Leader",
+          "color": "#CACFD2"
         },
         {
-          "name": "Entry Fragger"
+          "name": "Entry Fragger",
+          "color": "#EB984E"
         },
         {
-          "name": "Playmaker"
+          "name": "Playmaker",
+          "color": "#E74C3C"
         },
         {
-          "name": "Support"
+          "name": "Support",
+          "color": "#2C3E50"
         },
         {
-          "name": "Lurker"
+          "name": "Lurker",
+          "color": "#943126"
         },
         {
-          "name": "Anchor"
+          "name": "Anchor",
+          "color": "#FAD7A0"
         }
       ]
     }

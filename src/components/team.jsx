@@ -55,9 +55,10 @@ export const Team = (props) => {
         return;
       }
       const chart = new ApexCharts(element, {
-        ...getChart(),
+        ...getChart(i),
         labels: playerData.label[i].data.map((x) => x.name),
         series: playerData.data[selectedIndex].chart[i],
+        colors: playerData.label[i].data.map((x) => x.color),
       });
       chart.render();
       contentRef.current.charts.push(chart);
