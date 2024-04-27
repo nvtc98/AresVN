@@ -4,7 +4,7 @@ const Popup = ({ showPopup, setShowPopup }) => {
   const { animated = true, content } = showPopup || {};
   const renderContent = () => (
     <div
-      class="modal"
+      className="modal"
       style={{
         display: showPopup ? "block" : "none",
       }}
