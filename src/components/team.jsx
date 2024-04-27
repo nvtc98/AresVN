@@ -65,8 +65,8 @@ export const Team = (props) => {
       });
       chart.render();
       contentRef.current.charts.push(chart);
-      var chartLabel = document.createTextNode(playerData.label[i].name);
-      element.appendChild(chartLabel);
+      // var chartLabel = document.createTextNode(playerData.label[i].name);
+      // element.appendChild(chartLabel);
     }
   }, [playerData]);
 
