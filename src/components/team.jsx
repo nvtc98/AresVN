@@ -5,7 +5,7 @@ import playerData from "../data/player.json";
 
 const GAME = { CS: "cs", R6: "r6" };
 
-const getChart = () => {
+const getChartCS = () => {
   const chart = playerData.chart;
   chart.plotOptions.pie.donut.labels.value.formatter = (
     value,
@@ -22,11 +22,15 @@ const getChart = () => {
   return chart;
 };
 
+// const getChartR6 = () => {
+
+// };
+
 export const Team = (props) => {
   const [selectedIndex, setSelectedIndex] = useState(0);
   const [isAnimating, setAnimating] = useState(false);
   const [showExtraPlayers, setShowExtraPlayers] = useState(false);
-  const [game, setGame] = useState(GAME.CS);
+  const [game, setGame] = useState(GAME.R6);
 
   const activePlayers = playerData.data.filter((player) => !player.isHidden);
 
@@ -52,37 +56,87 @@ export const Team = (props) => {
   };
 
   useEffect(() => {
-    for (let i = 0; i < 3; ++i) {
-      const element = document.querySelector("#player-chart-" + i);
+    if (game === GAME.CS) {
+      for (let i = 0; i < 3; ++i) {
+        const element = document.querySelector("#player-chart-" + i);
+        if (!element) {
+          return;
+        }
+        const chart = new ApexCharts(element, {
+          ...getChartCS(i),
+          labels: playerData.label[i].data.map((x) => x.name),
+          series: playerData.data[selectedIndex].game.cs.chart[i],
+          colors: playerData.label[i].data.map((x) => x.color),
+        });
+        chart.render();
+        contentRef.current.charts.push(chart);
+        // var chartLabel = document.createTextNode(playerData.label[i].name);
+        // element.appendChild(chartLabel);
+      }
+    } else {
+      const element = document.querySelector("#player-chart-atk");
       if (!element) {
         return;
       }
       const chart = new ApexCharts(element, {
-        ...getChart(i),
-        labels: playerData.label[i].data.map((x) => x.name),
-        series: playerData.data[selectedIndex].game.cs.chart[i],
-        colors: playerData.label[i].data.map((x) => x.color),
+        chart: {
+          height: 300,
+          type: "radialBar",
+        },
+        series: [67, 84],
+        labels: ["TEAM A", "TEAM B"],
+        plotOptions: {
+          radialBar: {
+            startAngle: -135,
+            endAngle: 135,
+            track: {
+              background: "#333",
+              startAngle: -135,
+              endAngle: 135,
+            },
+            dataLabels: {
+              name: {
+                show: false,
+              },
+              value: {
+                fontSize: "30px",
+                show: true,
+              },
+            },
+          },
+        },
+        fill: {
+          type: "gradient",
+          gradient: {
+            shade: "dark",
+            type: "horizontal",
+            gradientToColors: ["#87D4F9"],
+            stops: [0, 100],
+          },
+        },
+        stroke: {
+          lineCap: "butt",
+        },
       });
       chart.render();
-      contentRef.current.charts.push(chart);
-      // var chartLabel = document.createTextNode(playerData.label[i].name);
-      // element.appendChild(chartLabel);
+      // contentRef.current.charts.push(chart);
     }
-  }, [playerData]);
+  }, [playerData, game]);
 
   useEffect(() => {
-    for (let i = 0; i < 3; ++i) {
-      contentRef.current.game?.cs.charts?.[i]?.updateSeries(
-        playerData.data[selectedIndex].chart[i]
-      );
+    if (game === GAME.CS) {
+      for (let i = 0; i < 3; ++i) {
+        contentRef.current.charts?.[i]?.updateSeries(
+          playerData.data[selectedIndex].game.cs.chart[i]
+        );
+      }
     }
-  }, [selectedIndex]);
+  }, [selectedIndex, game]);
 
   const onChangeGame = () => {
-    alert("cummin soon...");
-    // const gameList = Object.values(GAME);
-    // const currentIndex = gameList.findIndex((item) => item === game);
-    // setGame(gameList[(currentIndex + 1) % gameList.length]);
+    const gameList = Object.values(GAME);
+    const currentIndex = gameList.findIndex((item) => item === game);
+    setGame(gameList[(currentIndex + 1) % gameList.length]);
   };
 
   const renderPlayers = (d, i) => (
@@ -133,115 +187,210 @@ export const Team = (props) => {
         <div className="col-md-8 col-md-offset-2 section-title">
           <h2>Thành viên</h2>
         </div>
-        {game === GAME.CS ? (
-          <div className="col-md-12" style={{ display: "flex" }}>
-            <div
-              className="col-md-1"
-              style={{
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "flex-end",
-                cursor: "pointer",
-              }}
-            >
-              <i
-                className="fa fa-angle-left"
-                style={{ fontSize: 40 }}
-                onClick={() => onChangeGame(-1)}
-              ></i>
-            </div>
-            <div
-              className="card col-md-10 align-self-center"
-              style={{ padding: 40 }}
-            >
-              <div className="col-md-4 col-sm-12 team">
-                <AnimatePresence exitBeforeEnter>
-                  <motion.img
-                    key={selectedIndex}
-                    src={playerData.data[selectedIndex].img}
-                    className="team-img text-left"
-                    style={{ borderRadius: 10 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    initial={{ opacity: 0, y: 20 }}
-                    exit={{ opacity: 0, y: -20 }}
-                    transition={{ duration: 0.1 }}
-                  />
-                </AnimatePresence>
-                <div className="animation-block">
-                  <motion.h3 style={{ opacity: isAnimating ? 0 : 1 }}>
-                    {playerData.data[contentRef.current.lastIndex].name}
-                  </motion.h3>
-                  <motion.h3
-                    animate={{ x: isAnimating ? 0 : 200 }}
-                    style={{ x: 200, opacity: isAnimating ? 1 : 0 }}
-                  >
-                    {playerData.data[selectedIndex].name}
-                  </motion.h3>
+
+        <div className="col-md-12" style={{ display: "flex" }}>
+          <div
+            className="col-md-1"
+            style={{
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "flex-end",
+              cursor: "pointer",
+            }}
+          >
+            <i
+              className="fa fa-angle-left"
+              style={{ fontSize: 40 }}
+              onClick={() => onChangeGame(-1)}
+            ></i>
+          </div>
+          <div
+            className="card col-md-10 align-self-center"
+            style={{ padding: 40, height: 400 }}
+          >
+            {game === GAME.CS ? (
+              <>
+                <div className="col-md-4 col-sm-12 team">
+                  <AnimatePresence exitBeforeEnter>
+                    <motion.img
+                      key={selectedIndex}
+                      src={playerData.data[selectedIndex].img}
+                      className="team-img text-left"
+                      style={{ borderRadius: 10 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      initial={{ opacity: 0, y: 20 }}
+                      exit={{ opacity: 0, y: -20 }}
+                      transition={{ duration: 0.1 }}
+                    />
+                  </AnimatePresence>
+                  <div className="animation-block">
+                    <motion.h3 style={{ opacity: isAnimating ? 0 : 1 }}>
+                      {playerData.data[contentRef.current.lastIndex].name}
+                    </motion.h3>
+                    <motion.h3
+                      animate={{ x: isAnimating ? 0 : 200 }}
+                      style={{ x: 200, opacity: isAnimating ? 1 : 0 }}
+                    >
+                      {playerData.data[selectedIndex].name}
+                    </motion.h3>
+                  </div>
+                  <div className="animation-block">
+                    <motion.p style={{ opacity: isAnimating ? 0 : 1 }}>
+                      {
+                        playerData.data[contentRef.current.lastIndex].game.cs
+                          .role
+                      }
+                    </motion.p>
+                    <motion.p
+                      animate={{ x: isAnimating ? 0 : -200 }}
+                      style={{ x: -200, opacity: isAnimating ? 1 : 0 }}
+                    >
+                      {playerData.data[selectedIndex].game.cs.role}
+                    </motion.p>
+                  </div>
                 </div>
-                <div className="animation-block">
+                <div className="col-md-8 col-sm-12">
+                  {playerData.label.map((chart, index) => (
+                    <div
+                      key={index}
+                      className="col-md-4 col-sm-4"
+                      id={"player-chart-" + index}
+                    />
+                  ))}
+                </div>
+                <div
+                  className="animation-block col-md-8 col-sm-12 text-left"
+                  style={{ marginTop: 30 }}
+                >
                   <motion.p style={{ opacity: isAnimating ? 0 : 1 }}>
-                    {playerData.data[contentRef.current.lastIndex].game.cs.role}
+                    {
+                      playerData.data[contentRef.current.lastIndex].game.cs
+                        .description
+                    }
                   </motion.p>
                   <motion.p
-                    animate={{ x: isAnimating ? 0 : -200 }}
-                    style={{ x: -200, opacity: isAnimating ? 1 : 0 }}
+                    animate={{
+                      scaleX: isAnimating ? 1 : 1.5,
+                    }}
+                    style={{
+                      left: 15,
+                      right: 15,
+                      scaleX: 1.5,
+                      opacity: isAnimating ? 1 : 0,
+                    }}
                   >
-                    {playerData.data[selectedIndex].game.cs.role}
+                    {playerData.data[selectedIndex].game.cs.description}
                   </motion.p>
                 </div>
-              </div>
-              <div className="col-md-8 col-sm-12">
-                {playerData.label.map((chart, index) => (
-                  <div
-                    key={index}
-                    className="col-md-4 col-sm-4"
-                    id={"player-chart-" + index}
-                  />
-                ))}
-              </div>
-              <div
-                className="animation-block col-md-8 col-sm-12 text-left"
-                style={{ marginTop: 30 }}
-              >
-                <motion.p style={{ opacity: isAnimating ? 0 : 1 }}>
-                  {
-                    playerData.data[contentRef.current.lastIndex].game.cs
-                      .description
-                  }
-                </motion.p>
-                <motion.p
-                  animate={{
-                    scaleX: isAnimating ? 1 : 1.5,
-                  }}
-                  style={{
-                    left: 15,
-                    right: 15,
-                    scaleX: 1.5,
-                    opacity: isAnimating ? 1 : 0,
-                  }}
+              </>
+            ) : (
+              <>
+                <div
+                  className="col-md-4 col-sm-12 team"
+                  style={{ paddingTop: 70 }}
                 >
-                  {playerData.data[selectedIndex].game.cs.description}
-                </motion.p>
-              </div>
-            </div>
-            <div
-              className="col-md-1"
-              style={{
-                display: "flex",
-                alignItems: "center",
-                cursor: "pointer",
-              }}
-            >
-              <i
-                className="fa fa-angle-right"
-                style={{ fontSize: 40 }}
-                onClick={() => onChangeGame(1)}
-              ></i>
-            </div>
+                  <div id={"player-chart-atk"} />
+                  <div
+                    style={{
+                      width: 240,
+                      height: 205,
+                      marginTop: -205,
+                      position: "absolute",
+                    }}
+                  >
+                    <img
+                      src={playerData.data[selectedIndex].game.r6.atkOpImg}
+                      className="team-img"
+                    />
+                    <div className="faded-edge"></div>
+                  </div>
+                </div>
+                <div className="col-md-4 col-sm-12 team">
+                  <AnimatePresence exitBeforeEnter>
+                    <motion.img
+                      key={selectedIndex}
+                      src={playerData.data[selectedIndex].img}
+                      className="team-img text-left"
+                      style={{ borderRadius: 10 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      initial={{ opacity: 0, y: 20 }}
+                      exit={{ opacity: 0, y: -20 }}
+                      transition={{ duration: 0.1 }}
+                    />
+                  </AnimatePresence>
+                  <div className="animation-block">
+                    <motion.h3 style={{ opacity: isAnimating ? 0 : 1 }}>
+                      {playerData.data[contentRef.current.lastIndex].name}
+                    </motion.h3>
+                    <motion.h3
+                      animate={{ x: isAnimating ? 0 : 200 }}
+                      style={{ x: 200, opacity: isAnimating ? 1 : 0 }}
+                    >
+                      {playerData.data[selectedIndex].name}
+                    </motion.h3>
+                  </div>
+                  <div>
+                    <div
+                      style={{
+                        opacity: isAnimating ? 0 : 1,
+                        display: "flex",
+                        justifyContent: "space-evenly",
+                      }}
+                    >
+                      <motion.span
+                        style={{
+                          flex: 1,
+                          textAlign: "right",
+                        }}
+                      >
+                        {playerData.data[selectedIndex].game.r6.atkRole}
+                      </motion.span>
+                      <motion.span
+                        style={{
+                          marginLeft: 10,
+                          marginRight: 10,
+                        }}
+                      >
+                        /
+                      </motion.span>
+                      <motion.span
+                        style={{
+                          flex: 1,
+                          textAlign: "left",
+                        }}
+                      >
+                        {playerData.data[selectedIndex].game.r6.defRole}
+                      </motion.span>
+                    </div>
+                  </div>
+                </div>
+                <div
+                  className="col-md-4 col-sm-12 team"
+                  style={{ paddingTop: 70 }}
+                >
+                  <img
+                    src={playerData.data[selectedIndex].game.r6.defOpImg}
+                    className="team-img"
+                  />
+                </div>
+              </>
+            )}
           </div>
-        ) : (
-          <div></div>
-        )}
+          <div
+            className="col-md-1"
+            style={{
+              display: "flex",
+              alignItems: "center",
+              cursor: "pointer",
+            }}
+          >
+            <i
+              className="fa fa-angle-right"
+              style={{ fontSize: 40 }}
+              onClick={() => onChangeGame(1)}
+            ></i>
+          </div>
+        </div>
         <div
           id="row"
           className="col-md-12 section-title"
