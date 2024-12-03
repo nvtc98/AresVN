@@ -152,8 +152,8 @@
       },
       {
         "name": "Lối công: tuyến chính/anti-roam",
-        "colorPositive": "#EB984E",
-        "colorNegative": "#2C3E50"
+        "colorPositive": "#fff1d1",
+        "colorNegative": "#362307"
       },
       {
         "name": "Playmaker/Support",

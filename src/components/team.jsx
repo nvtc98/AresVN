@@ -81,8 +81,6 @@ export const Team = (props) => {
         return;
       }
       const atkLabel = playerData.labelR6.attack;
-      const threshold = 50;
-
       const chart = new ApexCharts(element, {
         chart: {
           height: 300,
@@ -90,11 +88,7 @@ export const Team = (props) => {
         },
         series: playerData.data[selectedIndex].game.r6.chart[0],
         labels: atkLabel.map((item) => item.name),
-        colors: playerData.labelR6.attack.map((item, index) =>
-          playerData.data[selectedIndex].game.r6.chart[0][index] < threshold
-            ? item.colorNegative
-            : item.colorPositive
-        ),
+        colors: playerData.labelR6.attack.map((item) => item.colorNegative),
         plotOptions: {
           radialBar: {
             startAngle: -135,
@@ -120,10 +114,8 @@ export const Team = (props) => {
           gradient: {
             shade: "dark",
             type: "horizontal",
-            gradientToColors: playerData.labelR6.attack.map((item, index) =>
-              playerData.data[selectedIndex].game.r6.chart[0][index] < threshold
-                ? item.colorPositive
-                : item.colorNegative
+            gradientToColors: playerData.labelR6.attack.map(
+              (item) => item.colorPositive
             ),
             stops: [0, 100],
           },
@@ -158,6 +150,7 @@ export const Team = (props) => {
     const gameList = Object.values(GAME);
     const currentIndex = gameList.findIndex((item) => item === game);
     setGame(gameList[(currentIndex + 1) % gameList.length]);
+    contentRef.current.charts = [];
   };
 
   const renderPlayers = (d, i) => (
