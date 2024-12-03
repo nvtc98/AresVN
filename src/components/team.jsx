@@ -4,6 +4,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import playerData from "../data/player.json";
 
 const GAME = { CS: "cs", R6: "r6" };
+const unknownOperatorImg = "img/team/r6op/unknown.png";
 
 const getChartCS = () => {
   const chart = playerData.chart;
@@ -74,17 +75,26 @@ export const Team = (props) => {
         // element.appendChild(chartLabel);
       }
     } else {
+      // R6
       const element = document.querySelector("#player-chart-atk");
       if (!element) {
         return;
       }
+      const atkLabel = playerData.labelR6.attack;
+      const threshold = 50;
+
       const chart = new ApexCharts(element, {
         chart: {
           height: 300,
           type: "radialBar",
         },
-        series: [67, 84],
-        labels: ["TEAM A", "TEAM B"],
+        series: playerData.data[selectedIndex].game.r6.chart[0],
+        labels: atkLabel.map((item) => item.name),
+        colors: playerData.labelR6.attack.map((item, index) =>
+          playerData.data[selectedIndex].game.r6.chart[0][index] < threshold
+            ? item.colorNegative
+            : item.colorPositive
+        ),
         plotOptions: {
           radialBar: {
             startAngle: -135,
@@ -110,7 +120,11 @@ export const Team = (props) => {
           gradient: {
             shade: "dark",
             type: "horizontal",
-            gradientToColors: ["#87D4F9"],
+            gradientToColors: playerData.labelR6.attack.map((item, index) =>
+              playerData.data[selectedIndex].game.r6.chart[0][index] < threshold
+                ? item.colorPositive
+                : item.colorNegative
+            ),
             stops: [0, 100],
           },
         },
@@ -119,7 +133,7 @@ export const Team = (props) => {
         },
       });
       chart.render();
-      // contentRef.current.charts.push(chart);
+      contentRef.current.charts.push(chart);
     }
   }, [playerData, game]);
 
@@ -128,6 +142,13 @@ export const Team = (props) => {
       for (let i = 0; i < 3; ++i) {
         contentRef.current.charts?.[i]?.updateSeries(
           playerData.data[selectedIndex].game.cs.chart[i]
+        );
+      }
+    } else {
+      // R6
+      for (let i = 0; i < 2; ++i) {
+        contentRef.current.charts?.[i]?.updateSeries(
+          playerData.data[selectedIndex].game.r6?.chart?.[i] || [0, 0, 0, 0]
         );
       }
     }
@@ -284,6 +305,7 @@ export const Team = (props) => {
                 </div>
               </>
             ) : (
+              // R6
               <>
                 <div
                   className="col-md-4 col-sm-12 team"
@@ -299,7 +321,10 @@ export const Team = (props) => {
                     }}
                   >
                     <img
-                      src={playerData.data[selectedIndex].game.r6.atkOpImg}
+                      src={
+                        playerData.data[selectedIndex].game.r6.atkOpImg ||
+                        unknownOperatorImg
+                      }
                       className="team-img"
                     />
                     <div className="faded-edge"></div>
@@ -343,7 +368,8 @@ export const Team = (props) => {
                           textAlign: "right",
                         }}
                       >
-                        {playerData.data[selectedIndex].game.r6.atkRole}
+                        {playerData.data[selectedIndex].game.r6.atkRole ||
+                          "Unknown"}
                       </motion.span>
                       <motion.span
                         style={{
@@ -359,7 +385,8 @@ export const Team = (props) => {
                           textAlign: "left",
                         }}
                       >
-                        {playerData.data[selectedIndex].game.r6.defRole}
+                        {playerData.data[selectedIndex].game.r6.defRole ||
+                          "Unknown"}
                       </motion.span>
                     </div>
                   </div>
@@ -369,9 +396,13 @@ export const Team = (props) => {
                   style={{ paddingTop: 70 }}
                 >
                   <img
-                    src={playerData.data[selectedIndex].game.r6.defOpImg}
+                    src={
+                      playerData.data[selectedIndex].game.r6.defOpImg ||
+                      unknownOperatorImg
+                    }
                     className="team-img"
                   />
+                  <div className="faded-edge"></div>
                 </div>
               </>
             )}

@@ -143,6 +143,52 @@
       "value": 0
     }
   ],
+  "labelR6": {
+    "attack": [
+      {
+        "name": "Nhịp độ tấn công: nhanh/chậm",
+        "colorPositive": "#E74C3C",
+        "colorNegative": "#3498DB"
+      },
+      {
+        "name": "Lối công: tuyến chính/anti-roam",
+        "colorPositive": "#EB984E",
+        "colorNegative": "#2C3E50"
+      },
+      {
+        "name": "Playmaker/Support",
+        "colorPositive": "#27AE60",
+        "colorNegative": "#5B2C6F"
+      },
+      {
+        "name": "Cứng cựa/Linh hoạt",
+        "colorPositive": "#943126",
+        "colorNegative": "#F4ECF7"
+      }
+    ],
+    "defend": [
+      {
+        "name": "Nhịp độ tấn công: nhanh/chậm",
+        "colorPositive": "#E74C3C",
+        "colorNegative": "#3498DB"
+      },
+      {
+        "name": "Lối công: tuyến chính/anti-roam",
+        "colorPositive": "#EB984E",
+        "colorNegative": "#2C3E50"
+      },
+      {
+        "name": "Playmaker/Support",
+        "colorPositive": "#27AE60",
+        "colorNegative": "#5B2C6F"
+      },
+      {
+        "name": "Cứng cựa/Linh hoạt",
+        "colorPositive": "#943126",
+        "colorNegative": "#F4ECF7"
+      }
+    ]
+  },
   "data": [
     {
       "img": "img/team/new2023/h1enle.png",
@@ -162,7 +208,8 @@
           "atkRole": "Support",
           "defRole": "Denial",
           "atkOpImg": "img/team/r6op/Lion_R6S.png",
-          "defOpImg": "img/team/r6op/Warden_R6S.png"
+          "defOpImg": "img/team/r6op/Warden_R6S.png",
+          "chart": [[50, 40, 30, 70], []]
         }
       }
     },
@@ -185,7 +232,8 @@
           "atkRole": "Denial",
           "defRole": "Trap",
           "atkOpImg": "img/team/r6op/Fuze_R6S.png",
-          "defOpImg": "img/team/r6op/Kapkan_R6S.png"
+          "defOpImg": "img/team/r6op/Kapkan_R6S.png",
+          "chart": [[30, 25, 50, 80], []]
         }
       }
     },
@@ -208,7 +256,8 @@
           "atkRole": "Intel",
           "defRole": "Trap",
           "atkOpImg": "img/team/r6op/Zero_R6S_V2.png",
-          "defOpImg": "img/team/r6op/Frost_R6S.png"
+          "defOpImg": "img/team/r6op/Frost_R6S.png",
+          "chart": [[25, 70, 60, 60], []]
         }
       }
     },
@@ -231,7 +280,8 @@
           "atkRole": "Shield",
           "defRole": "Intel",
           "atkOpImg": "img/team/r6op/r6s-operator-osa.avif",
-          "defOpImg": "img/team/r6op/Valkyrie_R6S.png"
+          "defOpImg": "img/team/r6op/Valkyrie_R6S.png",
+          "chart": [[30, 90, 30, 70], []]
         }
       }
     },
@@ -254,7 +304,8 @@
           "atkRole": "Breach",
           "defRole": "Support",
           "atkOpImg": "img/team/r6op/Sledge_R6S_Half.png",
-          "defOpImg": "img/team/r6op/Doc_R6S.png"
+          "defOpImg": "img/team/r6op/Doc_R6S.png",
+          "chart": [[60, 70, 85, 90], []]
         }
       }
     },
@@ -294,8 +345,9 @@
         "r6": {
           "atkRole": "Flex",
           "defRole": "Roam",
-          "atkOpImg": "img/team/r6op/_R6S.png",
-          "defOpImg": "img/team/r6op/Caveira_R6S.png"
+          "atkOpImg": "img/team/r6op/Zofia_R6S.png",
+          "defOpImg": "img/team/r6op/Caveira_R6S.png",
+          "chart": [[70, 60, 80, 10], []]
         }
       }
     },
@@ -318,7 +370,8 @@
           "atkRole": "Entry",
           "defRole": "Roam",
           "atkOpImg": "img/team/r6op/Ash_R6S_Half.png",
-          "defOpImg": "img/team/r6op/Rook_R6S.png"
+          "defOpImg": "img/team/r6op/Rook_R6S.png",
+          "chart": [[90, 80, 85, 40], []]
         }
       }
     },
