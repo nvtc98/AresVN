@@ -151,7 +151,7 @@ export const Mailchimp = ({ newsletter }: { newsletter: NewsletterProps }) => {
           id="mc_embed_signup_scroll"
           fillWidth
           maxWidth={24}
-          mobileDirection="column"
+          // mobileDirection="column"
           gap="8"
         >
           <Input
