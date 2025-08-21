@@ -18,8 +18,8 @@ const newsletter = {
   title: <>Subscribe to {person.firstName}'s Newsletter</>,
   description: (
     <>
-      I occasionally write about design, technology, and share thoughts on the intersection of
-      creativity and engineering.
+      I occasionally write about design, technology, and share thoughts on the
+      intersection of creativity and engineering.
     </>
   ),
 };
@@ -53,17 +53,26 @@ const home = {
   path: "/",
   image: "/images/og/home.jpg",
   label: "Home",
-  title: `${person.name}'s Portfolio`,
+  title: `AresVN`,
   description: `Portfolio website showcasing my work as a ${person.role}`,
   headline: <>Building bridges between design and code</>,
   featured: {
     display: true,
-    title: <>Recent project: <strong className="ml-4">Once UI</strong></>,
+    title: (
+      <>
+        Recent project: <strong className="ml-4">Once UI</strong>
+      </>
+    ),
     href: "/work/building-once-ui-a-customizable-design-system",
   },
   subline: (
     <>
-      I'm Selene, a design engineer at <Logo icon="/trademarks/wordmark-dark.svg" style={{ display: "inline-flex", top: "0.25em", marginLeft: "-0.25em" }}/>, where I craft intuitive
+      I'm Selene, a design engineer at{" "}
+      <Logo
+        icon="/trademarks/wordmark-dark.svg"
+        style={{ display: "inline-flex", top: "0.25em", marginLeft: "-0.25em" }}
+      />
+      , where I craft intuitive
       <br /> user experiences. After hours, I build my own projects.
     </>
   ),
@@ -90,9 +99,10 @@ const about = {
     title: "Introduction",
     description: (
       <>
-        Selene is a Jakarta-based design engineer with a passion for transforming complex challenges
-        into simple, elegant design solutions. Her work spans digital interfaces, interactive
-        experiences, and the convergence of design and technology.
+        Selene is a Jakarta-based design engineer with a passion for
+        transforming complex challenges into simple, elegant design solutions.
+        Her work spans digital interfaces, interactive experiences, and the
+        convergence of design and technology.
       </>
     ),
   },
@@ -106,12 +116,12 @@ const about = {
         role: "Senior Design Engineer",
         achievements: [
           <>
-            Redesigned the UI/UX for the FLY platform, resulting in a 20% increase in user
-            engagement and 30% faster load times.
+            Redesigned the UI/UX for the FLY platform, resulting in a 20%
+            increase in user engagement and 30% faster load times.
           </>,
           <>
-            Spearheaded the integration of AI tools into design workflows, enabling designers to
-            iterate 50% faster.
+            Spearheaded the integration of AI tools into design workflows,
+            enabling designers to iterate 50% faster.
           </>,
         ],
         images: [
@@ -130,12 +140,12 @@ const about = {
         role: "Lead Designer",
         achievements: [
           <>
-            Developed a design system that unified the brand across multiple platforms, improving
-            design consistency by 40%.
+            Developed a design system that unified the brand across multiple
+            platforms, improving design consistency by 40%.
           </>,
           <>
-            Led a cross-functional team to launch a new product line, contributing to a 15% increase
-            in overall company revenue.
+            Led a cross-functional team to launch a new product line,
+            contributing to a 15% increase in overall company revenue.
           </>,
         ],
         images: [],
@@ -162,7 +172,9 @@ const about = {
     skills: [
       {
         title: "Figma",
-        description: <>Able to prototype in Figma with Once UI with unnatural speed.</>,
+        description: (
+          <>Able to prototype in Figma with Once UI with unnatural speed.</>
+        ),
         // optional: leave the array empty if you don't want to display images
         images: [
           {
@@ -181,7 +193,9 @@ const about = {
       },
       {
         title: "Next.js",
-        description: <>Building next gen apps with Next.js + Once UI + Supabase.</>,
+        description: (
+          <>Building next gen apps with Next.js + Once UI + Supabase.</>
+        ),
         // optional: leave the array empty if you don't want to display images
         images: [
           {

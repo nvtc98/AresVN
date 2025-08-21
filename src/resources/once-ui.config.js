@@ -107,7 +107,7 @@ const effects = {
   dots: {
     display: true,
     opacity: 40,
-    size: "2",
+    size: "1",
     color: "brand-background-strong",
   },
   grid: {

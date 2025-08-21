@@ -1,11 +1,12 @@
 {
-  "name": "@once-ui-system/magic-portfolio",
-  "version": "2.2.0",
+  "name": "aresvn",
+  "version": "2.0.0",
   "license": "GPL-3.0",
   "scripts": {
     "dev": "next dev",
     "export": "next export",
-    "build": "next build --no-lint",
+    "build": "next build",
+    "build:force": "next build --no-lint",
     "start": "next start",
     "lint": "next lint"
   },

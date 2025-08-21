@@ -12,6 +12,12 @@ import {
   Row,
   Meta,
   Schema,
+  GlitchFx,
+  LetterFx,
+  Media,
+  Mask,
+  HoloFx,
+  Fade,
 } from "@once-ui-system/core";
 import { home, about, person, newsletter, baseURL, routes } from "@/resources";
 import { Mailchimp } from "@/components";
@@ -19,6 +25,7 @@ import { Projects } from "@/components/work/Projects";
 import { Posts } from "@/components/blog/Posts";
 
 export default function Home() {
+  const isFirstTime = true;
   return (
     <Column maxWidth="m" gap="xl" horizontal="center">
       <Schema
@@ -34,6 +41,122 @@ export default function Home() {
           image: `${baseURL}${person.avatar}`,
         }}
       />
+      {/* <video
+        src="/videos/bg.mp4"
+        autoPlay
+        muted // ✅ bắt buộc để autoplay
+        playsInline
+        style={{ width: "100%", height: "100%", objectFit: "cover" }}
+      /> */}
+
+      <GlitchFx fillWidth speed="medium">
+        <Column center fillWidth gap="8">
+          <Media
+            enlarge
+            radius="m"
+            //@ts-ignore
+            // sizes={1600}
+            //@ts-ignore
+            // alt={image.alt}
+            //@ts-ignore
+            src={"/images/logo/Fantastic_Four_Logo.png"}
+          />
+          <LetterFx
+            speed="medium"
+            trigger="instant"
+            charset={[
+              "X",
+              "$",
+              "@",
+              "a",
+              "H",
+              "z",
+              "0",
+              "y",
+              "#",
+              "?",
+              "*",
+              "0",
+              "1",
+              "+",
+            ]}
+          >
+            Welcome to
+          </LetterFx>
+          <Heading as="h2" align="center" variant="display-default-xs">
+            <LetterFx
+              speed="medium"
+              trigger="instant"
+              charset={[
+                "X",
+                "$",
+                "@",
+                "a",
+                "H",
+                "z",
+                "0",
+                "y",
+                "#",
+                "?",
+                "*",
+                "0",
+                "1",
+                "+",
+              ]}
+            >
+              AresVN
+            </LetterFx>
+          </Heading>
+        </Column>
+      </GlitchFx>
+      <Row fillWidth fitHeight gap="16" s={{ direction: "column" }}>
+        <Mask fill width={48} cursor radius={25}>
+          <Media
+            radius="full"
+            aspectRatio="1/1"
+            src={"/images/logo/Fantastic_Four_Logo.png"}
+          />
+        </Mask>
+        <Heading as="h2" align="center" variant="display-default-xs">
+          AresVN AresVN AresVN AresVN AresVN AresVN AresVN AresVN AresVN AresVN
+        </Heading>
+      </Row>
+      {/* <GlitchFx fillWidth speed="medium">
+        <Media aspectRatio="1/1" src={"/images/logo/AresVN-logo.png"} />
+      </GlitchFx> */}
+      <Mask
+        width="m"
+        height="m"
+        // fill
+        // aspectRatio="2216/2305"
+        border="neutral-alpha-medium"
+        // x={50}
+        // y={50}
+        // radius={80}
+        // cursor
+      >
+        <HoloFx
+          // fill
+          // fillWidth
+          // maxWidth={24}
+          fillWidth
+          shine={{
+            opacity: 30,
+            blending: "color-dodge",
+          }}
+          burn={{
+            opacity: 30,
+            blending: "revert",
+          }}
+          texture={{
+            opacity: 10,
+            image: "/images/textures/foil.jpg",
+            blending: "color-dodge",
+          }}
+        >
+          <Media src={"/images/logo/AresVN-logo.png"} />
+        </HoloFx>
+      </Mask>
       <Column fillWidth paddingY="24" gap="m">
         <Column maxWidth="s">
           {home.featured.display && (
