@@ -313,9 +313,6 @@ header .intro-text {
 /* details Section */
 #details {
   padding: 100px 0;
-  /* background: linear-gradient(to right, #ff4e00 0%, #f7b42c 100%); */
-  /* background: #222; */
-  /* color: #fff; */
 }
 #details .service-desc {
   margin: 10px 10px 20px;
@@ -349,7 +346,6 @@ header .intro-text {
   color: #fff;
 }
 #details p {
-  /* color: rgba(255, 255, 255, 0.75); */
   line-height: 24px;
   margin: 0;
 }
@@ -408,7 +404,6 @@ header .intro-text {
 /* Testimonials Section */
 #testimonials {
   padding: 100px 0;
-  /* background: #f6f6f6; */
   background: #111;
 }
 #testimonials i {
@@ -430,7 +425,7 @@ header .intro-text {
   width: 64px;
   height: 64px;
   border-radius: 50%;
-  transition: all .1s ease-in-out;
+  transition: all 0.1s ease-in-out;
 }
 .testimonial-image #jumpscare:hover {
   display: block;
@@ -473,30 +468,14 @@ header .intro-text {
 /* Contact Section */
 #contact {
   padding: 100px 0 60px;
-  /* background: linear-gradient(to right, #ff4e00 0%, #f7b42c 100%); */
   color: rgba(255, 255, 255, 0.75);
 }
-/* #contact .section-title {
-  margin-bottom: 40px;
-}
-#contact .section-title p {
-  font-size: 16px;
-} */
 #contact h2 {
   color: #fff;
   margin-top: 10px;
   margin-bottom: 15px;
   padding-bottom: 15px;
 }
-/* #contact .section-title h2::after {
-  position: absolute;
-  content: "";
-  background: rgba(255, 255, 255, 0.3);
-  height: 4px;
-  width: 60px;
-  bottom: 0;
-  left: 30px;
-} */
 #contact h3 {
   color: #fff;
   margin-top: 80px;
@@ -576,9 +555,6 @@ label {
   margin-right: 10px;
 }
 #contact .social {
-  /* border-top: 1px solid rgba(255, 255, 255, 0.15); */
-  /* padding-top: 50px; */
-  /* margin-top: 50px; */
   text-align: center;
 }
 #contact .social ul li {
@@ -663,7 +639,7 @@ label {
 
 #team .faded-edge {
   height: 100px;
-  background-image: linear-gradient(transparent,#222);
+  background-image: linear-gradient(transparent, #222);
   position: absolute;
   bottom: 0;
   left: 0;

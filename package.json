@@ -9,6 +9,7 @@
     "apexcharts": "^3.33.0",
     "emailjs-com": "^2.6.4",
     "framer-motion": "4.1.17",
+    "prop-types": "^15.8.1",
     "react": "^17.0.1",
     "react-animations": "^1.0.0",
     "react-dom": "^17.0.1",
@@ -37,7 +38,16 @@
       "last 1 safari version"
     ]
   },
+  "jest": {
+    "transformIgnorePatterns": [
+      "node_modules/(?!fast-check|@fast-check|pure-rand)"
+    ],
+    "moduleNameMapper": {
+      "^pure-rand/(.*)$": "<rootDir>/node_modules/pure-rand/lib/$1.js"
+    }
+  },
   "devDependencies": {
-    "@babel/plugin-syntax-dynamic-import": "^7.8.3"
+    "@babel/plugin-syntax-dynamic-import": "^7.8.3",
+    "fast-check": "^4.6.0"
   }
 }

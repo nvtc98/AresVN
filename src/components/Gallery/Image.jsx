@@ -1,26 +1,11 @@
+import PropTypes from "prop-types";
+import styles from "./Image.module.css";
+
 export const Image = ({ title, largeImage, smallImage, setShowPopup }) => {
   const openImage = () => {
     const largeContent = (
-      <div
-        style={{
-          width: "100%",
-          height: "100%",
-          background: "#000A",
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "center",
-        }}
-      >
-        <a
-          style={{
-            cursor: "pointer",
-            position: "absolute",
-            zIndex: 1,
-            top: 20,
-            left: 20,
-            color: "#bbb",
-          }}
-        >
+      <div className={styles.overlay}>
+        <a className={styles.closeButton}>
           <i
             className="fa fa-close"
             onClick={() => {
@@ -30,9 +15,8 @@ export const Image = ({ title, largeImage, smallImage, setShowPopup }) => {
         </a>
         <img
           src={largeImage}
-          className="img-responsive col-md-12 col-sm-12"
+          className={`img-responsive col-md-12 col-sm-12 ${styles.largeImage}`}
           alt={title}
-          style={{ height: "80%", objectFit: "contain" }}
         />
       </div>
     );
@@ -56,4 +40,11 @@ export const Image = ({ title, largeImage, smallImage, setShowPopup }) => {
       </div>
     </div>
   );
+};
+
+Image.propTypes = {
+  title: PropTypes.string.isRequired,
+  largeImage: PropTypes.string.isRequired,
+  smallImage: PropTypes.string.isRequired,
+  setShowPopup: PropTypes.func.isRequired,
 };

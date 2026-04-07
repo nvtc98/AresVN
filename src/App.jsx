@@ -1,15 +1,14 @@
 import { useState, useEffect } from "react";
-import { Navigation } from "./components/navigation";
-import { Header } from "./components/header";
-import { Features } from "./components/features";
-import { About } from "./components/about";
-import { Services } from "./components/services";
-import { Gallery } from "./components/gallery";
-import { Testimonials } from "./components/testimonials";
-import { Team } from "./components/team";
-import { Relationships } from "./components/relationships";
-import { Contact } from "./components/contact";
-import Popup from "./components/popup";
+import { Navigation } from "./components/Navigation";
+import { Header } from "./components/Header";
+import { Features } from "./components/Features";
+import { About } from "./components/About";
+import { Gallery } from "./components/Gallery";
+import { Testimonials } from "./components/Testimonials";
+import { Team } from "./components/Team";
+import { Relationships } from "./components/Relationships";
+import { Contact } from "./components/Contact";
+import { Popup } from "./components/Popup";
 import JsonData from "./data/vi.json";
 import SmoothScroll from "smooth-scroll";
 import "./App.css";
@@ -32,7 +31,6 @@ const App = () => {
       <Header data={landingPageData.Header} />
       <Features data={landingPageData.Features} />
       <About data={landingPageData.About} />
-      {/* <Services data={landingPageData.Services} /> */}
       <Team data={landingPageData.Team} />
       <Gallery data={landingPageData.Gallery} setShowPopup={setShowPopup} />
       <Relationships data={landingPageData.Relationships} />

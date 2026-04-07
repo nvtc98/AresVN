@@ -1,8 +1,10 @@
-// import clip from "../assets/bg.mp4";
-import { scroll } from "../App";
+import { scroll } from "../../App";
 import YouTube from "react-youtube";
-import { navigationHeight } from "./navigation";
+import { navigationHeight } from "../Navigation";
 import { useState } from "react";
+import PropTypes from "prop-types";
+import styles from "./Header.module.css";
+import { getField } from "../../utils/dataAccessors";
 
 export const Header = (props) => {
   const [isEnded, setEnded] = useState(false);
@@ -17,21 +19,23 @@ export const Header = (props) => {
   };
 
   const videoWidth = window.innerWidth;
+  const videoSize = getField(props.data, "videoSize", {
+    width: 1920,
+    height: 1080,
+  });
   const videoHeight =
-    (videoWidth * props.data?.videoSize.height) / props.data?.videoSize.width +
-    navigationHeight * 2;
+    (videoWidth * videoSize.height) / videoSize.width + navigationHeight * 2;
 
   return (
     <header id="header" style={{ marginBottom: -navigationHeight }}>
       <div>
         <img
-          src={props.data?.image}
+          src={getField(props.data, "image", "")}
           alt="..."
+          className={styles.headerImage}
           style={{
             width: videoWidth,
             height: videoHeight,
-            objectFit: "contain",
-            position: "absolute",
             zIndex: isEnded ? 1 : -1,
           }}
         />
@@ -39,17 +43,12 @@ export const Header = (props) => {
           <YouTube
             videoId={"1WYTTNxiAlA"}
             id={"1WYTTNxiAlA"}
-            // className={string}                // defaults -> ''
-            // iframeClassName={string}          // defaults -> ''
             style={{
               width: videoWidth,
               height: videoHeight,
             }}
-            // title={string}                    // defaults -> ''
-            // loading={string}                  // defaults -> undefined
             opts={{
               playerVars: {
-                // https://developers.google.com/youtube/player_parameters
                 autoplay: 1,
                 mute: 1,
                 controls: 0,
@@ -60,17 +59,22 @@ export const Header = (props) => {
               width: videoWidth,
               height: videoHeight,
             }}
-            // onReady={func}                    // defaults -> noop
-            // onPlay={func}                     // defaults -> noop
-            // onPause={func}                    // defaults -> noop
             onEnd={onVideoEnd}
             onError={onVideoEnd}
-            // onStateChange={func}              // defaults -> noop
-            // onPlaybackRateChange={func}       // defaults -> noop
-            // onPlaybackQualityChange={func}    // defaults -> noop
           />
         )}
       </div>
     </header>
   );
+};
+
+Header.propTypes = {
+  data: PropTypes.shape({
+    videoSize: PropTypes.shape({
+      width: PropTypes.number.isRequired,
+      height: PropTypes.number.isRequired,
+    }).isRequired,
+    image: PropTypes.string.isRequired,
+    videoId: PropTypes.string,
+  }),
 };

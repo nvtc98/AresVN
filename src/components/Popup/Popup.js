@@ -1,3 +1,4 @@
+import PropTypes from "prop-types";
 import { motion, AnimatePresence } from "framer-motion";
 
 const Popup = ({ showPopup, setShowPopup }) => {
@@ -36,3 +37,11 @@ const Popup = ({ showPopup, setShowPopup }) => {
 };
 
 export default Popup;
+
+Popup.propTypes = {
+  showPopup: PropTypes.shape({
+    animated: PropTypes.bool,
+    content: PropTypes.node,
+  }),
+  setShowPopup: PropTypes.func.isRequired,
+};

@@ -1,4 +1,5 @@
 import { useEffect, useRef } from "react";
+import PropTypes from "prop-types";
 
 export let navigationHeight = null;
 
@@ -44,11 +45,6 @@ export const Navigation = (props) => {
                 Giới thiệu
               </a>
             </li>
-            {/* <li>
-              <a href="#details" className="page-scroll">
-                Details
-              </a>
-            </li> */}
             <li>
               <a href="#team" className="page-scroll">
                 Thành viên
@@ -80,3 +76,5 @@ export const Navigation = (props) => {
     </nav>
   );
 };
+
+Navigation.propTypes = {};
