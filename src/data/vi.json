@@ -176,39 +176,39 @@
   "Features": [
     {
       "icon": "fa fa-comments-o",
-      "image": "img/introduction/gift.png",
-      "title": "AWP rớt đầy sân",
-      "text": "Chúng tôi là những nhà hảo tâm khi cho đi hàng ngàn khẩu AWP mỗi ngày."
+      "image": "img/introduction/letter-o.png",
+      "title": "Ai",
+      "text": "thêm Huân vào group chat dẫy"
     },
     {
       "icon": "fa fa-bullhorn",
-      "image": "img/introduction/running.png",
-      "title": "Rush B",
-      "text": "Chúng tôi rush B bất cứ khi nào yếu tiền và nhiều tiền."
+      "image": "img/introduction/letter-o.png",
+      "title": "tRiệu",
+      "text": "lại bị hack nick à"
     },
     {
       "icon": "fa fa-group",
-      "image": "img/introduction/deaf.png",
-      "title": "Earless",
-      "text": "Chúng tôi hoàn toàn điếc."
+      "image": "img/introduction/letter-o.png",
+      "title": "env1",
+      "text": "comeback pls"
     },
     {
       "icon": "fa fa-magic",
-      "image": "img/introduction/shooting-game.png",
-      "title": "Súng lỗi à?",
-      "text": "Đúng vậy."
+      "image": "img/introduction/letter-o.png",
+      "title": "Sir thoái vị",
+      "text": "là ai vậy?"
     },
     {
       "icon": "fa fa-magic",
-      "image": "img/introduction/victory.png",
-      "title": "Vãi cả -99",
-      "text": ""
+      "image": "img/introduction/letter-o.png",
+      "title": "vcl",
+      "text": "quả role bị truy nã =)) cười vcl"
     },
     {
       "icon": "fa fa-magic",
-      "image": "img/introduction/game-cheat.png",
-      "title": "Nó hack rồi",
-      "text": "Thắng làm vua, thua thì team địch hack."
+      "image": "img/introduction/letter-o.png",
+      "title": "Nomad",
+      "text": "has left the team"
     }
   ],
   "Relationships": [
