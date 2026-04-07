@@ -1,5 +1,4 @@
 import { useEffect, useRef } from "react";
-import PropTypes from "prop-types";
 
 export let navigationHeight = null;
 
@@ -76,5 +75,3 @@ export const Navigation = (props) => {
     </nav>
   );
 };
-
-Navigation.propTypes = {};

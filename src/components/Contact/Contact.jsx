@@ -20,21 +20,21 @@ export const Contact = (props) => {
                 <li>
                   <a href={links.steam}>
                     <div>
-                      <img src="img/contact/Steam.png" />
+                      <img src="img/contact/Steam.png" alt="Steam" />
                     </div>
                   </a>
                 </li>
                 <li>
                   <a href={links.discord}>
                     <div>
-                      <img src="img/contact/Asset_3.png" />
+                      <img src="img/contact/Asset_3.png" alt="Discord" />
                     </div>
                   </a>
                 </li>
                 <li>
                   <a href={links.youtube}>
                     <div>
-                      <img src="img/contact/Asset_4.png" />
+                      <img src="img/contact/Asset_4.png" alt="YouTube" />
                     </div>
                   </a>
                 </li>

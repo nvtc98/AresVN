@@ -73,7 +73,7 @@ export function useTeam() {
       chart.render();
       contentRef.current.charts.push(chart);
     }
-  }, [playerData, game]);
+  }, [playerData, game]); // eslint-disable-line react-hooks/exhaustive-deps
 
   // Update chart series when selected player changes
   useEffect(() => {

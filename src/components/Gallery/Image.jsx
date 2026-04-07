@@ -5,14 +5,14 @@ export const Image = ({ title, largeImage, smallImage, setShowPopup }) => {
   const openImage = () => {
     const largeContent = (
       <div className={styles.overlay}>
-        <a className={styles.closeButton}>
+        <button type="button" className={styles.closeButton}>
           <i
             className="fa fa-close"
             onClick={() => {
               setShowPopup(null);
             }}
           ></i>
-        </a>
+        </button>
         <img
           src={largeImage}
           className={`img-responsive col-md-12 col-sm-12 ${styles.largeImage}`}

@@ -1,5 +1,5 @@
 import PropTypes from "prop-types";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion } from "framer-motion";
 
 const Popup = ({ showPopup, setShowPopup }) => {
   const { animated = true, content } = showPopup || {};
