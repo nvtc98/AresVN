@@ -18,7 +18,7 @@ export const Features = (props) => {
                   {" "}
                   <div className="icon">
                     <h2 className={styles.iconTitle}>
-                      {getField(d, "title", "").substr(0, 1)}
+                      {i === 1 ? "R" : getField(d, "title", "").substr(0, 1)}
                     </h2>
                   </div>
                   <h3>{getField(d, "title", "")}</h3>
