@@ -1,0 +1,8 @@
+.header {
+  margin-bottom: 0; /* dynamic override via style prop */
+}
+
+.headerImage {
+  object-fit: contain;
+  position: absolute;
+}

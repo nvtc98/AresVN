@@ -1,0 +1,12 @@
+.detailsRow {
+  margin-top: 40px;
+}
+
+.detailTextWrapper {
+  display: flex;
+  justify-content: center;
+}
+
+.detailText {
+  text-align: left;
+}

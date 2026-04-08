@@ -6,14 +6,24 @@ import {
   Heading,
   Icon,
   IconButton,
-  Media,
   Tag,
   Text,
   Meta,
   Schema,
 } from "@once-ui-system/core";
-import { baseURL, about, person, social } from "@/resources";
+import {
+  baseURL,
+  about,
+  person,
+  social,
+  relationships,
+  testimonials,
+} from "@/resources";
+import { getActivePlayers } from "@/data/players";
 import TableOfContents from "@/components/about/TableOfContents";
+import { TeamSection } from "@/components/TeamSection";
+import { RelationshipsSection } from "@/components/RelationshipsSection";
+import { TestimonialsSection } from "@/components/TestimonialsSection";
 import styles from "@/components/about/about.module.scss";
 import React from "react";
 
@@ -35,21 +45,32 @@ export default function About() {
       items: [],
     },
     {
-      title: about.work.title,
-      display: about.work.display,
-      items: about.work.experiences.map((experience) => experience.company),
+      title: "Thông tin đội",
+      display: about.teamDetails.length > 0,
+      items: about.teamDetails.map((detail) => detail.name),
     },
     {
-      title: about.studies.title,
-      display: about.studies.display,
-      items: about.studies.institutions.map((institution) => institution.name),
+      title: "Video giới thiệu",
+      display: !!about.youtubeVideoId,
+      items: [],
     },
     {
-      title: about.technical.title,
-      display: about.technical.display,
-      items: about.technical.skills.map((skill) => skill.title),
+      title: "Thành viên",
+      display: true,
+      items: [],
+    },
+    {
+      title: "Mối quan hệ",
+      display: relationships.length > 0,
+      items: relationships.map((r) => r.name),
+    },
+    {
+      title: "Nhận xét",
+      display: testimonials.length > 0,
+      items: [],
     },
   ];
+
   return (
     <Column maxWidth="m">
       <Schema
@@ -72,16 +93,11 @@ export default function About() {
           position="fixed"
           paddingLeft="24"
           gap="32"
-          // hide="s"
         >
           <TableOfContents structure={structure} about={about} />
         </Column>
       )}
-      <Flex
-        fillWidth
-        //  mobileDirection="column"
-        horizontal="center"
-      >
+      <Flex fillWidth horizontal="center">
         {about.avatar.display && (
           <Column
             className={styles.avatar}
@@ -100,7 +116,7 @@ export default function About() {
             </Flex>
             {person.languages.length > 0 && (
               <Flex wrap gap="8">
-                {person.languages.map((language, index) => (
+                {person.languages.map((language) => (
                   <Tag key={language} size="l">
                     {language}
                   </Tag>
@@ -110,6 +126,7 @@ export default function About() {
           </Column>
         )}
         <Column className={styles.blockAlign} flex={9} maxWidth={40}>
+          {/* Intro section */}
           <Column
             id={about.intro.title}
             fillWidth
@@ -117,35 +134,6 @@ export default function About() {
             vertical="center"
             marginBottom="32"
           >
-            {about.calendar.display && (
-              <Flex
-                fitWidth
-                border="brand-alpha-medium"
-                className={styles.blockAlign}
-                style={{
-                  backdropFilter: "blur(var(--static-space-1))",
-                }}
-                background="brand-alpha-weak"
-                radius="full"
-                padding="4"
-                gap="8"
-                marginBottom="m"
-                vertical="center"
-              >
-                <Icon
-                  paddingLeft="12"
-                  name="calendar"
-                  onBackground="brand-weak"
-                />
-                <Flex paddingX="8">Schedule a call</Flex>
-                <IconButton
-                  href={about.calendar.link}
-                  data-border="rounded"
-                  variant="secondary"
-                  icon="chevronRight"
-                />
-              </Flex>
-            )}
             <Heading className={styles.textAlign} variant="display-strong-xl">
               {person.name}
             </Heading>
@@ -173,7 +161,6 @@ export default function About() {
                       <React.Fragment key={item.name}>
                         <Button
                           className="s-flex-hide"
-                          key={item.name}
                           href={item.link}
                           prefixIcon={item.icon}
                           label={item.name}
@@ -184,18 +171,18 @@ export default function About() {
                         <IconButton
                           className="s-flex-show"
                           size="l"
-                          key={`${item.name}-icon`}
                           href={item.link}
                           icon={item.icon}
                           variant="secondary"
                         />
                       </React.Fragment>
-                    )
+                    ),
                 )}
               </Flex>
             )}
           </Column>
 
+          {/* Full introduction paragraph */}
           {about.intro.display && (
             <Column
               textVariant="body-default-l"
@@ -207,177 +194,90 @@ export default function About() {
             </Column>
           )}
 
-          {about.work.display && (
+          {/* Team details section */}
+          {about.teamDetails.length > 0 && (
             <>
               <Heading
                 as="h2"
-                id={about.work.title}
+                id="Thông tin đội"
                 variant="display-strong-s"
                 marginBottom="m"
               >
-                {about.work.title}
+                Thông tin đội
               </Heading>
               <Column fillWidth gap="l" marginBottom="40">
-                {about.work.experiences.map((experience, index) => (
-                  <Column
-                    key={`${experience.company}-${experience.role}-${index}`}
-                    fillWidth
-                  >
-                    <Flex
-                      fillWidth
-                      horizontal="between"
-                      vertical="end"
-                      marginBottom="4"
-                    >
-                      <Text id={experience.company} variant="heading-strong-l">
-                        {experience.company}
-                      </Text>
-                      <Text
-                        variant="heading-default-xs"
-                        onBackground="neutral-weak"
-                      >
-                        {experience.timeframe}
-                      </Text>
+                {about.teamDetails.map((detail, index) => (
+                  <Column key={`${detail.name}-${index}`} fillWidth gap="4">
+                    <Text id={detail.name} variant="heading-strong-l">
+                      {detail.name}
+                    </Text>
+                    <Flex wrap gap="8" paddingTop="4">
+                      {detail.text.map((item, i) => (
+                        <Tag key={`${detail.name}-${i}`} size="l">
+                          {item}
+                        </Tag>
+                      ))}
                     </Flex>
-                    <Text
-                      variant="body-default-s"
-                      onBackground="brand-weak"
-                      marginBottom="m"
-                    >
-                      {experience.role}
-                    </Text>
-                    <Column as="ul" gap="16">
-                      {experience.achievements.map(
-                        (achievement: React.ReactNode, index: number) => (
-                          <Text
-                            as="li"
-                            variant="body-default-m"
-                            key={`${experience.company}-${index}`}
-                          >
-                            {achievement}
-                          </Text>
-                        )
-                      )}
-                    </Column>
-                    {experience.images.length > 0 && (
-                      <Flex
-                        fillWidth
-                        paddingTop="m"
-                        paddingLeft="40"
-                        gap="12"
-                        wrap
-                      >
-                        {experience.images.map((image, index) => (
-                          <Flex
-                            key={index}
-                            border="neutral-medium"
-                            radius="m"
-                            //@ts-ignore
-                            minWidth={image.width}
-                            //@ts-ignore
-                            height={image.height}
-                          >
-                            <Media
-                              enlarge
-                              radius="m"
-                              //@ts-ignore
-                              sizes={image.width.toString()}
-                              //@ts-ignore
-                              alt={image.alt}
-                              //@ts-ignore
-                              src={image.src}
-                            />
-                          </Flex>
-                        ))}
-                      </Flex>
-                    )}
                   </Column>
                 ))}
               </Column>
             </>
           )}
 
-          {about.studies.display && (
+          {/* YouTube introduction video */}
+          {about.youtubeVideoId && (
             <>
               <Heading
                 as="h2"
-                id={about.studies.title}
+                id="Video giới thiệu"
                 variant="display-strong-s"
                 marginBottom="m"
               >
-                {about.studies.title}
+                Video giới thiệu
               </Heading>
-              <Column fillWidth gap="l" marginBottom="40">
-                {about.studies.institutions.map((institution, index) => (
-                  <Column
-                    key={`${institution.name}-${index}`}
-                    fillWidth
-                    gap="4"
-                  >
-                    <Text id={institution.name} variant="heading-strong-l">
-                      {institution.name}
-                    </Text>
-                    <Text
-                      variant="heading-default-xs"
-                      onBackground="neutral-weak"
-                    >
-                      {institution.description}
-                    </Text>
-                  </Column>
-                ))}
+              <Column fillWidth marginBottom="40">
+                <Flex
+                  fillWidth
+                  border="neutral-medium"
+                  radius="l"
+                  style={{
+                    position: "relative",
+                    paddingBottom: "56.25%",
+                    height: 0,
+                    overflow: "hidden",
+                  }}
+                >
+                  <iframe
+                    style={{
+                      position: "absolute",
+                      top: 0,
+                      left: 0,
+                      width: "100%",
+                      height: "100%",
+                      border: "none",
+                      borderRadius: "inherit",
+                    }}
+                    src={`https://www.youtube.com/embed/${about.youtubeVideoId}`}
+                    title="AresVN Introduction Video"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                    allowFullScreen
+                  />
+                </Flex>
               </Column>
             </>
           )}
 
-          {about.technical.display && (
-            <>
-              <Heading
-                as="h2"
-                id={about.technical.title}
-                variant="display-strong-s"
-                marginBottom="40"
-              >
-                {about.technical.title}
-              </Heading>
-              <Column fillWidth gap="l">
-                {about.technical.skills.map((skill, index) => (
-                  <Column key={`${skill}-${index}`} fillWidth gap="4">
-                    <Text id={skill.title} variant="heading-strong-l">
-                      {skill.title}
-                    </Text>
-                    <Text variant="body-default-m" onBackground="neutral-weak">
-                      {skill.description}
-                    </Text>
-                    {skill.images && skill.images.length > 0 && (
-                      <Flex fillWidth paddingTop="m" gap="12" wrap>
-                        {skill.images.map((image, index) => (
-                          <Flex
-                            key={index}
-                            border="neutral-medium"
-                            radius="m"
-                            //@ts-ignore
-                            minWidth={image.width}
-                            //@ts-ignore
-                            height={image.height}
-                          >
-                            <Media
-                              enlarge
-                              radius="m"
-                              //@ts-ignore
-                              sizes={image.width.toString()}
-                              //@ts-ignore
-                              alt={image.alt}
-                              //@ts-ignore
-                              src={image.src}
-                            />
-                          </Flex>
-                        ))}
-                      </Flex>
-                    )}
-                  </Column>
-                ))}
-              </Column>
-            </>
+          {/* Team section */}
+          <TeamSection players={getActivePlayers()} />
+
+          {/* Relationships section */}
+          {relationships.length > 0 && (
+            <RelationshipsSection relationships={relationships} />
+          )}
+
+          {/* Testimonials section */}
+          {testimonials.length > 0 && (
+            <TestimonialsSection testimonials={testimonials} />
           )}
         </Column>
       </Flex>
