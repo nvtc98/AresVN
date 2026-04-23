@@ -11,15 +11,15 @@ export const About = (props) => {
         <div className="row">
           <div className="col-xs-12 col-md-6">
             {" "}
-            <iframe
-              width="560"
-              height="315"
-              src="https://www.youtube.com/embed/l4i9Wmx-CWU"
-              title="YouTube video player"
-              frameBorder="0"
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-              allowFullScreen
-            />
+            <div className={styles.videoWrapper}>
+              <iframe
+                src="https://www.youtube.com/embed/l4i9Wmx-CWU"
+                title="YouTube video player"
+                frameBorder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowFullScreen
+              />
+            </div>
           </div>
           <div className="col-xs-12 col-md-6">
             <div className="about-text">

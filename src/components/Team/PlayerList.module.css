@@ -26,3 +26,15 @@
   height: 40px;
   border: 0;
 }
+
+@media screen and (max-width: 575px) {
+  .playerListContainer {
+    gap: 5px;
+  }
+
+  .expandIcon {
+    font-size: 30px;
+    width: 30px;
+    height: 30px;
+  }
+}

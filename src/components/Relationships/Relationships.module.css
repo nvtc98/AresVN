@@ -32,3 +32,52 @@
   text-align: left;
   margin-bottom: 20px;
 }
+
+@media screen and (max-width: 991px) {
+  .descriptionPanel {
+    margin-left: -150px;
+    padding-left: 160px;
+    padding-right: 20px;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .container {
+    padding-top: 60px;
+    padding-bottom: 60px;
+  }
+
+  .teamRow {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .teamCard {
+    width: 100% !important;
+    max-width: 300px;
+    margin-bottom: 10px;
+  }
+
+  .descriptionPanel {
+    margin-left: 0;
+    padding-left: 15px;
+    padding-right: 15px;
+    width: 100% !important;
+    margin-top: 0;
+  }
+
+  .thumbnail {
+    text-align: center;
+  }
+}
+
+@media screen and (max-width: 575px) {
+  .container {
+    padding-top: 40px;
+    padding-bottom: 40px;
+  }
+
+  .descriptionText {
+    font-size: 14px;
+  }
+}

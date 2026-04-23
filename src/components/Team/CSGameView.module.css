@@ -5,3 +5,13 @@
 .descriptionBlock {
   margin-top: 30px;
 }
+
+@media screen and (max-width: 767px) {
+  .descriptionBlock {
+    margin-top: 15px;
+  }
+
+  .descriptionBlock p {
+    font-size: 14px;
+  }
+}
