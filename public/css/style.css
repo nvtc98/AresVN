@@ -9,6 +9,9 @@ html {
   height: 100% !important;
   background: #222;
 }
+body {
+  overflow-x: hidden;
+}
 h2,
 h3,
 h4 {
@@ -615,6 +618,75 @@ label {
 @media (max-width: 768px) {
   #about img {
     margin: 50px 0;
+    width: 100%;
+  }
+}
+
+@media (max-width: 991px) {
+  /* Navigation */
+  #menu.navbar-default .navbar-nav > li > a {
+    margin: 5px 10px 0;
+  }
+
+  /* About */
+  #about img {
+    width: 100%;
+  }
+
+  /* Portfolio */
+  .portfolio-item {
+    margin: 1px 0 0 0;
+  }
+}
+
+@media (max-width: 767px) {
+  /* Navigation */
+  #menu {
+    padding: 10px;
+  }
+
+  #menu a.navbar-brand {
+    font-size: 20px;
+  }
+
+  /* Testimonials */
+  .testimonial {
+    padding: 15px 5px;
+  }
+
+  .testimonial-image,
+  .testimonial-image img {
+    width: 50px;
+    height: 50px;
+  }
+
+  /* Footer */
+  #footer {
+    padding: 20px 0;
+  }
+
+  #footer p {
+    font-size: 12px;
+  }
+}
+
+@media (max-width: 575px) {
+  /* Contact social */
+  #contact .social ul li {
+    margin: 0 8px;
+  }
+
+  #contact .social img {
+    width: 36px;
+    height: 36px;
+    padding: 8px;
+  }
+
+  #contact .social i.fa {
+    width: 36px;
+    height: 36px;
+    font-size: 16px;
+    padding: 9px 0;
   }
 }
 

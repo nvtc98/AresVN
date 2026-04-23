@@ -310,24 +310,6 @@
       }
     },
     {
-      "img": "img/team/new2023/Nomad.png",
-      "name": "Nomad",
-      "game": {
-        "cs": {
-          "role": "Support",
-          "chart": [
-            [23, 31, 23, 23],
-            [3, 20, 3, 36, 32, 3, 3],
-            [18, 14, 15, 20, 14, 17],
-            55
-          ],
-          "description": "AresVN Nomad là một phiên bản nâng cấp cho tuyến hậu phương của đội. Với khả năng tính toán khủng khiếp, Nomad có thể đọc vanh vách mọi thông tin trong trận đấu từ vĩ mô đến vi mô, đem về rất nhiều lợi thế thông tin cho cả đội. Nomad cũng là một nhà kiến tạo với nhiều hỗ trợ mượt mà và làm suy yếu lớp phòng thủ của địch. Cách mà kẻ địch ngã xuống khi đối đầu với anh cũng rất thú vị, có khi đó là một trận địa hỏa thiêu, có khi đó là cây \"súng nước\" đầy phong trần. Nomad được xem là chiếc la bàn quý cho nhiều chiến thắng của AresVN.",
-          "color": "#30444f"
-        },
-        "r6": {}
-      }
-    },
-    {
       "img": "img/team/new2023/sund0wn.png",
       "name": "sund0wn",
       "game": {
@@ -349,6 +331,25 @@
           "defOpImg": "img/team/r6op/Caveira_R6S.png",
           "chart": [[70, 60, 80, 10], []]
         }
+      }
+    },
+    {
+      "img": "img/team/new2023/Nomad.png",
+      "name": "Nomad",
+      "isHidden": "true",
+      "game": {
+        "cs": {
+          "role": "Support",
+          "chart": [
+            [23, 31, 23, 23],
+            [3, 20, 3, 36, 32, 3, 3],
+            [18, 14, 15, 20, 14, 17],
+            55
+          ],
+          "description": "AresVN Nomad là một phiên bản nâng cấp cho tuyến hậu phương của đội. Với khả năng tính toán khủng khiếp, Nomad có thể đọc vanh vách mọi thông tin trong trận đấu từ vĩ mô đến vi mô, đem về rất nhiều lợi thế thông tin cho cả đội. Nomad cũng là một nhà kiến tạo với nhiều hỗ trợ mượt mà và làm suy yếu lớp phòng thủ của địch. Cách mà kẻ địch ngã xuống khi đối đầu với anh cũng rất thú vị, có khi đó là một trận địa hỏa thiêu, có khi đó là cây \"súng nước\" đầy phong trần. Nomad được xem là chiếc la bàn quý cho nhiều chiến thắng của AresVN.",
+          "color": "#30444f"
+        },
+        "r6": {}
       }
     },
     {

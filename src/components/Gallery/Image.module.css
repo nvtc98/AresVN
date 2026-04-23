@@ -20,3 +20,17 @@
   height: 80%;
   object-fit: contain;
 }
+
+@media screen and (max-width: 767px) {
+  .largeImage {
+    height: auto;
+    max-height: 80vh;
+    width: 95%;
+  }
+
+  .closeButton {
+    top: 10px;
+    left: 10px;
+    font-size: 24px;
+  }
+}

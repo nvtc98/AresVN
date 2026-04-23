@@ -1,13 +1,24 @@
 import { scroll } from "../../App";
 import YouTube from "react-youtube";
 import { navigationHeight } from "../Navigation";
-import { useState } from "react";
+import { useState, useEffect, useCallback } from "react";
 import PropTypes from "prop-types";
 import styles from "./Header.module.css";
 import { getField } from "../../utils/dataAccessors";
 
 export const Header = (props) => {
   const [isEnded, setEnded] = useState(false);
+  const [videoWidth, setVideoWidth] = useState(window.innerWidth);
+
+  const handleResize = useCallback(() => {
+    setVideoWidth(window.innerWidth);
+  }, []);
+
+  useEffect(() => {
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, [handleResize]);
+
   const onVideoEnd = () => {
     setEnded(true);
     if (
@@ -18,7 +29,6 @@ export const Header = (props) => {
     }
   };
 
-  const videoWidth = window.innerWidth;
   const videoSize = getField(props.data, "videoSize", {
     width: 1920,
     height: 1080,
@@ -28,13 +38,13 @@ export const Header = (props) => {
 
   return (
     <header id="header" style={{ marginBottom: -navigationHeight }}>
-      <div>
+      <div className={styles.headerContainer}>
         <img
           src={getField(props.data, "image", "")}
           alt="..."
           className={styles.headerImage}
           style={{
-            width: videoWidth,
+            width: "100%",
             height: videoHeight,
             zIndex: isEnded ? 1 : -1,
           }}
@@ -44,7 +54,7 @@ export const Header = (props) => {
             videoId={"1WYTTNxiAlA"}
             id={"1WYTTNxiAlA"}
             style={{
-              width: videoWidth,
+              width: "100%",
               height: videoHeight,
             }}
             opts={{

@@ -6,3 +6,15 @@
   object-fit: contain;
   position: absolute;
 }
+
+.headerContainer {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+}
+
+@media screen and (max-width: 767px) {
+  .headerImage {
+    object-fit: cover;
+  }
+}

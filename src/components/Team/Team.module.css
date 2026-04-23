@@ -22,3 +22,44 @@
 .card {
   padding: 40px;
 }
+
+@media screen and (max-width: 767px) {
+  .gameRow {
+    flex-wrap: wrap;
+  }
+
+  .navArrowLeft,
+  .navArrowRight {
+    width: 40px;
+    flex-shrink: 0;
+  }
+
+  .navArrowLeft {
+    order: 1;
+  }
+
+  .navArrowRight {
+    order: 3;
+  }
+
+  .card {
+    order: 2;
+    flex: 1;
+    padding: 15px;
+    min-width: 0;
+  }
+
+  .arrowIcon {
+    font-size: 30px;
+  }
+}
+
+@media screen and (max-width: 575px) {
+  .card {
+    padding: 10px;
+  }
+
+  .arrowIcon {
+    font-size: 24px;
+  }
+}
