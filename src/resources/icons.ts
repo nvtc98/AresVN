@@ -12,6 +12,9 @@ import {
   HiOutlineDocument,
   HiOutlineGlobeAsiaAustralia,
   HiOutlineRocketLaunch,
+  HiOutlineInformationCircle,
+  HiOutlineChatBubbleLeftRight,
+  HiOutlineUserGroup,
 } from "react-icons/hi2";
 
 import {
@@ -24,6 +27,7 @@ import {
 
 import {
   FaDiscord,
+  FaFacebook,
   FaGithub,
   FaLinkedin,
   FaX,
@@ -45,6 +49,7 @@ export const iconLibrary: Record<string, IconType> = {
   home: PiHouseDuotone,
   gallery: PiImageDuotone,
   discord: FaDiscord,
+  facebook: FaFacebook,
   eye: HiOutlineEye,
   eyeOff: HiOutlineEyeSlash,
   github: FaGithub,
@@ -56,6 +61,10 @@ export const iconLibrary: Record<string, IconType> = {
   arrowUpRightFromSquare: HiArrowTopRightOnSquare,
   document: HiOutlineDocument,
   rocket: HiOutlineRocketLaunch,
+  infoCircle: HiOutlineInformationCircle,
+  chat: HiOutlineChatBubbleLeftRight,
+  link: HiOutlineLink,
+  userGroup: HiOutlineUserGroup,
 };
 
 export type IconLibrary = typeof iconLibrary;

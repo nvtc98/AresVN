@@ -11,19 +11,8 @@ import {
   Meta,
   Schema,
 } from "@once-ui-system/core";
-import {
-  baseURL,
-  about,
-  person,
-  social,
-  relationships,
-  testimonials,
-} from "@/resources";
-import { getActivePlayers } from "@/data/players";
+import { baseURL, about, person, social } from "@/resources";
 import TableOfContents from "@/components/about/TableOfContents";
-import { TeamSection } from "@/components/TeamSection";
-import { RelationshipsSection } from "@/components/RelationshipsSection";
-import { TestimonialsSection } from "@/components/TestimonialsSection";
 import styles from "@/components/about/about.module.scss";
 import React from "react";
 
@@ -52,21 +41,6 @@ export default function About() {
     {
       title: "Video giới thiệu",
       display: !!about.youtubeVideoId,
-      items: [],
-    },
-    {
-      title: "Thành viên",
-      display: true,
-      items: [],
-    },
-    {
-      title: "Mối quan hệ",
-      display: relationships.length > 0,
-      items: relationships.map((r) => r.name),
-    },
-    {
-      title: "Nhận xét",
-      display: testimonials.length > 0,
       items: [],
     },
   ];
@@ -265,19 +239,6 @@ export default function About() {
                 </Flex>
               </Column>
             </>
-          )}
-
-          {/* Team section */}
-          <TeamSection players={getActivePlayers()} />
-
-          {/* Relationships section */}
-          {relationships.length > 0 && (
-            <RelationshipsSection relationships={relationships} />
-          )}
-
-          {/* Testimonials section */}
-          {testimonials.length > 0 && (
-            <TestimonialsSection testimonials={testimonials} />
           )}
         </Column>
       </Flex>

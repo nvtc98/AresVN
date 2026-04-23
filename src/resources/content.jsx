@@ -33,12 +33,17 @@ const social = [
     icon: "youtube",
     link: "https://www.youtube.com/@aresvn",
   },
+  {
+    name: "Facebook",
+    icon: "facebook",
+    link: "https://www.facebook.com/groups/595876244243793",
+  },
 ];
 
 const home = {
   path: "/",
   image: "/images/og/home.jpg",
-  label: "Home",
+  label: "Trang chủ",
   title: "AresVN",
   description: "AresVN - Đội thể thao điện tử Việt Nam",
   headline: <>Chào mừng đến với AresVN</>,
@@ -56,8 +61,8 @@ const home = {
 
 const about = {
   path: "/about",
-  label: "About",
-  title: "About – AresVN",
+  label: "Thông tin",
+  title: "Thông tin – AresVN",
   description: "Giới thiệu về đội thể thao điện tử AresVN",
   tableOfContent: {
     display: true,
@@ -127,16 +132,37 @@ const about = {
 
 const blog = {
   path: "/blog",
-  label: "Blog",
-  title: "Blog – AresVN",
-  description: "AresVN blog",
+  label: "Bài viết",
+  title: "Bài viết – AresVN",
+  description: "Bài viết AresVN",
 };
 
 const work = {
   path: "/work",
-  label: "Work",
-  title: "Work – AresVN",
-  description: "AresVN projects",
+  label: "Dự án",
+  title: "Dự án – AresVN",
+  description: "Dự án AresVN",
+};
+
+const members = {
+  path: "/members",
+  label: "Thành viên",
+  title: "Thành viên – AresVN",
+  description: "Danh sách thành viên đội AresVN",
+};
+
+const relationshipsPage = {
+  path: "/relationships",
+  label: "Mối quan hệ",
+  title: "Mối quan hệ – AresVN",
+  description: "Các mối quan hệ của AresVN với các đội khác",
+};
+
+const testimonialsPage = {
+  path: "/testimonials",
+  label: "Nhận xét",
+  title: "Nhận xét – AresVN",
+  description: "Nhận xét về AresVN",
 };
 
 const gallery = {
@@ -199,8 +225,9 @@ const relationships = [
     name: "G3 Esports",
     relationship: "Đối thủ / Đồng minh",
     descriptions: [
-      "G3 Esports là một đối thủ nặng ký của AresVN. Giữa cả hai đã diễn ra một trận đấu nảy lửa trong Counter-Strike: Global Offensive vào ngày 19/02/2021. G3 Esports sử dụng hàng pháo dàn mạnh nhất trong khi đội hình của AresVN sử dụng các thành viên chưa có sự ăn khớp nhuần nhuyễn tại thời điểm đó. Trận đấu dẫn đến chiến thắng thuộc về G3 Esports.",
-      "AresVN và G3 Esports cũng là hai đội chiến hữu của nhau, có mối quan hệ tương trợ vô cùng tốt đẹp. G3 Esports thường xuyên cử thành viên vào trám các vị trí còn thiếu cho AresVN. Cả hai cũng có những trận đấu với nhau, trong đó điển hình có một trận đấu 5vs5 với các thành viên của cả hai đội trộn lẫn với nhau.",
+      "G3 Esports là đối thủ và là đồng minh của AresVN. Là đối thủ nặng ký của nhau, cả hai đã đụng độ 2 lần trong CSGO và CS2.",
+      "Là đồng minh giao hảo, cả hai có mối quan hệ tương trợ tốt đẹp. G3 Esports thường xuyên trám các vị trí còn thiếu cho AresVN, đồng thời thường xuyên diễn ra hỗn chiến bên tựa game VALORANT khi các thành viên của hai bên được trộn và tương tàn lẫn nhau.",
+      "Với tiền thân là G3 Esports, team sau này lần lượt được gọi là TỦ LẠNH WINMART, LORD HẢI'S DOMAIN, LORD HẢI'S INFERNO.",
     ],
   },
   {
@@ -208,7 +235,27 @@ const relationships = [
     name: "Paragames Team",
     relationship: "Đồng minh",
     descriptions: [
-      "Paragames Team có mối quan hệ tốt đẹp với AresVN. AresVN thường xuyên bổ sung kịp thời lực lượng những khi Paragames thiếu hụt. Giữa cả hai cũng đã diễn ra một trận giao hữu lẫn nhau vào ngày 27/12/2022.",
+      "Paragames Team là đồng minh của AresVN, có mối quan hệ tương trợ tốt đẹp. AresVN thường xuyên bổ trợ lực lượng khi Paragames thiếu hụt.",
+      "Hai bên cũng đã tổ chức một trận giao hữu vào ngày 27/12/2022, thể hiện tinh thần đồng đội và sự gắn kết giữa cả hai.",
+    ],
+  },
+  {
+    img: "/images/relationships/theeyes.jpg",
+    name: "The Eyes",
+    relationship: "Đồng minh ẩn mật",
+    descriptions: [
+      "The Eyes là đồng minh ẩn mật của AresVN, dù từng sánh vai và hội ngộ trong nhiều trận chiến, hầu hết thành viên của hai bên chẳng hề hay biết về sự tồn tại của nhau. AresVN gọi The Eyes là Ocean Eyes.",
+      'Trong sự kiện AresVN: Thanh Trừng, quy tắc phán xét số 3 có nội dung: "Bạn được miễn nếu bạn thuộc Ocean Eyes" như một chi tiết thú vị nhỏ thể hiện mối giao hảo.',
+      "Cùng với sự ra mắt của wiki năm 2025, Ocean Eyes chính thức xuất hiện trong danh sách quan hệ của AresVN dưới sự xác nhận và đóng góp của Sir thoái vị.",
+    ],
+  },
+  {
+    img: "/images/relationships/afterschoolweatherclub.jpg",
+    name: "Afterschool Weather Club",
+    relationship: "Đồng minh",
+    descriptions: [
+      "Afterschool Weather Club (Câu lạc bộ thời tiết sau giờ học) là CLB do sund0wn thành lập vào ngày 27/09/2021, với mục tiêu tạo môi trường thư giãn cho các thành viên sau giờ học thông qua game, hội họa và âm nhạc.",
+      'CLB có mối quan hệ giao lưu thân thiết với AresVN thông qua chuỗi stream "AresVN Collab" — những buổi gặp gỡ đặc biệt ghi lại khoảnh khắc vui vẻ giữa CLB và những người bạn hàng xóm AresVN.',
     ],
   },
 ];
@@ -253,6 +300,9 @@ export {
   about,
   blog,
   work,
+  members,
+  relationshipsPage,
+  testimonialsPage,
   gallery,
   relationships,
   testimonials,
