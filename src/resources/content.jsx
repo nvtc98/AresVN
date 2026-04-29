@@ -167,8 +167,8 @@ const testimonialsPage = {
 
 const gallery = {
   path: "/gallery",
-  label: "Gallery",
-  title: "Gallery – AresVN",
+  label: "Bộ sưu tập",
+  title: "Bộ sưu tập – AresVN",
   description: "Bộ sưu tập ảnh AresVN",
   images: [
     {

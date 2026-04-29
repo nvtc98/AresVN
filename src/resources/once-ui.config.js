@@ -12,6 +12,8 @@ const routes = {
   "/gallery": true,
   "/relationships": true,
   "/testimonials": true,
+  "/test-vanta": true,
+  "/test-granim": true,
 };
 
 const display = {
@@ -27,24 +29,24 @@ const protectedRoutes = {
 };
 
 // Import and set font for each variant
-import { Geist } from "next/font/google";
+import { Montserrat } from "next/font/google";
 import { Geist_Mono } from "next/font/google";
 
-const heading = Geist({
+const heading = Montserrat({
   variable: "--font-heading",
-  subsets: ["latin"],
+  subsets: ["latin", "vietnamese"],
   display: "swap",
 });
 
-const body = Geist({
+const body = Montserrat({
   variable: "--font-body",
-  subsets: ["latin"],
+  subsets: ["latin", "vietnamese"],
   display: "swap",
 });
 
-const label = Geist({
+const label = Montserrat({
   variable: "--font-label",
-  subsets: ["latin"],
+  subsets: ["latin", "vietnamese"],
   display: "swap",
 });
 
@@ -91,10 +93,10 @@ const dataStyle = {
 
 const effects = {
   mask: {
-    cursor: false,
+    cursor: true,
     x: 50,
-    y: 0,
-    radius: 100,
+    y: 50,
+    radius: 150,
   },
   gradient: {
     display: false,

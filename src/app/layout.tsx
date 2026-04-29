@@ -40,7 +40,7 @@ export default async function RootLayout({
         fonts.heading.variable,
         fonts.body.variable,
         fonts.label.variable,
-        fonts.code.variable
+        fonts.code.variable,
       )}
     >
       <head>
@@ -152,7 +152,33 @@ export default async function RootLayout({
               angle: effects.lines.angle,
               color: effects.lines.color,
             }}
-          />
+          >
+            {/* Logo watermark — inside Background so Mask covers it too */}
+            <div
+              style={{
+                position: "absolute",
+                inset: 0,
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+                mixBlendMode: "multiply",
+                pointerEvents: "none",
+              }}
+            >
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img
+                src="/images/logo/Fantastic_Four_Logo_Remastered.png"
+                alt=""
+                style={{
+                  width: "100%",
+                  height: "100%",
+                  objectFit: "contain",
+                  opacity: 0.08,
+                  scale: 2,
+                }}
+              />
+            </div>
+          </Background>
           <Flex
             fillWidth
             minHeight="16"

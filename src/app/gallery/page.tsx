@@ -1,5 +1,4 @@
-import { Flex, Meta, Schema } from "@once-ui-system/core";
-import MasonryGrid from "@/components/gallery/MasonryGrid";
+import { Carousel, Column, Heading, Meta, Schema } from "@once-ui-system/core";
 import { baseURL, gallery, person } from "@/resources";
 
 export async function generateMetadata() {
@@ -13,8 +12,13 @@ export async function generateMetadata() {
 }
 
 export default function Gallery() {
+  const carouselItems = gallery.images.map((image) => ({
+    slide: image.src,
+    alt: image.alt,
+  }));
+
   return (
-    <Flex maxWidth="l">
+    <Column maxWidth="l" gap="l" horizontal="center">
       <Schema
         as="webPage"
         baseURL={baseURL}
@@ -28,7 +32,16 @@ export default function Gallery() {
           image: `${baseURL}${person.avatar}`,
         }}
       />
-      <MasonryGrid />
-    </Flex>
+      <Heading as="h1" variant="display-strong-l">
+        {gallery.label}
+      </Heading>
+      <Carousel
+        fillWidth
+        items={carouselItems}
+        aspectRatio="16 / 9"
+        indicator="thumbnail"
+        sizes="(max-width: 960px) 100vw, 960px"
+      />
+    </Column>
   );
 }

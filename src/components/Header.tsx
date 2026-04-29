@@ -150,20 +150,20 @@ export const Header = () => {
                   selected={pathname.startsWith("/blog")}
                 />
               )}
-              {routes["/gallery"] && (
-                <ToggleButton
-                  prefixIcon="gallery"
-                  href="/gallery"
-                  label={gallery.label}
-                  selected={pathname.startsWith("/gallery")}
-                />
-              )}
               {routes["/members"] && (
                 <ToggleButton
                   prefixIcon="userGroup"
                   href="/members"
                   label={members.label}
                   selected={pathname.startsWith("/members")}
+                />
+              )}
+              {routes["/gallery"] && (
+                <ToggleButton
+                  prefixIcon="gallery"
+                  href="/gallery"
+                  label={gallery.label}
+                  selected={pathname.startsWith("/gallery")}
                 />
               )}
               {routes["/relationships"] && (
