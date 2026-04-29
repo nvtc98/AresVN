@@ -5,15 +5,15 @@ import { useEffect, useState } from "react";
 import Link from "next/link";
 import {
   HouseIcon,
-  InfoIcon,
   GridFourIcon,
   BookOpenIcon,
-  UsersThreeIcon,
-  ImagesIcon,
   HandshakeIcon,
-  ChatCircleIcon,
+  ChatCircleTextIcon,
   SunIcon,
   MoonIcon,
+  PersonSimpleRunIcon,
+  ImageIcon,
+  SignpostIcon,
 } from "@phosphor-icons/react";
 import { useTheme } from "@once-ui-system/core";
 
@@ -80,7 +80,7 @@ export const DockNav = () => {
     },
     {
       href: "/about",
-      icon: <InfoIcon className={styles.icon} />,
+      icon: <SignpostIcon className={styles.icon} />,
       label: about.label,
       routeKey: "/about",
     },
@@ -100,14 +100,14 @@ export const DockNav = () => {
     },
     {
       href: "/members",
-      icon: <UsersThreeIcon className={styles.icon} />,
+      icon: <PersonSimpleRunIcon className={styles.icon} />,
       label: members.label,
       routeKey: "/members",
       matchPrefix: true,
     },
     {
       href: "/gallery",
-      icon: <ImagesIcon className={styles.icon} />,
+      icon: <ImageIcon className={styles.icon} />,
       label: gallery.label,
       routeKey: "/gallery",
       matchPrefix: true,
@@ -121,7 +121,7 @@ export const DockNav = () => {
     },
     {
       href: "/testimonials",
-      icon: <ChatCircle className={styles.icon} />,
+      icon: <ChatCircleTextIcon className={styles.icon} />,
       label: testimonialsPage.label,
       routeKey: "/testimonials",
       matchPrefix: true,

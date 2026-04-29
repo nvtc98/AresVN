@@ -4,7 +4,7 @@
   align-items: center;
   justify-content: center;
   width: 100%;
-  height: 500px;
+  height: 580px;
   overflow: hidden;
 }
 
@@ -14,14 +14,14 @@
   align-items: center;
   justify-content: center;
   z-index: 2;
+  mix-blend-mode: screen;
 }
 
 .centerImage {
-  width: 80px;
-  height: 80px;
+  width: 480px;
+  height: 480px;
   border-radius: 50%;
   object-fit: cover;
-  border: 2px solid var(--neutral-alpha-medium);
   box-shadow: var(--shadow-l);
 }
 
@@ -30,19 +30,22 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  background: none;
-  border: 2px solid transparent;
+  background: var(--page-background);
+  border: 2px solid var(--neutral-border-medium);
   border-radius: 50%;
   cursor: pointer;
   padding: 0;
-  transition: border-color 0.2s ease, transform 0.2s ease;
-  width: 64px;
-  height: 64px;
+  transition: border-color 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
+  width: 100%;
+  height: 100%;
   position: relative;
+  box-shadow: var(--shadow-s);
+  overflow: hidden;
 
   &:hover {
     border-color: var(--brand-border-strong);
     transform: scale(1.15);
+    box-shadow: var(--shadow-m);
   }
 
   &:hover .orbitLabel {
@@ -59,8 +62,8 @@
 .orbitImage {
   width: 100%;
   height: 100%;
-  border-radius: 50%;
   object-fit: cover;
+  display: block;
 }
 
 .orbitLabel {
