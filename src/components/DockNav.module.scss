@@ -1,0 +1,100 @@
+@use "./breakpoints.scss" as breakpoints;
+
+.dockWrapper {
+  position: sticky;
+  top: 0;
+  z-index: 9;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  width: 100%;
+  padding: var(--static-space-8);
+}
+
+/* Shared styles for nav links and theme button */
+.dockItemLink,
+.dockItemBtn {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  color: #888 !important;
+  transition: color 0.15s ease, background 0.15s ease;
+  text-decoration: none !important;
+  padding: 0;
+
+  &:hover {
+    color: #bbb !important;
+    background: var(--neutral-alpha-weak);
+  }
+
+  /* Show tooltip on hover */
+  &:hover .tooltip {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
+    pointer-events: auto;
+  }
+}
+
+.active {
+  color: #fff !important;
+
+  &:hover {
+    color: #fff !important;
+    background: var(--neutral-alpha-weak);
+  }
+}
+
+/* Icon sizing inside DockIcon */
+.icon {
+  width: 50%;
+  height: 50%;
+}
+
+/* Tooltip */
+.tooltip {
+  position: absolute;
+  bottom: calc(100% + 10px);
+  left: 50%;
+  transform: translateX(-50%) translateY(4px);
+  background: var(--neutral-solid-strong);
+  color: var(--neutral-on-solid-strong);
+  padding: 4px 10px;
+  border-radius: var(--radius-s);
+  font-size: 12px;
+  font-weight: 500;
+  white-space: nowrap;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.15s ease, transform 0.15s ease;
+  box-shadow: var(--shadow-m);
+  z-index: 10;
+}
+
+/* Separator between nav items and theme toggle */
+.separator {
+  width: 1px;
+  height: 100%;
+  background: var(--neutral-alpha-medium);
+  align-self: center;
+  flex-shrink: 0;
+}
+
+@media (max-width: breakpoints.$s) {
+  .dockWrapper {
+    top: auto;
+    position: fixed;
+    bottom: var(--static-space-24);
+  }
+
+  /* Hide tooltip on mobile */
+  .tooltip {
+    display: none;
+  }
+}

@@ -1,4 +1,5 @@
 export { Header } from "@/components/Header";
+export { DockNav } from "@/components/DockNav";
 export { Footer } from "@/components/Footer";
 export { Mailchimp } from "@/components/Mailchimp";
 export { ProjectCard } from "@/components/ProjectCard";
@@ -8,3 +9,5 @@ export { Providers } from "@/components/Providers";
 export { ScrollToHash } from "@/components/ScrollToHash";
 export { ThemeToggle } from "@/components/ThemeToggle";
 export { CustomMDX } from "@/components/mdx";
+export { GranimBackground } from "@/components/GranimBackground";
+export { DynamicBackground } from "@/components/DynamicBackground";

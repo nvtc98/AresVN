@@ -4,16 +4,15 @@ import "@/resources/custom.css";
 
 import classNames from "classnames";
 
+import { Column, Flex, Meta } from "@once-ui-system/core";
 import {
-  Background,
-  Column,
-  Flex,
-  Meta,
-  opacity,
-  SpacingToken,
-} from "@once-ui-system/core";
-import { Footer, Header, RouteGuard, Providers } from "@/components";
-import { baseURL, effects, fonts, style, dataStyle, home } from "@/resources";
+  DockNav,
+  RouteGuard,
+  Providers,
+  DynamicBackground,
+} from "@/components";
+import { ConditionalFooter } from "@/components/ConditionalFooter";
+import { baseURL, fonts, style, dataStyle, home } from "@/resources";
 
 export async function generateMetadata() {
   return Meta.generate({
@@ -112,85 +111,19 @@ export default async function RootLayout({
           padding="0"
           horizontal="center"
         >
-          <Background
-            position="fixed"
-            mask={{
-              x: effects.mask.x,
-              y: effects.mask.y,
-              radius: effects.mask.radius,
-              cursor: effects.mask.cursor,
-            }}
-            gradient={{
-              display: effects.gradient.display,
-              opacity: effects.gradient.opacity as opacity,
-              x: effects.gradient.x,
-              y: effects.gradient.y,
-              width: effects.gradient.width,
-              height: effects.gradient.height,
-              tilt: effects.gradient.tilt,
-              colorStart: effects.gradient.colorStart,
-              colorEnd: effects.gradient.colorEnd,
-            }}
-            dots={{
-              display: effects.dots.display,
-              opacity: effects.dots.opacity as opacity,
-              size: effects.dots.size as SpacingToken,
-              color: effects.dots.color,
-            }}
-            grid={{
-              display: effects.grid.display,
-              opacity: effects.grid.opacity as opacity,
-              color: effects.grid.color,
-              width: effects.grid.width,
-              height: effects.grid.height,
-            }}
-            lines={{
-              display: effects.lines.display,
-              opacity: effects.lines.opacity as opacity,
-              size: effects.lines.size as SpacingToken,
-              thickness: effects.lines.thickness,
-              angle: effects.lines.angle,
-              color: effects.lines.color,
-            }}
-          >
-            {/* Logo watermark — inside Background so Mask covers it too */}
-            <div
-              style={{
-                position: "absolute",
-                inset: 0,
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "center",
-                mixBlendMode: "multiply",
-                pointerEvents: "none",
-              }}
-            >
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img
-                src="/images/logo/Fantastic_Four_Logo_Remastered.png"
-                alt=""
-                style={{
-                  width: "100%",
-                  height: "100%",
-                  objectFit: "contain",
-                  opacity: 0.08,
-                  scale: 2,
-                }}
-              />
-            </div>
-          </Background>
+          <DynamicBackground />
           <Flex
             fillWidth
             minHeight="16"
             // hide="s"
           />
-          <Header />
+          <DockNav />
           <Flex zIndex={0} fillWidth padding="l" horizontal="center" flex={1}>
             <Flex horizontal="center" fillWidth minHeight="0">
               <RouteGuard>{children}</RouteGuard>
             </Flex>
           </Flex>
-          <Footer />
+          <ConditionalFooter />
         </Column>
       </Providers>
     </Flex>

@@ -1,0 +1,37 @@
+/* MagicUI Dock - SCSS adaptation of Tailwind styles */
+
+.dock {
+  display: flex;
+  width: max-content;
+  height: 58px;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  border-radius: 16px;
+  border: 1px solid var(--neutral-alpha-weak);
+  padding: 8px;
+  backdrop-filter: blur(12px);
+  background: color-mix(in srgb, var(--page-background) 80%, transparent);
+  box-shadow: var(--shadow-l);
+}
+
+.directionTop {
+  align-items: flex-start;
+}
+
+.directionMiddle {
+  align-items: center;
+}
+
+.directionBottom {
+  align-items: flex-end;
+}
+
+.dockIcon {
+  display: flex;
+  aspect-ratio: 1;
+  cursor: pointer;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+}
