@@ -4,15 +4,13 @@ import {
   Heading,
   Flex,
   Text,
-  Button,
-  Avatar,
   RevealFx,
   Column,
   Schema,
   LetterFx,
-  IconButton,
+  GlitchFx,
 } from "@once-ui-system/core";
-import { home, about, person, social, baseURL } from "@/resources";
+import { home, about, person, baseURL } from "@/resources";
 
 const glitchCharset = [
   "X",
@@ -33,7 +31,12 @@ const glitchCharset = [
 
 export default function Home() {
   return (
-    <Column fillWidth horizontal="center" style={{ minHeight: "80vh" }}>
+    <Column
+      fillWidth
+      horizontal="center"
+      vertical="center"
+      style={{ minHeight: "80vh" }}
+    >
       <Schema
         as="webPage"
         baseURL={baseURL}
@@ -93,16 +96,18 @@ export default function Home() {
           horizontal="center"
           vertical="center"
           gap="m"
+          fillWidth
           style={{ position: "relative", zIndex: 1 }}
         >
-          <RevealFx translateY="4">
+          <GlitchFx fillWidth speed="medium">
             <Heading
               as="h1"
-              align="center"
               variant="display-strong-xl"
               style={{
                 letterSpacing: "0.1em",
                 textShadow: "0 0 30px rgba(130, 80, 255, 0.6)",
+                textAlign: "center",
+                width: "100%",
               }}
             >
               <LetterFx
@@ -113,15 +118,17 @@ export default function Home() {
                 AresVN
               </LetterFx>
             </Heading>
-          </RevealFx>
+          </GlitchFx>
 
-          <RevealFx translateY="8" delay={0.2}>
+          <RevealFx translateY="8" delay={0.2} style={{ width: "100%" }}>
             <Text
-              align="center"
               variant="heading-default-l"
               onBackground="neutral-weak"
               style={{
                 fontFamily: "var(--font-body), sans-serif",
+                textAlign: "center",
+                width: "100%",
+                color: "#e5e5e5ff",
               }}
             >
               <LetterFx

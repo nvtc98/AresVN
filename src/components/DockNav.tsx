@@ -11,7 +11,7 @@ import {
   ChatCircleTextIcon,
   SunIcon,
   MoonIcon,
-  PersonSimpleRunIcon,
+  UserIcon,
   ImageIcon,
   SignpostIcon,
 } from "@phosphor-icons/react";
@@ -100,7 +100,7 @@ export const DockNav = () => {
     },
     {
       href: "/members",
-      icon: <PersonSimpleRunIcon className={styles.icon} />,
+      icon: <UserIcon className={styles.icon} />,
       label: members.label,
       routeKey: "/members",
       matchPrefix: true,
