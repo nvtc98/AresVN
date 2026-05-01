@@ -2,7 +2,15 @@
 
 import { useState, useRef, useEffect, useCallback } from "react";
 import Image from "next/image";
-import { Avatar, Column, Flex, Heading, Text } from "@once-ui-system/core";
+import {
+  Avatar,
+  Column,
+  Flex,
+  GlitchFx,
+  Heading,
+  LetterFx,
+  Text,
+} from "@once-ui-system/core";
 import styles from "./RelationshipsSection.module.scss";
 
 interface Relationship {
@@ -252,7 +260,13 @@ export const RelationshipsSection: React.FC<RelationshipsSectionProps> = ({
               <Flex gap="m" vertical="center">
                 <Avatar src={selected.img} size="l" />
                 <Column gap="4">
-                  <Text variant="heading-strong-l">{selected.name}</Text>
+                  <GlitchFx key={selected.name} speed="medium">
+                    <Text variant="heading-strong-l">
+                      <LetterFx speed="medium" trigger="instant">
+                        {selected.name}
+                      </LetterFx>
+                    </Text>
+                  </GlitchFx>
                   <Text variant="body-default-s" onBackground="neutral-weak">
                     {selected.relationship}
                   </Text>
