@@ -13,7 +13,7 @@ export interface PlayerProfile {
 
 export const players: PlayerProfile[] = [
   {
-    img: "img/team/new2023/h1enle.png",
+    img: "images/members/new2023/h1enle.png",
     name: "h1enle",
     game: {
       cs: {
@@ -24,7 +24,7 @@ export const players: PlayerProfile[] = [
     },
   },
   {
-    img: "img/team/new2023/Hyle.png",
+    img: "images/members/new2023/Hyle.png",
     name: "Hyle",
     game: {
       cs: {
@@ -36,7 +36,7 @@ export const players: PlayerProfile[] = [
     },
   },
   {
-    img: "img/team/new2023/Breezee.png",
+    img: "images/members/new2023/Breezee.png",
     name: "Breezee",
     game: {
       cs: {
@@ -48,7 +48,7 @@ export const players: PlayerProfile[] = [
     },
   },
   {
-    img: "img/team/new2023/env1.png",
+    img: "images/members/new2023/env1.png",
     name: "env1",
     game: {
       cs: {
@@ -60,7 +60,7 @@ export const players: PlayerProfile[] = [
     },
   },
   {
-    img: "img/team/new2023/DORM.png",
+    img: "images/members/new2023/DORM.png",
     name: "D O R M",
     game: {
       cs: {
@@ -72,7 +72,7 @@ export const players: PlayerProfile[] = [
     },
   },
   {
-    img: "img/team/new2023/Nomad.png",
+    img: "images/members/new2023/Nomad.png",
     name: "Nomad",
     game: {
       cs: {
@@ -84,7 +84,7 @@ export const players: PlayerProfile[] = [
     },
   },
   {
-    img: "img/team/new2023/sund0wn.png",
+    img: "images/members/new2023/sund0wn.png",
     name: "sund0wn",
     game: {
       cs: {
@@ -96,7 +96,7 @@ export const players: PlayerProfile[] = [
     },
   },
   {
-    img: "img/team/new2023/TrieuIkoma.png",
+    img: "images/members/new2023/TrieuIkoma.png",
     name: "TrieuIkoma",
     game: {
       cs: {
@@ -108,7 +108,7 @@ export const players: PlayerProfile[] = [
     },
   },
   {
-    img: "img/team/c21456b2da1ad2c47be91d026a5d81d0b2f59b8a_full.jpeg",
+    img: "images/members/c21456b2da1ad2c47be91d026a5d81d0b2f59b8a_full.jpeg",
     name: "Kalibi",
     isHidden: true,
     game: {

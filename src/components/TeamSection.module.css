@@ -1,0 +1,58 @@
+.marqueeContainer {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  width: 100%;
+  overflow: hidden;
+}
+
+.card {
+  position: relative;
+  width: 16rem;
+  flex-shrink: 0;
+  cursor: pointer;
+  overflow: hidden;
+  border-radius: 1rem;
+  border: 1px solid rgba(128, 128, 128, 0.2);
+  background: rgba(128, 128, 128, 0.05);
+  padding: 1rem;
+  transition:
+    background-color 0.3s ease,
+    border-color 0.2s ease;
+}
+
+.card:hover {
+  border-color: rgba(128, 128, 128, 0.4);
+  background: rgba(128, 128, 128, 0.1);
+}
+
+.expanded {
+  border-color: rgba(0, 200, 255, 0.3);
+}
+
+.fade {
+  position: absolute;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.fadeLeft {
+  inset: 0 auto 0 0;
+  width: 4rem;
+  background: linear-gradient(
+    to right,
+    var(--page-background, #000),
+    transparent
+  );
+}
+
+.fadeRight {
+  inset: 0 0 0 auto;
+  width: 4rem;
+  background: linear-gradient(
+    to left,
+    var(--page-background, #000),
+    transparent
+  );
+}

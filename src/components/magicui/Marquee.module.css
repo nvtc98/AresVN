@@ -1,0 +1,50 @@
+.marquee {
+  display: flex;
+  overflow: hidden;
+  gap: var(--marquee-gap, 1rem);
+  position: relative;
+}
+
+.vertical {
+  flex-direction: column;
+}
+
+.track {
+  display: flex;
+  flex-shrink: 0;
+  gap: var(--marquee-gap, 1rem);
+  min-width: 0;
+  animation: scroll var(--marquee-duration, 20s) linear infinite;
+  will-change: transform;
+}
+
+.vertical .track {
+  flex-direction: column;
+  animation-name: scrollVertical;
+}
+
+.reverse {
+  animation-direction: reverse;
+}
+
+.pauseOnHover:hover .track {
+  animation-play-state: paused;
+}
+
+@keyframes scroll {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(calc(-100% - var(--marquee-gap, 1rem)));
+  }
+}
+
+@keyframes scrollVertical {
+  0% {
+    transform: translateY(0);
+  }
+  100% {
+    transform: translateY(calc(-100% - var(--marquee-gap, 1rem)));
+  }
+}
