@@ -1,3 +1,26 @@
+/* ---- split layout ---- */
+
+.splitLayout {
+  position: relative;
+  width: 100%;
+  min-height: 580px;
+  overflow: hidden;
+}
+
+/* ---- orbit side ---- */
+
+.orbitSide {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  margin-left: 0;
+  transition: margin-left 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.orbitSideShifted {
+  margin-left: -20%;
+}
+
 .orbitContainer {
   position: relative;
   display: flex;
@@ -5,7 +28,7 @@
   justify-content: center;
   width: 100%;
   height: 580px;
-  overflow: hidden;
+  overflow: visible;
 }
 
 .centerLogo {
@@ -25,9 +48,75 @@
   box-shadow: var(--shadow-l);
 }
 
+/* ---- detail side ---- */
+
+.detailSide {
+  position: absolute;
+  top: 50%;
+  right: 0;
+  width: 38%;
+  transform: translate(110%, -50%);
+  opacity: 0;
+  transition:
+    transform 0.5s cubic-bezier(0.4, 0, 0.2, 1),
+    opacity 0.4s ease;
+  z-index: 10;
+}
+
+.detailSideOpen {
+  transform: translate(0, -50%);
+  opacity: 1;
+}
+
+.detailCard {
+  position: relative;
+  border: 1px solid var(--neutral-border-medium);
+  border-radius: var(--radius-l);
+  padding: var(--static-space-24);
+  background: var(--page-background);
+}
+
+.closeButton {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 16px;
+  color: var(--neutral-on-background-weak);
+  padding: 4px 8px;
+  border-radius: var(--radius-s);
+  transition: background 0.15s ease, color 0.15s ease;
+
+  &:hover {
+    background: var(--neutral-alpha-weak);
+    color: var(--neutral-on-background-strong);
+  }
+}
+
+/* ---- orbit path ---- */
+
+.pathSvg {
+  pointer-events: none;
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.pathCircle {
+  stroke: var(--neutral-alpha-weak);
+  stroke-width: 1;
+}
+
+/* ---- avatar buttons ---- */
+
 .orbitAvatar {
+  position: absolute;
+  top: 50%;
+  left: 50%;
   display: flex;
-  flex-direction: column;
   align-items: center;
   justify-content: center;
   background: var(--page-background);
@@ -35,23 +124,16 @@
   border-radius: 50%;
   cursor: pointer;
   padding: 0;
-  transition: border-color 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
-  width: 100%;
-  height: 100%;
-  position: relative;
   box-shadow: var(--shadow-s);
   overflow: hidden;
+  transition: border-color 0.15s ease, box-shadow 0.15s ease;
+  z-index: 3;
+}
 
-  &:hover {
-    border-color: var(--brand-border-strong);
-    transform: scale(1.15);
-    box-shadow: var(--shadow-m);
-  }
-
-  &:hover .orbitLabel {
-    opacity: 1;
-    transform: translateX(-50%) translateY(0);
-  }
+.orbitAvatarHovered {
+  border-color: var(--brand-border-strong);
+  box-shadow: var(--shadow-m);
+  z-index: 20;
 }
 
 .orbitAvatarActive {
@@ -64,38 +146,33 @@
   height: 100%;
   object-fit: cover;
   display: block;
+  pointer-events: none;
 }
 
-.orbitLabel {
+/* ---- tooltip ---- */
+
+.tooltip {
   position: absolute;
-  top: calc(100% + 6px);
-  left: 50%;
-  transform: translateX(-50%) translateY(4px);
+  transform: translateX(-50%) translateY(-100%);
   background: var(--neutral-solid-strong);
   color: var(--neutral-on-solid-strong);
-  padding: 3px 8px;
+  padding: 5px 12px;
   border-radius: var(--radius-s);
-  font-size: 11px;
+  font-size: 12px;
   font-weight: 500;
   white-space: nowrap;
   pointer-events: none;
-  opacity: 0;
-  transition: opacity 0.15s ease, transform 0.15s ease;
   box-shadow: var(--shadow-m);
-  z-index: 10;
-}
+  z-index: 100;
 
-.detailCard {
-  animation: fadeIn 0.3s ease;
-}
-
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-    transform: translateY(8px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
+  /* Arrow pointing down */
+  &::after {
+    content: "";
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    border: 6px solid transparent;
+    border-top-color: var(--neutral-solid-strong);
   }
 }

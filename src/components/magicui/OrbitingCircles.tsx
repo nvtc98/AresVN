@@ -61,7 +61,7 @@ export function OrbitingCircles({
                 "--icon-size": `${iconSize}px`,
               } as React.CSSProperties
             }
-            className={`${styles.orbitItem} ${reverse ? styles.reverse : ""} ${className ?? ""}`}
+            className={`${styles.orbitItem} orbit-item ${reverse ? styles.reverse : ""} ${className ?? ""}`}
             {...props}
           >
             {child}

@@ -1,9 +1,8 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useRef, useEffect, useCallback } from "react";
 import Image from "next/image";
 import { Avatar, Column, Flex, Heading, Text } from "@once-ui-system/core";
-import { OrbitingCircles } from "@/components/magicui/OrbitingCircles";
 import styles from "./RelationshipsSection.module.scss";
 
 interface Relationship {
@@ -23,17 +22,60 @@ interface RelationshipsSectionProps {
   relationships: Relationship[];
 }
 
-// Helper to find a relationship by name
 function findRel(relationships: Relationship[], name: string) {
   return relationships.find((r) => r.name === name) ?? null;
 }
+
+/* ------------------------------------------------------------------ */
+/*  useOrbit                                                           */
+/* ------------------------------------------------------------------ */
+
+function useOrbit(
+  count: number,
+  radius: number,
+  duration: number,
+  reverse: boolean,
+) {
+  const angleRef = useRef(0);
+  const lastTimeRef = useRef<number | null>(null);
+  const rafRef = useRef(0);
+  const [positions, setPositions] = useState<{ x: number; y: number }[]>([]);
+
+  const dps = (reverse ? -360 : 360) / duration;
+
+  useEffect(() => {
+    const step = (time: number) => {
+      if (lastTimeRef.current !== null) {
+        const dt = (time - lastTimeRef.current) / 1000;
+        angleRef.current += dps * dt;
+      }
+      lastTimeRef.current = time;
+
+      const next: { x: number; y: number }[] = [];
+      for (let i = 0; i < count; i++) {
+        const a = ((angleRef.current + (360 / count) * i) * Math.PI) / 180;
+        next.push({ x: Math.cos(a) * radius, y: Math.sin(a) * radius });
+      }
+      setPositions(next);
+      rafRef.current = requestAnimationFrame(step);
+    };
+    rafRef.current = requestAnimationFrame(step);
+    return () => cancelAnimationFrame(rafRef.current);
+  }, [count, radius, dps]);
+
+  return positions;
+}
+
+/* ------------------------------------------------------------------ */
+/*  Main section                                                       */
+/* ------------------------------------------------------------------ */
 
 export const RelationshipsSection: React.FC<RelationshipsSectionProps> = ({
   relationships,
 }) => {
   const [selected, setSelected] = useState<Relationship | null>(null);
+  const [hoveredName, setHoveredName] = useState<string | null>(null);
 
-  // Inner orbit: G3 Esports, The Eyes, Afterschool Weather Club
   const innerOrbit: OrbitTeam[] = [
     {
       img: "/images/relationships/g3esports.png",
@@ -52,7 +94,6 @@ export const RelationshipsSection: React.FC<RelationshipsSectionProps> = ({
     },
   ];
 
-  // Outer orbit: Paragames Team, Nomads' Tavern, RinFarm
   const outerOrbit: OrbitTeam[] = [
     {
       img: "/images/relationships/paragames.png",
@@ -67,30 +108,61 @@ export const RelationshipsSection: React.FC<RelationshipsSectionProps> = ({
     { img: "/images/relationships/rinfarm.png", name: "RinFarm", data: null },
   ];
 
-  const handleClick = (team: OrbitTeam) => {
-    if (team.data) {
-      setSelected(selected?.name === team.name ? null : team.data);
-    }
-  };
+  const ICON = 64;
+  const innerPos = useOrbit(innerOrbit.length, 140, 30, false);
+  const outerPos = useOrbit(outerOrbit.length, 240, 45, true);
 
-  const renderAvatar = (team: OrbitTeam) => (
-    <button
-      key={team.name}
-      className={`${styles.orbitAvatar} ${selected?.name === team.name ? styles.orbitAvatarActive : ""}`}
-      onClick={() => handleClick(team)}
-      aria-label={team.name}
-      type="button"
-    >
-      <Image
-        src={team.img}
-        alt={team.name}
-        width={64}
-        height={64}
-        className={styles.orbitImage}
-      />
-      <span className={styles.orbitLabel}>{team.name}</span>
-    </button>
-  );
+  const allItems = [
+    ...innerOrbit.map((t, i) => ({ ...t, pos: innerPos[i] })),
+    ...outerOrbit.map((t, i) => ({ ...t, pos: outerPos[i] })),
+  ];
+
+  const hoveredItem = hoveredName
+    ? allItems.find((t) => t.name === hoveredName)
+    : null;
+
+  const handleClickTeam = useCallback((team: OrbitTeam) => {
+    if (team.data) {
+      setSelected((prev) => (prev?.name === team.name ? null : team.data));
+    }
+  }, []);
+
+  const renderItems = (
+    items: OrbitTeam[],
+    positions: { x: number; y: number }[],
+  ) =>
+    items.map((team, i) => {
+      const pos = positions[i];
+      if (!pos) return null;
+      return (
+        <button
+          key={team.name}
+          type="button"
+          aria-label={team.name}
+          className={`${styles.orbitAvatar} ${
+            selected?.name === team.name ? styles.orbitAvatarActive : ""
+          } ${hoveredName === team.name ? styles.orbitAvatarHovered : ""}`}
+          style={{
+            width: ICON,
+            height: ICON,
+            transform: `translate(${pos.x - ICON / 2}px, ${pos.y - ICON / 2}px)`,
+          }}
+          onClick={() => handleClickTeam(team)}
+          onMouseEnter={() => setHoveredName(team.name)}
+          onMouseLeave={() => setHoveredName(null)}
+        >
+          <Image
+            src={team.img}
+            alt={team.name}
+            width={ICON}
+            height={ICON}
+            className={styles.orbitImage}
+          />
+        </button>
+      );
+    });
+
+  const hasSelected = selected !== null;
 
   return (
     <Column fillWidth gap="xl">
@@ -103,96 +175,103 @@ export const RelationshipsSection: React.FC<RelationshipsSectionProps> = ({
         Mối quan hệ
       </Heading>
 
-      {/* Orbiting Circles — 2 layers */}
-      <div className={styles.orbitContainer}>
-        {/* Center: AresVN logo */}
-        <div className={styles.centerLogo}>
-          <Image
-            src="/images/logo/Fantastic_Four_Logo_Remastered.png"
-            alt="AresVN"
-            width={480}
-            height={480}
-            className={styles.centerImage}
-          />
+      {/* Two-column layout: orbit (left) + detail (right) */}
+      <div
+        className={`${styles.splitLayout} ${hasSelected ? styles.splitLayoutOpen : ""}`}
+      >
+        {/* Left: orbit */}
+        <div
+          className={`${styles.orbitSide} ${hasSelected ? styles.orbitSideShifted : ""}`}
+        >
+          <div className={styles.orbitContainer}>
+            {/* Center logo */}
+            <div className={styles.centerLogo}>
+              <Image
+                src="/images/logo/Fantastic_Four_Logo_Remastered.png"
+                alt="AresVN"
+                width={480}
+                height={480}
+                className={styles.centerImage}
+              />
+            </div>
+
+            {/* Orbit paths */}
+            <svg className={styles.pathSvg}>
+              <circle
+                cx="50%"
+                cy="50%"
+                r={140}
+                fill="none"
+                className={styles.pathCircle}
+              />
+            </svg>
+            <svg className={styles.pathSvg}>
+              <circle
+                cx="50%"
+                cy="50%"
+                r={240}
+                fill="none"
+                className={styles.pathCircle}
+              />
+            </svg>
+
+            {renderItems(innerOrbit, innerPos)}
+            {renderItems(outerOrbit, outerPos)}
+
+            {/* Tooltip */}
+            {hoveredItem?.pos && (
+              <div
+                className={styles.tooltip}
+                style={{
+                  left: `calc(50% + ${hoveredItem.pos.x}px)`,
+                  top: `calc(50% + ${hoveredItem.pos.y - ICON / 2 - 10}px)`,
+                }}
+              >
+                {hoveredItem.name}
+              </div>
+            )}
+          </div>
         </div>
 
-        {/* Inner orbit */}
-        <OrbitingCircles radius={140} duration={35} iconSize={64} speed={3}>
-          {innerOrbit.map(renderAvatar)}
-        </OrbitingCircles>
-
-        {/* Outer orbit — reverse direction */}
-        <OrbitingCircles
-          radius={240}
-          duration={50}
-          iconSize={64}
-          speed={1}
-          reverse
+        {/* Right: detail panel */}
+        <div
+          className={`${styles.detailSide} ${hasSelected ? styles.detailSideOpen : ""}`}
         >
-          {outerOrbit.map(renderAvatar)}
-        </OrbitingCircles>
-      </div>
+          {selected && (
+            <div className={styles.detailCard}>
+              {/* Close button */}
+              <button
+                type="button"
+                className={styles.closeButton}
+                onClick={() => setSelected(null)}
+                aria-label="Đóng"
+              >
+                ✕
+              </button>
 
-      {/* Detail card when selected */}
-      {selected && (
-        <Column
-          border="neutral-medium"
-          radius="l"
-          padding="l"
-          gap="m"
-          className={styles.detailCard}
-        >
-          <Flex gap="m" vertical="center">
-            <Avatar src={selected.img} size="l" />
-            <Column gap="4">
-              <Text variant="heading-strong-l">{selected.name}</Text>
-              <Text variant="body-default-s" onBackground="neutral-weak">
-                {selected.relationship}
-              </Text>
-            </Column>
-          </Flex>
-          <Column gap="s">
-            {selected.descriptions.map((desc, i) => (
-              <Text key={`${selected.name}-desc-${i}`} variant="body-default-m">
-                {desc}
-              </Text>
-            ))}
-          </Column>
-        </Column>
-      )}
-
-      {/* Detail list */}
-      <Heading as="h3" variant="heading-strong-m">
-        Chi tiết
-      </Heading>
-      <Flex fillWidth direction="column" gap="l">
-        {relationships.map((rel) => (
-          <Column
-            key={rel.name}
-            border="neutral-medium"
-            radius="l"
-            padding="l"
-            gap="m"
-          >
-            <Flex gap="m" vertical="center">
-              <Avatar src={rel.img} size="l" />
-              <Column gap="4">
-                <Text variant="heading-strong-l">{rel.name}</Text>
-                <Text variant="body-default-s" onBackground="neutral-weak">
-                  {rel.relationship}
-                </Text>
+              <Flex gap="m" vertical="center">
+                <Avatar src={selected.img} size="l" />
+                <Column gap="4">
+                  <Text variant="heading-strong-l">{selected.name}</Text>
+                  <Text variant="body-default-s" onBackground="neutral-weak">
+                    {selected.relationship}
+                  </Text>
+                </Column>
+              </Flex>
+              <Column gap="s" style={{ marginTop: "var(--static-space-16)" }}>
+                {selected.descriptions.map((desc, i) => (
+                  <Text
+                    key={`${selected.name}-desc-${i}`}
+                    variant="body-default-m"
+                  >
+                    {desc}
+                  </Text>
+                ))}
               </Column>
-            </Flex>
-            <Column gap="s">
-              {rel.descriptions.map((desc, i) => (
-                <Text key={`${rel.name}-desc-${i}`} variant="body-default-m">
-                  {desc}
-                </Text>
-              ))}
-            </Column>
-          </Column>
-        ))}
-      </Flex>
+            </div>
+          )}
+        </div>
+      </div>
     </Column>
   );
 };
