@@ -1,0 +1,46 @@
+.container {
+  position: relative;
+  display: grid;
+  overflow: hidden;
+}
+
+.piece {
+  overflow: hidden;
+  opacity: 0;
+  filter: grayscale(100%);
+  animation: pixelReveal var(--fade-duration) ease forwards;
+  animation-delay: var(--delay);
+}
+
+.noGrayscale {
+  filter: none;
+  animation-name: pixelRevealNoGray;
+}
+
+.pieceImg {
+  display: block;
+}
+
+@keyframes pixelReveal {
+  0% {
+    opacity: 0;
+    filter: grayscale(100%);
+  }
+  50% {
+    opacity: 1;
+    filter: grayscale(100%);
+  }
+  100% {
+    opacity: 1;
+    filter: grayscale(0%);
+  }
+}
+
+@keyframes pixelRevealNoGray {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}

@@ -1,0 +1,19 @@
+.wrapper {
+  position: relative;
+  display: inline-flex;
+}
+
+.glow {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  opacity: 0.7;
+  pointer-events: none;
+  /* scale up slightly so the blur extends beyond the content edges */
+  transform: scale(1.1);
+}
+
+.content {
+  position: relative;
+  z-index: 1;
+}

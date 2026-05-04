@@ -2,8 +2,9 @@
 
 import { useState, useRef, useEffect, useCallback } from "react";
 import Image from "next/image";
+import { PixelImage } from "@/components/magicui/PixelImage";
+import { Backlight } from "@/components/magicui/Backlight";
 import {
-  Avatar,
   Column,
   Flex,
   GlitchFx,
@@ -111,9 +112,13 @@ export const RelationshipsSection: React.FC<RelationshipsSectionProps> = ({
     {
       img: "/images/relationships/nomadstavern.png",
       name: "Nomads' Tavern",
-      data: null,
+      data: findRel(relationships, "Nomads' Tavern"),
     },
-    { img: "/images/relationships/rinfarm.png", name: "RinFarm", data: null },
+    {
+      img: "/images/relationships/rinfarm.png",
+      name: "RinFarm",
+      data: findRel(relationships, "RinFarm"),
+    },
   ];
 
   const ICON = 64;
@@ -246,43 +251,61 @@ export const RelationshipsSection: React.FC<RelationshipsSectionProps> = ({
           className={`${styles.detailSide} ${hasSelected ? styles.detailSideOpen : ""}`}
         >
           {selected && (
-            <div className={styles.detailCard}>
-              {/* Close button */}
-              <button
-                type="button"
-                className={styles.closeButton}
-                onClick={() => setSelected(null)}
-                aria-label="Đóng"
-              >
-                ✕
-              </button>
+            <Backlight key={`bl-${selected.name}`} blur={28}>
+              <div className={styles.detailCard}>
+                {/* Blurred background logo */}
+                <div className={styles.detailBg} aria-hidden>
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img src={selected.img} alt="" />
+                </div>
 
-              <Flex gap="m" vertical="center">
-                <Avatar src={selected.img} size="l" />
-                <Column gap="4">
-                  <GlitchFx key={selected.name} speed="medium">
-                    <Text variant="heading-strong-l">
-                      <LetterFx speed="medium" trigger="instant">
-                        {selected.name}
-                      </LetterFx>
+                {/* Close button */}
+                <button
+                  type="button"
+                  className={styles.closeButton}
+                  onClick={() => setSelected(null)}
+                  aria-label="Đóng"
+                >
+                  ✕
+                </button>
+
+                <Flex gap="m" vertical="center">
+                  <PixelImage
+                    key={selected.name}
+                    src={selected.img}
+                    alt={selected.name}
+                    width={80}
+                    height={80}
+                    customGrid={{ rows: 4, cols: 4 }}
+                    pixelFadeInDuration={800}
+                    maxAnimationDelay={600}
+                    className={styles.detailLogo}
+                  />
+                  <Column gap="4">
+                    <GlitchFx key={selected.name} speed="medium">
+                      <Text variant="heading-strong-l">
+                        <LetterFx speed="medium" trigger="instant">
+                          {selected.name}
+                        </LetterFx>
+                      </Text>
+                    </GlitchFx>
+                    <Text variant="body-default-s" onBackground="neutral-weak">
+                      {selected.relationship}
                     </Text>
-                  </GlitchFx>
-                  <Text variant="body-default-s" onBackground="neutral-weak">
-                    {selected.relationship}
-                  </Text>
+                  </Column>
+                </Flex>
+                <Column gap="s" style={{ marginTop: "var(--static-space-16)" }}>
+                  {selected.descriptions.map((desc, i) => (
+                    <Text
+                      key={`${selected.name}-desc-${i}`}
+                      variant="body-default-m"
+                    >
+                      {desc}
+                    </Text>
+                  ))}
                 </Column>
-              </Flex>
-              <Column gap="s" style={{ marginTop: "var(--static-space-16)" }}>
-                {selected.descriptions.map((desc, i) => (
-                  <Text
-                    key={`${selected.name}-desc-${i}`}
-                    variant="body-default-m"
-                  >
-                    {desc}
-                  </Text>
-                ))}
-              </Column>
-            </div>
+              </div>
+            </Backlight>
           )}
         </div>
       </div>

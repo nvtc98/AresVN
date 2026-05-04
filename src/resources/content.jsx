@@ -235,8 +235,9 @@ const relationships = [
     name: "Paragames Team",
     relationship: "Đồng minh",
     descriptions: [
-      "Paragames Team là đồng minh của AresVN, có mối quan hệ tương trợ tốt đẹp. AresVN thường xuyên bổ trợ lực lượng khi Paragames thiếu hụt.",
-      "Hai bên cũng đã tổ chức một trận giao hữu vào ngày 27/12/2022, thể hiện tinh thần đồng đội và sự gắn kết giữa cả hai.",
+      'Paragames Team là team esports với phong cách thi đấu "biến hạn chế thành lợi thế", nổi tiếng với chiến thuật phi logic một cách hiệu quả và lối chơi đầy bất ngờ. Cái tên Paragames xuất phát từ Para Games, thể hiện tinh thần tự trào tôn vinh ý chí vượt khó và chiến đấu bất chấp giới hạn.',
+      "Paragames Team là đồng minh của AresVN, có mối quan hệ tương trợ tốt đẹp. AresVN thường xuyên bổ trợ lực lượng khi Paragames thiếu hụt. Hai bên cũng đã tổ chức một trận giao hữu vào ngày 27/12/2022.",
+      "Thành viên: Bumbadabum, Fuujin, phuocphysics123, GiantHippo, :o",
     ],
   },
   {
@@ -256,6 +257,26 @@ const relationships = [
     descriptions: [
       "Afterschool Weather Club (Câu lạc bộ thời tiết sau giờ học) là CLB do sund0wn thành lập vào ngày 27/09/2021, với mục tiêu tạo môi trường thư giãn cho các thành viên sau giờ học thông qua game, hội họa và âm nhạc.",
       'CLB có mối quan hệ giao lưu thân thiết với AresVN thông qua chuỗi stream "AresVN Collab" — những buổi gặp gỡ đặc biệt ghi lại khoảnh khắc vui vẻ giữa CLB và những người bạn hàng xóm AresVN.',
+    ],
+  },
+  {
+    img: "/images/relationships/rinfarm.png",
+    name: "RinFarm",
+    relationship: "Đồng minh",
+    descriptions: [
+      "RinFarm là một team sở hữu những thành viên cực kỳ mạnh mẽ, nổi bật với sức chiến đấu vượt trội và tinh thần đồng đội bền bỉ. Dù quy mô không lớn, mỗi thành viên của RinFarm đều mang trong mình năng lực đáng gờm, đủ sức tạo nên những bất ngờ lớn trên chiến trường.",
+      "RinFarm có mối quan hệ đồng minh thân thiết với AresVN, thường xuyên sát cánh trong các trận đấu và hỗ trợ lẫn nhau khi cần thiết.",
+      "Thành viên: Mèo Mướp, Rin, Mia.",
+    ],
+  },
+  {
+    img: "/images/relationships/nomadstavern.png",
+    name: "Nomads' Tavern",
+    relationship: "Đồng minh",
+    descriptions: [
+      "Nomads' Tavern là mái nhà của Nomad — cựu thành viên của AresVN. Sau khi biến mất khỏi AresVN, đây là nơi duy nhất người ta có thể tìm thấy anh ta. Như cái tên, hội này là một nhóm người du mục, còn logo của hội là hình ảnh một con tàu — vì chủ hội là một người vô cùng yêu thích đại dương và những con tàu.",
+      "Dù Nomad đã rời đi, mối quan hệ giữa Nomads' Tavern và AresVN vẫn luôn thân thiện, như một sợi dây kết nối giữa quá khứ và hiện tại.",
+      "Thành viên: Nomad, vuuhuyhoang.",
     ],
   },
 ];
