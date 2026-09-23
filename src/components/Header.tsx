@@ -129,9 +129,15 @@ export const Header = () => {
               {routes["/about"] && (
                 <ToggleButton
                   prefixIcon="infoCircle"
-                  href="/about"
                   label={about.label}
-                  selected={pathname === "/about"}
+                  selected={false}
+                  aria-disabled="true"
+                  title="Đang bảo trì"
+                  onClick={(e) => e.preventDefault()}
+                  style={{
+                    opacity: 0.45,
+                    cursor: "not-allowed",
+                  }}
                 />
               )}
               {routes["/work"] && (
@@ -153,17 +159,29 @@ export const Header = () => {
               {routes["/members"] && (
                 <ToggleButton
                   prefixIcon="userGroup"
-                  href="/members"
                   label={members.label}
-                  selected={pathname.startsWith("/members")}
+                  selected={false}
+                  aria-disabled="true"
+                  title="Đang bảo trì"
+                  onClick={(e) => e.preventDefault()}
+                  style={{
+                    opacity: 0.45,
+                    cursor: "not-allowed",
+                  }}
                 />
               )}
               {routes["/gallery"] && (
                 <ToggleButton
                   prefixIcon="gallery"
-                  href="/gallery"
                   label={gallery.label}
-                  selected={pathname.startsWith("/gallery")}
+                  selected={false}
+                  aria-disabled="true"
+                  title="Bộ sưu tập đang bảo trì"
+                  onClick={(e) => e.preventDefault()}
+                  style={{
+                    opacity: 0.45,
+                    cursor: "not-allowed",
+                  }}
                 />
               )}
               {routes["/relationships"] && (
@@ -177,9 +195,15 @@ export const Header = () => {
               {routes["/testimonials"] && (
                 <ToggleButton
                   prefixIcon="chat"
-                  href="/testimonials"
                   label={testimonialsPage.label}
-                  selected={pathname.startsWith("/testimonials")}
+                  selected={false}
+                  aria-disabled="true"
+                  title="Đang bảo trì"
+                  onClick={(e) => e.preventDefault()}
+                  style={{
+                    opacity: 0.45,
+                    cursor: "not-allowed",
+                  }}
                 />
               )}
               {display.themeSwitcher && (

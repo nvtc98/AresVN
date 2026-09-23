@@ -225,9 +225,10 @@ const relationships = [
     name: "G3 Esports",
     relationship: "Đối thủ / Đồng minh",
     descriptions: [
-      "G3 Esports là đối thủ và là đồng minh của AresVN. Là đối thủ nặng ký của nhau, cả hai đã đụng độ 2 lần trong CSGO và CS2.",
+      "G3 Esports vừa là đối thủ, vừa là đồng minh của AresVN. Là đối thủ nặng ký của nhau, cả hai đã đụng độ 2 lần trong CSGO và CS2.",
       "Là đồng minh giao hảo, cả hai có mối quan hệ tương trợ tốt đẹp. G3 Esports thường xuyên trám các vị trí còn thiếu cho AresVN, đồng thời thường xuyên diễn ra hỗn chiến bên tựa game VALORANT khi các thành viên của hai bên được trộn và tương tàn lẫn nhau.",
-      "Với tiền thân là G3 Esports, team sau này lần lượt được gọi là TỦ LẠNH WINMART, LORD HẢI'S DOMAIN, LORD HẢI'S INFERNO.",
+      "Với tiền thân là G3 Esports, team sau này còn được gọi là TỦ LẠNH WINMART, LORD HẢI'S INFERNO.",
+      "Thành viên: cumsamida, Trieuikoma, BluAf.",
     ],
   },
   {
@@ -248,6 +249,7 @@ const relationships = [
       "The Eyes là đồng minh ẩn mật của AresVN, dù từng sánh vai và hội ngộ trong nhiều trận chiến, hầu hết thành viên của hai bên chẳng hề hay biết về sự tồn tại của nhau. AresVN gọi The Eyes là Ocean Eyes.",
       'Trong sự kiện AresVN: Thanh Trừng, quy tắc phán xét số 3 có nội dung: "Bạn được miễn nếu bạn thuộc Ocean Eyes" như một chi tiết thú vị nhỏ thể hiện mối giao hảo.',
       "Cùng với sự ra mắt của wiki năm 2025, Ocean Eyes chính thức xuất hiện trong danh sách quan hệ của AresVN dưới sự xác nhận và đóng góp của Sir thoái vị.",
+      "Thành viên: Ocean Eyes, Wicked Eyes, Crystal Eyes, Stella Eyes, Gentle Eyes, Astral Eyes, Darkin Eyes.",
     ],
   },
   {
@@ -257,6 +259,7 @@ const relationships = [
     descriptions: [
       "Afterschool Weather Club (Câu lạc bộ thời tiết sau giờ học) là CLB do sund0wn thành lập vào ngày 27/09/2021, với mục tiêu tạo môi trường thư giãn cho các thành viên sau giờ học thông qua game, hội họa và âm nhạc.",
       'CLB có mối quan hệ giao lưu thân thiết với AresVN thông qua chuỗi stream "AresVN Collab" — những buổi gặp gỡ đặc biệt ghi lại khoảnh khắc vui vẻ giữa CLB và những người bạn hàng xóm AresVN.',
+      "Thành viên: Shibeo, Mun, Vicie Laben, Sòi, Mì, Hẻn, Lam, ????, sund0wn, n████.",
     ],
   },
   {

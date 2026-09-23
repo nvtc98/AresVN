@@ -25,7 +25,9 @@
   border: none;
   cursor: pointer;
   color: #888 !important;
-  transition: color 0.15s ease, background 0.15s ease;
+  transition:
+    color 0.15s ease,
+    background 0.15s ease;
   text-decoration: none !important;
   padding: 0;
 
@@ -51,6 +53,13 @@
   }
 }
 
+/* Disabled nav item (e.g. gallery under maintenance) */
+/* Still hoverable (magnify + tooltip), just not clickable */
+.disabled {
+  opacity: 0.45;
+  cursor: not-allowed !important;
+}
+
 /* Icon sizing inside DockIcon */
 .icon {
   width: 50%;
@@ -72,7 +81,9 @@
   white-space: nowrap;
   pointer-events: none;
   opacity: 0;
-  transition: opacity 0.15s ease, transform 0.15s ease;
+  transition:
+    opacity 0.15s ease,
+    transform 0.15s ease;
   box-shadow: var(--shadow-m);
   z-index: 10;
 }

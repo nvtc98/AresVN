@@ -71,6 +71,7 @@ export const DockNav = () => {
     label: string;
     routeKey: string;
     matchPrefix?: boolean;
+    disabled?: boolean;
   }[] = [
     {
       href: "/",
@@ -83,6 +84,7 @@ export const DockNav = () => {
       icon: <SignpostIcon className={styles.icon} />,
       label: about.label,
       routeKey: "/about",
+      disabled: true,
     },
     {
       href: "/work",
@@ -104,6 +106,7 @@ export const DockNav = () => {
       label: members.label,
       routeKey: "/members",
       matchPrefix: true,
+      disabled: true,
     },
     {
       href: "/gallery",
@@ -111,6 +114,7 @@ export const DockNav = () => {
       label: gallery.label,
       routeKey: "/gallery",
       matchPrefix: true,
+      disabled: true,
     },
     {
       href: "/relationships",
@@ -125,6 +129,7 @@ export const DockNav = () => {
       label: testimonialsPage.label,
       routeKey: "/testimonials",
       matchPrefix: true,
+      disabled: true,
     },
   ];
 
@@ -148,6 +153,24 @@ export const DockNav = () => {
           const isActive = item.matchPrefix
             ? pathname.startsWith(item.href)
             : pathname === item.href;
+
+          if (item.disabled) {
+            return (
+              <DockIcon key={item.href}>
+                <span
+                  className={`${styles.dockItemLink} ${styles.disabled}`}
+                  role="link"
+                  aria-label={item.label}
+                  aria-disabled="true"
+                  title="Đang bảo trì"
+                  onClick={(e) => e.preventDefault()}
+                >
+                  {item.icon}
+                  <span className={styles.tooltip}>{item.label}</span>
+                </span>
+              </DockIcon>
+            );
+          }
 
           return (
             <DockIcon key={item.href}>
