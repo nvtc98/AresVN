@@ -221,7 +221,7 @@ const gallery = {
 
 const relationships = [
   {
-    img: "/images/relationships/g3esports.png",
+    img: "/images/relationships/g3esports.webp",
     name: "G3 Esports",
     relationship: "Đối thủ / Đồng minh",
     descriptions: [
@@ -232,7 +232,7 @@ const relationships = [
     ],
   },
   {
-    img: "/images/relationships/paragames.png",
+    img: "/images/relationships/paragames.webp",
     name: "Paragames Team",
     relationship: "Đồng minh",
     descriptions: [
@@ -242,7 +242,7 @@ const relationships = [
     ],
   },
   {
-    img: "/images/relationships/theeyes.jpg",
+    img: "/images/relationships/theeyes.webp",
     name: "The Eyes",
     relationship: "Đồng minh ẩn mật",
     descriptions: [
@@ -253,7 +253,7 @@ const relationships = [
     ],
   },
   {
-    img: "/images/relationships/afterschoolweatherclub.jpg",
+    img: "/images/relationships/afterschoolweatherclub.webp",
     name: "Afterschool Weather Club",
     relationship: "Đồng minh",
     descriptions: [
@@ -263,7 +263,7 @@ const relationships = [
     ],
   },
   {
-    img: "/images/relationships/rinfarm.png",
+    img: "/images/relationships/rinfarm.webp",
     name: "RinFarm",
     relationship: "Đồng minh",
     descriptions: [
@@ -273,7 +273,7 @@ const relationships = [
     ],
   },
   {
-    img: "/images/relationships/nomadstavern.png",
+    img: "/images/relationships/nomadstavern.webp",
     name: "Nomads' Tavern",
     relationship: "Đồng minh",
     descriptions: [

@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useRef, useEffect, useCallback } from "react";
+import { useState, useCallback } from "react";
 import Image from "next/image";
 import { PixelImage } from "@/components/magicui/PixelImage";
 import { Backlight } from "@/components/magicui/Backlight";
@@ -36,46 +36,6 @@ function findRel(relationships: Relationship[], name: string) {
 }
 
 /* ------------------------------------------------------------------ */
-/*  useOrbit                                                           */
-/* ------------------------------------------------------------------ */
-
-function useOrbit(
-  count: number,
-  radius: number,
-  duration: number,
-  reverse: boolean,
-) {
-  const angleRef = useRef(0);
-  const lastTimeRef = useRef<number | null>(null);
-  const rafRef = useRef(0);
-  const [positions, setPositions] = useState<{ x: number; y: number }[]>([]);
-
-  const dps = (reverse ? -360 : 360) / duration;
-
-  useEffect(() => {
-    const step = (time: number) => {
-      if (lastTimeRef.current !== null) {
-        const dt = (time - lastTimeRef.current) / 1000;
-        angleRef.current += dps * dt;
-      }
-      lastTimeRef.current = time;
-
-      const next: { x: number; y: number }[] = [];
-      for (let i = 0; i < count; i++) {
-        const a = ((angleRef.current + (360 / count) * i) * Math.PI) / 180;
-        next.push({ x: Math.cos(a) * radius, y: Math.sin(a) * radius });
-      }
-      setPositions(next);
-      rafRef.current = requestAnimationFrame(step);
-    };
-    rafRef.current = requestAnimationFrame(step);
-    return () => cancelAnimationFrame(rafRef.current);
-  }, [count, radius, dps]);
-
-  return positions;
-}
-
-/* ------------------------------------------------------------------ */
 /*  Main section                                                       */
 /* ------------------------------------------------------------------ */
 
@@ -83,21 +43,20 @@ export const RelationshipsSection: React.FC<RelationshipsSectionProps> = ({
   relationships,
 }) => {
   const [selected, setSelected] = useState<Relationship | null>(null);
-  const [hoveredName, setHoveredName] = useState<string | null>(null);
 
   const innerOrbit: OrbitTeam[] = [
     {
-      img: "/images/relationships/g3esports.png",
+      img: "/images/relationships/g3esports.webp",
       name: "G3 Esports",
       data: findRel(relationships, "G3 Esports"),
     },
     {
-      img: "/images/relationships/theeyes.jpg",
+      img: "/images/relationships/theeyes.webp",
       name: "The Eyes",
       data: findRel(relationships, "The Eyes"),
     },
     {
-      img: "/images/relationships/afterschoolweatherclub.jpg",
+      img: "/images/relationships/afterschoolweatherclub.webp",
       name: "Afterschool Weather Club",
       data: findRel(relationships, "Afterschool Weather Club"),
     },
@@ -105,34 +64,23 @@ export const RelationshipsSection: React.FC<RelationshipsSectionProps> = ({
 
   const outerOrbit: OrbitTeam[] = [
     {
-      img: "/images/relationships/paragames.png",
+      img: "/images/relationships/paragames.webp",
       name: "Paragames Team",
       data: findRel(relationships, "Paragames Team"),
     },
     {
-      img: "/images/relationships/nomadstavern.png",
+      img: "/images/relationships/nomadstavern.webp",
       name: "Nomads' Tavern",
       data: findRel(relationships, "Nomads' Tavern"),
     },
     {
-      img: "/images/relationships/rinfarm.png",
+      img: "/images/relationships/rinfarm.webp",
       name: "RinFarm",
       data: findRel(relationships, "RinFarm"),
     },
   ];
 
   const ICON = 64;
-  const innerPos = useOrbit(innerOrbit.length, 140, 30, false);
-  const outerPos = useOrbit(outerOrbit.length, 240, 45, true);
-
-  const allItems = [
-    ...innerOrbit.map((t, i) => ({ ...t, pos: innerPos[i] })),
-    ...outerOrbit.map((t, i) => ({ ...t, pos: outerPos[i] })),
-  ];
-
-  const hoveredItem = hoveredName
-    ? allItems.find((t) => t.name === hoveredName)
-    : null;
 
   const handleClickTeam = useCallback((team: OrbitTeam) => {
     if (team.data) {
@@ -140,40 +88,52 @@ export const RelationshipsSection: React.FC<RelationshipsSectionProps> = ({
     }
   }, []);
 
-  const renderItems = (
+  // Quỹ đạo chạy hoàn toàn bằng CSS animation (GPU) - không re-render React mỗi frame.
+  const renderRing = (
     items: OrbitTeam[],
-    positions: { x: number; y: number }[],
-  ) =>
-    items.map((team, i) => {
-      const pos = positions[i];
-      if (!pos) return null;
-      return (
-        <button
-          key={team.name}
-          type="button"
-          aria-label={team.name}
-          className={`${styles.orbitAvatar} ${
-            selected?.name === team.name ? styles.orbitAvatarActive : ""
-          } ${hoveredName === team.name ? styles.orbitAvatarHovered : ""}`}
-          style={{
-            width: ICON,
-            height: ICON,
-            transform: `translate(${pos.x - ICON / 2}px, ${pos.y - ICON / 2}px)`,
-          }}
-          onClick={() => handleClickTeam(team)}
-          onMouseEnter={() => setHoveredName(team.name)}
-          onMouseLeave={() => setHoveredName(null)}
-        >
-          <Image
-            src={team.img}
-            alt={team.name}
-            width={ICON}
-            height={ICON}
-            className={styles.orbitImage}
-          />
-        </button>
-      );
-    });
+    radius: number,
+    duration: number,
+    reverse: boolean,
+  ) => (
+    <div
+      className={`${styles.orbitRing} ${reverse ? styles.orbitReverse : ""}`}
+      style={{ "--orbit-duration": `${duration}s` } as React.CSSProperties}
+    >
+      {items.map((team, i) => {
+        const angle = (360 / items.length) * i;
+        return (
+          <div
+            key={team.name}
+            className={styles.orbitSlot}
+            style={{
+              transform: `rotate(${angle}deg) translateX(${radius}px) rotate(${-angle}deg)`,
+            }}
+          >
+            <div className={styles.orbitUpright}>
+              <button
+                type="button"
+                aria-label={team.name}
+                className={`${styles.orbitAvatar} ${
+                  selected?.name === team.name ? styles.orbitAvatarActive : ""
+                }`}
+                style={{ width: ICON, height: ICON }}
+                onClick={() => handleClickTeam(team)}
+              >
+                <Image
+                  src={team.img}
+                  alt={team.name}
+                  width={ICON}
+                  height={ICON}
+                  className={styles.orbitImage}
+                />
+              </button>
+              <div className={styles.tooltip}>{team.name}</div>
+            </div>
+          </div>
+        );
+      })}
+    </div>
+  );
 
   const hasSelected = selected !== null;
 
@@ -200,7 +160,7 @@ export const RelationshipsSection: React.FC<RelationshipsSectionProps> = ({
             {/* Center logo */}
             <div className={styles.centerLogo}>
               <Image
-                src="/images/logo/Fantastic_Four_Logo_Remastered.png"
+                src="/images/logo/Fantastic_Four_Logo_Remastered.webp"
                 alt="AresVN"
                 width={480}
                 height={480}
@@ -228,21 +188,8 @@ export const RelationshipsSection: React.FC<RelationshipsSectionProps> = ({
               />
             </svg>
 
-            {renderItems(innerOrbit, innerPos)}
-            {renderItems(outerOrbit, outerPos)}
-
-            {/* Tooltip */}
-            {hoveredItem?.pos && (
-              <div
-                className={styles.tooltip}
-                style={{
-                  left: `calc(50% + ${hoveredItem.pos.x}px)`,
-                  top: `calc(50% + ${hoveredItem.pos.y - ICON / 2 - 10}px)`,
-                }}
-              >
-                {hoveredItem.name}
-              </div>
-            )}
+            {renderRing(innerOrbit, 140, 30, false)}
+            {renderRing(outerOrbit, 240, 45, true)}
           </div>
         </div>
 

@@ -139,12 +139,67 @@
   stroke-width: 1;
 }
 
-/* ---- avatar buttons ---- */
+/* ---- orbit rings (pure CSS animation, GPU composited) ---- */
 
-.orbitAvatar {
+@keyframes orbitSpin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.orbitRing {
   position: absolute;
   top: 50%;
   left: 50%;
+  width: 0;
+  height: 0;
+  z-index: 3;
+  will-change: transform;
+  animation: orbitSpin var(--orbit-duration, 30s) linear infinite;
+}
+
+.orbitSlot {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 0;
+  height: 0;
+
+  &:hover {
+    z-index: 20;
+  }
+}
+
+/* Counter-rotate so the avatars stay upright while the ring spins */
+.orbitUpright {
+  position: absolute;
+  translate: -50% -50%;
+  animation: orbitSpin var(--orbit-duration, 30s) linear infinite reverse;
+
+  &:hover .tooltip {
+    opacity: 1;
+  }
+}
+
+.orbitReverse {
+  animation-direction: reverse;
+}
+
+.orbitReverse .orbitUpright {
+  animation-direction: normal;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .orbitRing,
+  .orbitUpright {
+    animation-play-state: paused;
+  }
+}
+
+/* ---- avatar buttons ---- */
+
+.orbitAvatar {
+  position: relative;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -156,13 +211,11 @@
   box-shadow: var(--shadow-s);
   overflow: hidden;
   transition: border-color 0.15s ease, box-shadow 0.15s ease;
-  z-index: 3;
-}
 
-.orbitAvatarHovered {
-  border-color: var(--brand-border-strong);
-  box-shadow: var(--shadow-m);
-  z-index: 20;
+  &:hover {
+    border-color: var(--brand-border-strong);
+    box-shadow: var(--shadow-m);
+  }
 }
 
 .orbitAvatarActive {
@@ -182,7 +235,11 @@
 
 .tooltip {
   position: absolute;
-  transform: translateX(-50%) translateY(-100%);
+  bottom: calc(100% + 10px);
+  left: 50%;
+  transform: translateX(-50%);
+  opacity: 0;
+  transition: opacity 0.15s ease;
   background: var(--neutral-solid-strong);
   color: var(--neutral-on-solid-strong);
   padding: 5px 12px;

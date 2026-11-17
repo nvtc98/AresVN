@@ -70,7 +70,7 @@ export function GranimBackground() {
       >
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img
-          src="/images/logo/Fantastic_Four_Logo_Remastered.png"
+          src="/images/logo/Fantastic_Four_Logo_Remastered.webp"
           alt=""
           style={{
             width: "100%",

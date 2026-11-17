@@ -80,7 +80,7 @@ export default function Home() {
         >
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
-            src="/images/logo/Fantastic_Four_Logo_Remastered_Large.png"
+            src="/images/logo/Fantastic_Four_Logo_Remastered_Large.webp"
             alt=""
             style={{
               width: "100%",
