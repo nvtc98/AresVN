@@ -1,0 +1,194 @@
+/* Shared visual language for the AresVN pages: neon cyan + red accent,
+   mono kickers, glitch titles, cursor-following spotlight cards.
+   Everything here is CSS-only (no blur/backdrop-filter) to stay cheap. */
+
+/* ---------- page hero ---------- */
+
+.hero {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 16px;
+  width: 100%;
+  padding: 40px 0 8px;
+}
+
+.kicker {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  font-family: var(--font-code), monospace;
+  font-size: 12px;
+  letter-spacing: 0.32em;
+  text-transform: uppercase;
+  color: var(--brand-on-background-weak);
+
+  &::before,
+  &::after {
+    content: "";
+    width: 40px;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--brand-solid-strong));
+  }
+
+  &::after {
+    transform: scaleX(-1);
+  }
+
+  @media (max-width: 560px) {
+    letter-spacing: 0.2em;
+
+    &::before,
+    &::after {
+      width: 16px;
+    }
+  }
+}
+
+.title {
+  letter-spacing: 0.08em;
+  text-shadow: 0 0 32px color-mix(in srgb, var(--brand-solid-strong) 45%, transparent);
+}
+
+.subtitle {
+  max-width: 40rem;
+  color: var(--neutral-on-background-weak);
+}
+
+/* ---------- section title ---------- */
+
+.sectionTitle {
+  display: flex;
+  align-items: baseline;
+  gap: 16px;
+  width: 100%;
+  margin-bottom: 24px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid var(--neutral-alpha-weak);
+}
+
+.sectionIndex {
+  font-family: var(--font-code), monospace;
+  font-size: 13px;
+  letter-spacing: 0.2em;
+  color: var(--accent-on-background-weak);
+}
+
+/* ---------- spotlight card ---------- */
+
+.spotlight {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  border-radius: var(--radius-l);
+  border: 1px solid var(--neutral-alpha-medium);
+  background: color-mix(in srgb, var(--page-background) 72%, transparent);
+  transition:
+    border-color 0.25s ease,
+    transform 0.25s ease;
+
+  &::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    background: radial-gradient(
+      380px circle at var(--mx, 50%) var(--my, 50%),
+      color-mix(in srgb, var(--brand-solid-strong) 22%, transparent),
+      transparent 60%
+    );
+  }
+
+  &:hover {
+    border-color: color-mix(in srgb, var(--brand-solid-strong) 55%, transparent);
+  }
+
+  &:hover::before {
+    opacity: 1;
+  }
+}
+
+/* ---------- stats strip ---------- */
+
+.stats {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  width: 100%;
+  border: 1px solid var(--neutral-alpha-medium);
+  border-radius: var(--radius-l);
+  overflow: hidden;
+  background: color-mix(in srgb, var(--page-background) 72%, transparent);
+
+  @media (max-width: 720px) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+.stat {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  padding: 28px 12px;
+  border-right: 1px solid var(--neutral-alpha-weak);
+
+  &:last-child {
+    border-right: none;
+  }
+
+  @media (max-width: 720px) {
+    &:nth-child(2) {
+      border-right: none;
+    }
+
+    &:nth-child(-n + 2) {
+      border-bottom: 1px solid var(--neutral-alpha-weak);
+    }
+  }
+}
+
+.statValue {
+  font-family: var(--font-heading), sans-serif;
+  font-size: clamp(32px, 5vw, 48px);
+  font-weight: 700;
+  line-height: 1;
+  font-variant-numeric: tabular-nums;
+  color: var(--neutral-on-background-strong);
+  text-shadow: 0 0 24px color-mix(in srgb, var(--brand-solid-strong) 40%, transparent);
+}
+
+.statLabel {
+  font-family: var(--font-code), monospace;
+  font-size: 11px;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  color: var(--neutral-on-background-weak);
+}
+
+/* ---------- misc ---------- */
+
+.stars {
+  display: inline-flex;
+  gap: 2px;
+  font-size: 14px;
+  letter-spacing: 0;
+}
+
+.starOn {
+  color: #ffc53d;
+  text-shadow: 0 0 8px rgba(255, 197, 61, 0.5);
+}
+
+.starOff {
+  color: var(--neutral-alpha-strong);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .spotlight {
+    transition: none;
+  }
+}

@@ -1,0 +1,211 @@
+/* ---------- featured ---------- */
+
+.featured {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 32px;
+  align-items: center;
+  padding: 40px 44px;
+  background:
+    radial-gradient(
+      90% 120% at 0% 0%,
+      color-mix(in srgb, var(--brand-solid-strong) 16%, transparent),
+      transparent 60%
+    ),
+    radial-gradient(
+      70% 120% at 100% 100%,
+      color-mix(in srgb, var(--accent-solid-strong) 14%, transparent),
+      transparent 60%
+    ),
+    color-mix(in srgb, var(--page-background) 72%, transparent);
+
+  @media (max-width: 760px) {
+    grid-template-columns: 1fr;
+    padding: 28px 24px;
+  }
+}
+
+.featuredQuote {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  min-height: 150px;
+}
+
+.bigMark {
+  font-family: var(--font-heading), serif;
+  font-size: 80px;
+  line-height: 0.5;
+  color: var(--brand-solid-strong);
+  text-shadow: 0 0 24px color-mix(in srgb, var(--brand-solid-strong) 60%, transparent);
+}
+
+.bigText {
+  font-size: clamp(24px, 3.4vw, 38px);
+  font-weight: 700;
+  line-height: 1.25;
+  color: var(--neutral-on-background-strong);
+  animation: fadeUp 0.5s ease both;
+}
+
+.who {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  animation: fadeUp 0.5s 0.1s ease both;
+}
+
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+}
+
+.dots {
+  display: flex;
+  gap: 6px;
+  margin-top: 4px;
+}
+
+.dot {
+  width: 22px;
+  height: 4px;
+  padding: 0;
+  border: none;
+  border-radius: 2px;
+  background: var(--neutral-alpha-medium);
+  cursor: pointer;
+  transition:
+    background 0.2s ease,
+    width 0.2s ease;
+}
+
+.dotActive {
+  width: 40px;
+  background: var(--brand-solid-strong);
+}
+
+.score {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  padding: 24px 32px;
+  border-left: 1px solid var(--neutral-alpha-weak);
+
+  @media (max-width: 760px) {
+    border-left: none;
+    border-top: 1px solid var(--neutral-alpha-weak);
+    padding: 24px 0 0;
+  }
+}
+
+.scoreValue {
+  font-family: var(--font-heading), sans-serif;
+  font-size: 64px;
+  font-weight: 800;
+  line-height: 1;
+  color: var(--neutral-on-background-strong);
+  text-shadow: 0 0 28px color-mix(in srgb, #ffc53d 35%, transparent);
+}
+
+.scoreNote {
+  max-width: 180px;
+  text-align: center;
+  font-family: var(--font-code), monospace;
+  font-size: 11px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--neutral-on-background-weak);
+}
+
+/* ---------- wall ---------- */
+
+.wall {
+  columns: 3 260px;
+  column-gap: 16px;
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin-bottom: 16px;
+  padding: 24px;
+  break-inside: avoid;
+}
+
+.cardHead {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 8px;
+}
+
+.tag {
+  padding: 3px 10px;
+  border-radius: 999px;
+  border: 1px solid var(--neutral-alpha-medium);
+  font-family: var(--font-code), monospace;
+  font-size: 10px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--neutral-on-background-weak);
+}
+
+.quote {
+  font-size: 18px;
+  line-height: 1.5;
+  color: var(--neutral-on-background-strong);
+}
+
+.avatar {
+  position: relative;
+  flex-shrink: 0;
+  width: 40px;
+  height: 40px;
+  overflow: hidden;
+  border-radius: 50%;
+  border: 1px solid var(--neutral-alpha-medium);
+
+  img {
+    object-fit: cover;
+  }
+}
+
+.initials {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(
+    135deg,
+    color-mix(in srgb, var(--brand-solid-strong) 60%, #05070b),
+    color-mix(in srgb, var(--accent-solid-strong) 50%, #05070b)
+  );
+  font-family: var(--font-code), monospace;
+  font-size: 13px;
+  font-weight: 700;
+  color: #fff;
+}
+
+.name {
+  font-weight: 600;
+  color: var(--neutral-on-background-strong);
+}
+
+.cta {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  padding: 40px 24px;
+  text-align: center;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .bigText,
+  .who {
+    animation: none;
+  }
+}

@@ -1,5 +1,7 @@
-import { Carousel, Column, Heading, Meta, Schema } from "@once-ui-system/core";
+import { Column, Meta, Schema } from "@once-ui-system/core";
 import { baseURL, gallery, person } from "@/resources";
+import { PageHero } from "@/components/fx/PageHero";
+import { BentoGallery } from "@/components/gallery/BentoGallery";
 
 export async function generateMetadata() {
   return Meta.generate({
@@ -12,13 +14,8 @@ export async function generateMetadata() {
 }
 
 export default function Gallery() {
-  const carouselItems = gallery.images.map((image) => ({
-    slide: image.src,
-    alt: image.alt,
-  }));
-
   return (
-    <Column maxWidth="l" gap="l" horizontal="center">
+    <Column fillWidth gap="48" style={{ maxWidth: 1180, paddingBottom: 96 }}>
       <Schema
         as="webPage"
         baseURL={baseURL}
@@ -32,16 +29,12 @@ export default function Gallery() {
           image: `${baseURL}${person.avatar}`,
         }}
       />
-      <Heading as="h1" variant="display-strong-l">
-        {gallery.label}
-      </Heading>
-      <Carousel
-        fillWidth
-        items={carouselItems}
-        aspectRatio="16 / 9"
-        indicator="thumbnail"
-        sizes="(max-width: 960px) 100vw, 960px"
+      <PageHero
+        kicker={`Kho lưu trữ · ${gallery.images.length} khoảnh khắc`}
+        title={gallery.label}
+        subtitle="Những khung hình không ai yêu cầu nhưng ai cũng cần."
       />
+      <BentoGallery images={gallery.images} />
     </Column>
   );
 }

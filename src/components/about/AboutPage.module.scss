@@ -1,0 +1,228 @@
+.page {
+  display: flex;
+  flex-direction: column;
+  gap: 72px;
+  width: 100%;
+  max-width: 1080px;
+  padding-bottom: 96px;
+}
+
+.socials {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 8px;
+  margin-top: 8px;
+}
+
+/* ---------- intro ---------- */
+
+.introGrid {
+  display: grid;
+  grid-template-columns: 1.4fr 1fr;
+  gap: 16px;
+
+  @media (max-width: 860px) {
+    grid-template-columns: 1fr;
+  }
+}
+
+.introCard {
+  padding: 32px;
+  line-height: 1.75;
+}
+
+.mottoCard {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 24px;
+  padding: 32px;
+  background:
+    linear-gradient(
+      160deg,
+      color-mix(in srgb, var(--accent-solid-strong) 18%, transparent),
+      transparent 55%
+    ),
+    color-mix(in srgb, var(--page-background) 72%, transparent);
+}
+
+.quoteMark {
+  font-family: var(--font-heading), serif;
+  font-size: 96px;
+  line-height: 0.6;
+  color: var(--accent-solid-strong);
+  text-shadow: 0 0 24px color-mix(in srgb, var(--accent-solid-strong) 50%, transparent);
+}
+
+.motto {
+  font-size: clamp(20px, 2.4vw, 26px);
+  font-weight: 600;
+  line-height: 1.4;
+  color: var(--neutral-on-background-strong);
+}
+
+.mottoFoot {
+  font-family: var(--font-code), monospace;
+  font-size: 11px;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  color: var(--neutral-on-background-weak);
+}
+
+/* ---------- timeline ---------- */
+
+.timeline {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin: 0;
+  padding: 0 0 0 32px;
+  list-style: none;
+
+  &::before {
+    content: "";
+    position: absolute;
+    left: 7px;
+    top: 8px;
+    bottom: 8px;
+    width: 2px;
+    background: linear-gradient(
+      to bottom,
+      var(--brand-solid-strong),
+      color-mix(in srgb, var(--accent-solid-strong) 70%, transparent),
+      transparent
+    );
+  }
+}
+
+.event {
+  position: relative;
+  display: grid;
+  grid-template-columns: 140px 1fr;
+  gap: 16px;
+  align-items: baseline;
+  padding: 20px 24px;
+
+  @media (max-width: 640px) {
+    grid-template-columns: 1fr;
+    gap: 4px;
+  }
+}
+
+.timeline > li {
+  position: relative;
+
+  &::after {
+    content: "";
+    position: absolute;
+    left: -31px;
+    top: 26px;
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: var(--page-background);
+    border: 2px solid var(--brand-solid-strong);
+    box-shadow: 0 0 12px var(--brand-solid-strong);
+  }
+}
+
+.eventDate {
+  font-family: var(--font-code), monospace;
+  font-size: 14px;
+  letter-spacing: 0.08em;
+  color: var(--brand-on-background-weak);
+}
+
+.eventTitle {
+  font-weight: 600;
+  font-size: 18px;
+  color: var(--neutral-on-background-strong);
+}
+
+.eventText {
+  margin-top: 4px;
+  color: var(--neutral-on-background-weak);
+}
+
+/* ---------- games ---------- */
+
+.games {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  gap: 12px;
+}
+
+.game {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 24px;
+  min-height: 140px;
+  padding: 20px;
+
+  &:hover .gameCode {
+    color: var(--brand-solid-strong);
+    -webkit-text-stroke-color: var(--brand-solid-strong);
+    text-shadow: 0 0 20px color-mix(in srgb, var(--brand-solid-strong) 60%, transparent);
+  }
+}
+
+.gameCode {
+  font-family: var(--font-heading), sans-serif;
+  font-size: 40px;
+  font-weight: 800;
+  line-height: 1;
+  color: transparent;
+  -webkit-text-stroke: 1px var(--neutral-on-background-weak);
+  transition:
+    color 0.25s ease,
+    text-shadow 0.25s ease,
+    -webkit-text-stroke-color 0.25s ease;
+}
+
+.gameName {
+  font-size: 13px;
+  color: var(--neutral-on-background-weak);
+}
+
+.aliases {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 20px;
+}
+
+.alias {
+  padding: 6px 14px;
+  border-radius: 999px;
+  border: 1px solid var(--neutral-alpha-medium);
+  font-family: var(--font-code), monospace;
+  font-size: 13px;
+  color: var(--neutral-on-background-medium);
+  transition:
+    border-color 0.2s ease,
+    color 0.2s ease;
+
+  &:hover {
+    border-color: var(--accent-solid-strong);
+    color: var(--neutral-on-background-strong);
+  }
+}
+
+/* ---------- video ---------- */
+
+.video {
+  position: relative;
+  aspect-ratio: 16 / 9;
+  padding: 0;
+
+  iframe {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    border: 0;
+  }
+}

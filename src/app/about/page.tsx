@@ -1,20 +1,11 @@
-import {
-  Avatar,
-  Button,
-  Column,
-  Flex,
-  Heading,
-  Icon,
-  IconButton,
-  Tag,
-  Text,
-  Meta,
-  Schema,
-} from "@once-ui-system/core";
-import { baseURL, about, person, social } from "@/resources";
-import TableOfContents from "@/components/about/TableOfContents";
-import styles from "@/components/about/about.module.scss";
 import React from "react";
+import { Button, Meta, Schema, Text } from "@once-ui-system/core";
+import { baseURL, about, person, social, relationships } from "@/resources";
+import { getActivePlayers } from "@/data/players";
+import { PageHero, SectionTitle } from "@/components/fx/PageHero";
+import { SpotlightCard } from "@/components/fx/SpotlightCard";
+import { StatsStrip } from "@/components/fx/StatsStrip";
+import styles from "@/components/about/AboutPage.module.scss";
 
 export async function generateMetadata() {
   return Meta.generate({
@@ -27,26 +18,18 @@ export async function generateMetadata() {
 }
 
 export default function About() {
-  const structure = [
-    {
-      title: about.intro.title,
-      display: about.intro.display,
-      items: [],
-    },
-    {
-      title: "Thông tin đội",
-      display: about.teamDetails.length > 0,
-      items: about.teamDetails.map((detail) => detail.name),
-    },
-    {
-      title: "Video giới thiệu",
-      display: !!about.youtubeVideoId,
-      items: [],
-    },
+  const aliases =
+    about.teamDetails.find((d) => d.name.startsWith("Tên khác"))?.text ?? [];
+
+  const stats = [
+    { value: 2019, from: 2000, label: "Thành lập" },
+    { value: about.games.length, suffix: "+", label: "Tựa game" },
+    { value: getActivePlayers().length, label: "Thành viên" },
+    { value: relationships.length, label: "Đồng minh" },
   ];
 
   return (
-    <Column maxWidth="m">
+    <div className={styles.page}>
       <Schema
         as="webPage"
         baseURL={baseURL}
@@ -60,188 +43,96 @@ export default function About() {
           image: `${baseURL}${person.avatar}`,
         }}
       />
-      {about.tableOfContent.display && (
-        <Column
-          left="0"
-          style={{ top: "50%", transform: "translateY(-50%)" }}
-          position="fixed"
-          paddingLeft="24"
-          gap="32"
-        >
-          <TableOfContents structure={structure} about={about} />
-        </Column>
+
+      <PageHero
+        kicker="Việt Chiến Thần · 越戰神"
+        title={person.name}
+        subtitle={person.role}
+      >
+        <div className={styles.socials} data-border="rounded">
+          {social.map((item) => (
+            <Button
+              key={item.name}
+              href={item.link}
+              prefixIcon={item.icon}
+              label={item.name}
+              size="s"
+              weight="default"
+              variant="secondary"
+            />
+          ))}
+        </div>
+      </PageHero>
+
+      <StatsStrip stats={stats} />
+
+      <section>
+        <SectionTitle index="01" title={about.intro.title} id="gioi-thieu" />
+        <div className={styles.introGrid}>
+          <SpotlightCard className={styles.introCard}>
+            <Text variant="body-default-l">{about.intro.description}</Text>
+          </SpotlightCard>
+          <SpotlightCard className={styles.mottoCard}>
+            <span className={styles.quoteMark} aria-hidden>
+              &ldquo;
+            </span>
+            <p className={styles.motto}>{about.motto}</p>
+            <span className={styles.mottoFoot}>— Phương châm AresVN</span>
+          </SpotlightCard>
+        </div>
+      </section>
+
+      <section>
+        <SectionTitle index="02" title="Hành trình" id="hanh-trinh" />
+        <ol className={styles.timeline}>
+          {about.timeline.map((e) => (
+            <li key={e.date}>
+              <SpotlightCard className={styles.event}>
+                <span className={styles.eventDate}>{e.date}</span>
+                <div>
+                  <div className={styles.eventTitle}>{e.title}</div>
+                  <div className={styles.eventText}>{e.text}</div>
+                </div>
+              </SpotlightCard>
+            </li>
+          ))}
+        </ol>
+      </section>
+
+      <section>
+        <SectionTitle index="03" title="Đấu trường" id="dau-truong" />
+        <div className={styles.games}>
+          {about.games.map((g) => (
+            <SpotlightCard key={g.code} className={styles.game}>
+              <span className={styles.gameCode}>{g.code}</span>
+              <span className={styles.gameName}>{g.name}</span>
+            </SpotlightCard>
+          ))}
+        </div>
+        <div className={styles.aliases}>
+          {aliases.map((a) => (
+            <span key={a} className={styles.alias}>
+              {a}
+            </span>
+          ))}
+        </div>
+      </section>
+
+      {about.youtubeVideoId && (
+        <section>
+          <SectionTitle index="04" title="Video giới thiệu" id="video" />
+          <SpotlightCard className={styles.video}>
+            <iframe
+              src={`https://www.youtube-nocookie.com/embed/${about.youtubeVideoId}`}
+              title="AresVN Introduction Video"
+              loading="lazy"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              allowFullScreen
+            />
+          </SpotlightCard>
+        </section>
       )}
-      <Flex fillWidth horizontal="center">
-        {about.avatar.display && (
-          <Column
-            className={styles.avatar}
-            position="sticky"
-            minWidth="160"
-            paddingX="l"
-            paddingBottom="xl"
-            gap="m"
-            flex={3}
-            horizontal="center"
-          >
-            <Avatar src={person.avatar} size="xl" />
-            <Flex gap="8" vertical="center">
-              <Icon onBackground="accent-weak" name="globe" />
-              {person.location}
-            </Flex>
-            {person.languages.length > 0 && (
-              <Flex wrap gap="8">
-                {person.languages.map((language) => (
-                  <Tag key={language} size="l">
-                    {language}
-                  </Tag>
-                ))}
-              </Flex>
-            )}
-          </Column>
-        )}
-        <Column className={styles.blockAlign} flex={9} maxWidth={40}>
-          {/* Intro section */}
-          <Column
-            id={about.intro.title}
-            fillWidth
-            minHeight="160"
-            vertical="center"
-            marginBottom="32"
-          >
-            <Heading className={styles.textAlign} variant="display-strong-xl">
-              {person.name}
-            </Heading>
-            <Text
-              className={styles.textAlign}
-              variant="display-default-xs"
-              onBackground="neutral-weak"
-            >
-              {person.role}
-            </Text>
-            {social.length > 0 && (
-              <Flex
-                className={styles.blockAlign}
-                paddingTop="20"
-                paddingBottom="8"
-                gap="8"
-                wrap
-                horizontal="center"
-                fitWidth
-                data-border="rounded"
-              >
-                {social.map(
-                  (item) =>
-                    item.link && (
-                      <React.Fragment key={item.name}>
-                        <Button
-                          className="s-flex-hide"
-                          href={item.link}
-                          prefixIcon={item.icon}
-                          label={item.name}
-                          size="s"
-                          weight="default"
-                          variant="secondary"
-                        />
-                        <IconButton
-                          className="s-flex-show"
-                          size="l"
-                          href={item.link}
-                          icon={item.icon}
-                          variant="secondary"
-                        />
-                      </React.Fragment>
-                    ),
-                )}
-              </Flex>
-            )}
-          </Column>
 
-          {/* Full introduction paragraph */}
-          {about.intro.display && (
-            <Column
-              textVariant="body-default-l"
-              fillWidth
-              gap="m"
-              marginBottom="xl"
-            >
-              {about.intro.description}
-            </Column>
-          )}
-
-          {/* Team details section */}
-          {about.teamDetails.length > 0 && (
-            <>
-              <Heading
-                as="h2"
-                id="Thông tin đội"
-                variant="display-strong-s"
-                marginBottom="m"
-              >
-                Thông tin đội
-              </Heading>
-              <Column fillWidth gap="l" marginBottom="40">
-                {about.teamDetails.map((detail, index) => (
-                  <Column key={`${detail.name}-${index}`} fillWidth gap="4">
-                    <Text id={detail.name} variant="heading-strong-l">
-                      {detail.name}
-                    </Text>
-                    <Flex wrap gap="8" paddingTop="4">
-                      {detail.text.map((item, i) => (
-                        <Tag key={`${detail.name}-${i}`} size="l">
-                          {item}
-                        </Tag>
-                      ))}
-                    </Flex>
-                  </Column>
-                ))}
-              </Column>
-            </>
-          )}
-
-          {/* YouTube introduction video */}
-          {about.youtubeVideoId && (
-            <>
-              <Heading
-                as="h2"
-                id="Video giới thiệu"
-                variant="display-strong-s"
-                marginBottom="m"
-              >
-                Video giới thiệu
-              </Heading>
-              <Column fillWidth marginBottom="40">
-                <Flex
-                  fillWidth
-                  border="neutral-medium"
-                  radius="l"
-                  style={{
-                    position: "relative",
-                    paddingBottom: "56.25%",
-                    height: 0,
-                    overflow: "hidden",
-                  }}
-                >
-                  <iframe
-                    style={{
-                      position: "absolute",
-                      top: 0,
-                      left: 0,
-                      width: "100%",
-                      height: "100%",
-                      border: "none",
-                      borderRadius: "inherit",
-                    }}
-                    src={`https://www.youtube.com/embed/${about.youtubeVideoId}`}
-                    title="AresVN Introduction Video"
-                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                    allowFullScreen
-                  />
-                </Flex>
-              </Column>
-            </>
-          )}
-        </Column>
-      </Flex>
-    </Column>
+    </div>
   );
 }

@@ -14,7 +14,6 @@ import {
   UserIcon,
   ImageIcon,
   SignpostIcon,
-  GameControllerIcon,
 } from "@phosphor-icons/react";
 import { useTheme } from "@once-ui-system/core";
 
@@ -85,7 +84,6 @@ export const DockNav = () => {
       icon: <SignpostIcon className={styles.icon} />,
       label: about.label,
       routeKey: "/about",
-      disabled: true,
     },
     {
       href: "/work",
@@ -107,7 +105,6 @@ export const DockNav = () => {
       label: members.label,
       routeKey: "/members",
       matchPrefix: true,
-      disabled: true,
     },
     {
       href: "/gallery",
@@ -115,7 +112,6 @@ export const DockNav = () => {
       label: gallery.label,
       routeKey: "/gallery",
       matchPrefix: true,
-      disabled: true,
     },
     {
       href: "/relationships",
@@ -129,14 +125,6 @@ export const DockNav = () => {
       icon: <ChatCircleTextIcon className={styles.icon} />,
       label: testimonialsPage.label,
       routeKey: "/testimonials",
-      matchPrefix: true,
-      disabled: true,
-    },
-    {
-      href: "/card-game",
-      icon: <GameControllerIcon className={styles.icon} />,
-      label: "Card Game",
-      routeKey: "/card-game",
       matchPrefix: true,
     },
   ];

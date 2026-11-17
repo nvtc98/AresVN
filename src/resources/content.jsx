@@ -128,6 +128,51 @@ const about = {
     },
   ],
   youtubeVideoId: "1WYTTNxiAlA",
+  motto:
+    "Rạp xiếc không tự sinh ra hay mất đi mà chỉ chuyển từ game này sang game khác.",
+  games: [
+    { code: "CS", name: "Counter-Strike: Global Offensive" },
+    { code: "R6", name: "Rainbow Six Siege" },
+    { code: "VAL", name: "Valorant" },
+    { code: "GTA", name: "Grand Theft Auto V" },
+    { code: "SC2", name: "StarCraft II" },
+    { code: "L4D2", name: "Left 4 Dead 2" },
+    { code: "PHAS", name: "Phasmophobia" },
+  ],
+  // Mốc thời gian: các mốc có ngày cụ thể lấy từ nội dung hiện có,
+  // các mốc chỉ ghi năm là dữ liệu mẫu - chỉnh lại cho đúng.
+  timeline: [
+    {
+      date: "21.02.2019",
+      title: "Khai sinh Việt Chiến Thần",
+      text: "AresVN ra đời với tư cách một đội Counter-Strike: Global Offensive.",
+    },
+    {
+      date: "2020",
+      title: "Mở rộng đấu trường",
+      text: "Valorant và Rainbow Six Siege chính thức gia nhập rạp xiếc.",
+    },
+    {
+      date: "2021",
+      title: "AresVN Collab",
+      text: "Chuỗi stream giao lưu cùng Afterschool Weather Club bắt đầu.",
+    },
+    {
+      date: "27.12.2022",
+      title: "Giao hữu Paragames",
+      text: "Trận giao hữu lịch sử giữa hai đồng minh AresVN và Paragames Team.",
+    },
+    {
+      date: "2023",
+      title: "Đội hình mới",
+      text: "Roster 2023 ra mắt với đầy đủ IGL, AWPer, Entry và Support.",
+    },
+    {
+      date: "2025",
+      title: "Ra mắt wiki",
+      text: "Wiki AresVN ra đời, lưu giữ mọi mối quan hệ và chiến tích.",
+    },
+  ],
 };
 
 const blog = {
@@ -172,47 +217,47 @@ const gallery = {
   description: "Bộ sưu tập ảnh AresVN",
   images: [
     {
-      src: "/images/gallery/portfolio-1.png",
+      src: "/images/gallery/portfolio-1.webp",
       alt: "Four horsemen of not leaving the match",
       orientation: "horizontal",
     },
     {
-      src: "/images/gallery/portfolio-2.png",
+      src: "/images/gallery/portfolio-2.webp",
       alt: "Có camera 4K để làm gì?",
       orientation: "horizontal",
     },
     {
-      src: "/images/gallery/portfolio-3.png",
+      src: "/images/gallery/portfolio-3.webp",
       alt: "Đây là ghêm kinh dị, trust me bro",
       orientation: "horizontal",
     },
     {
-      src: "/images/gallery/portfolio-4.png",
+      src: "/images/gallery/portfolio-4.webp",
       alt: "Sống như người Na'vi",
       orientation: "horizontal",
     },
     {
-      src: "/images/gallery/portfolio-5.png",
+      src: "/images/gallery/portfolio-5.webp",
       alt: "Đừng bao giờ AFK khi kẻ địch ở gần",
       orientation: "horizontal",
     },
     {
-      src: "/images/gallery/portfolio-6.png",
+      src: "/images/gallery/portfolio-6.webp",
       alt: "AresVN Est. 2019",
       orientation: "horizontal",
     },
     {
-      src: "/images/gallery/portfolio-7.png",
+      src: "/images/gallery/portfolio-7.webp",
       alt: "Một bếp lửa chờn vờn sương sớm",
       orientation: "horizontal",
     },
     {
-      src: "/images/gallery/portfolio-8.png",
+      src: "/images/gallery/portfolio-8.webp",
       alt: "Best Squad",
       orientation: "horizontal",
     },
     {
-      src: "/images/gallery/portfolio-9.jpeg",
+      src: "/images/gallery/portfolio-9.webp",
       alt: "Need popcorn",
       orientation: "horizontal",
     },
@@ -284,26 +329,59 @@ const relationships = [
   },
 ];
 
+// rating/tag và các mục không có ảnh là dữ liệu mẫu cho vui - chỉnh tuỳ ý.
 const testimonials = [
   {
     img: "/images/testimonials/01.jpg",
     text: "Delete clan pls.",
     name: "John Doe",
-  },
-  {
-    img: "/images/testimonials/02.jpg",
-    text: "AresVN noob team.",
-    name: "Johnathan",
+    tag: "Đối thủ",
+    rating: 1,
   },
   {
     img: "/images/testimonials/killernavx.jpg",
     text: "They are cute.",
     name: "KillerNavx",
+    tag: "Fan",
+    rating: 5,
+  },
+  {
+    text: "Tưởng vào xem esports, hoá ra xem hài độc thoại. Sẽ quay lại.",
+    name: "Người qua đường",
+    tag: "Khán giả",
+    rating: 5,
+  },
+  {
+    img: "/images/testimonials/02.jpg",
+    text: "AresVN noob team.",
+    name: "Johnathan",
+    tag: "Đối thủ",
+    rating: 1,
+  },
+  {
+    text: "Lần đầu tiên trong đời tôi thắng được một trận. Cảm ơn AresVN.",
+    name: "Bot Easy",
+    tag: "AI đối thủ",
+    rating: 5,
   },
   {
     img: "/images/testimonials/thien.png",
     text: "cho join với",
     name: "Thienxaoloz",
+    tag: "Ứng viên",
+    rating: 5,
+  },
+  {
+    text: "Không hiểu chiến thuật là gì nhưng thắng thật. Rất khó hiểu.",
+    name: "Teammate random",
+    tag: "Đồng đội ghép",
+    rating: 4,
+  },
+  {
+    text: "Ping cao không phải lỗi của tôi. Xin đừng report nữa.",
+    name: "Server Valve",
+    tag: "Hạ tầng",
+    rating: 2,
   },
 ];
 

@@ -8,7 +8,8 @@ import { ConditionalFooter } from "@/components/ConditionalFooter";
 import { RouteGuard } from "@/components/RouteGuard";
 
 // Các route hiển thị "trần" - không background, dock hay footer.
-const FULLSCREEN_ROUTES = ["/card-game"];
+// Thêm route vào đây (vd: "/special") để ẩn chrome.
+const FULLSCREEN_ROUTES: string[] = [];
 
 export function AppChrome({ children }: { children: React.ReactNode }) {
   const pathname = usePathname() ?? "";
