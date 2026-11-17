@@ -1,17 +1,11 @@
 "use client";
 
-import { useState, useCallback } from "react";
+import { useState, useCallback, useRef } from "react";
 import Image from "next/image";
 import { PixelImage } from "@/components/magicui/PixelImage";
-import { Backlight } from "@/components/magicui/Backlight";
-import {
-  Column,
-  Flex,
-  GlitchFx,
-  Heading,
-  LetterFx,
-  Text,
-} from "@once-ui-system/core";
+import { PageHero, SectionTitle } from "@/components/fx/PageHero";
+import { SpotlightCard } from "@/components/fx/SpotlightCard";
+import { Column, Flex, GlitchFx, LetterFx, Text } from "@once-ui-system/core";
 import styles from "./RelationshipsSection.module.scss";
 
 interface Relationship {
@@ -33,6 +27,44 @@ interface RelationshipsSectionProps {
 
 function findRel(relationships: Relationship[], name: string) {
   return relationships.find((r) => r.name === name) ?? null;
+}
+
+// Thứ tự hiển thị trong lưới "Các thế lực".
+const FACTION_ORDER = [
+  "The Eyes",
+  "G3 Esports",
+  "Afterschool Weather Club",
+  "Paragames Team",
+  "Nomads' Tavern",
+  "RinFarm",
+];
+
+type RelKind = "ally" | "rival" | "secret";
+
+function relKind(rel: Relationship | null): RelKind {
+  const r = rel?.relationship.toLowerCase() ?? "";
+  if (r.includes("đối thủ")) return "rival";
+  if (r.includes("ẩn mật")) return "secret";
+  return "ally";
+}
+
+const KIND_LABEL: Record<RelKind, string> = {
+  ally: "Đồng minh",
+  rival: "Đối thủ",
+  secret: "Ẩn mật",
+};
+
+/** Tách đoạn "Thành viên: a, b, c." thành danh sách chip. */
+function splitMembers(descriptions: string[]) {
+  const idx = descriptions.findIndex((d) => d.startsWith("Thành viên:"));
+  if (idx === -1) return { body: descriptions, members: [] as string[] };
+  const members = descriptions[idx]
+    .replace("Thành viên:", "")
+    .replace(/\.\s*$/, "")
+    .split(",")
+    .map((m) => m.trim())
+    .filter(Boolean);
+  return { body: descriptions.filter((_, i) => i !== idx), members };
 }
 
 /* ------------------------------------------------------------------ */
@@ -82,11 +114,18 @@ export const RelationshipsSection: React.FC<RelationshipsSectionProps> = ({
 
   const ICON = 64;
 
+  const orbitRef = useRef<HTMLDivElement>(null);
+
   const handleClickTeam = useCallback((team: OrbitTeam) => {
     if (team.data) {
       setSelected((prev) => (prev?.name === team.name ? null : team.data));
     }
   }, []);
+
+  const selectFromCard = (rel: Relationship) => {
+    setSelected(rel);
+    orbitRef.current?.scrollIntoView({ behavior: "smooth", block: "center" });
+  };
 
   // Quỹ đạo chạy hoàn toàn bằng CSS animation (GPU) - không re-render React mỗi frame.
   const renderRing = (
@@ -113,7 +152,7 @@ export const RelationshipsSection: React.FC<RelationshipsSectionProps> = ({
               <button
                 type="button"
                 aria-label={team.name}
-                className={`${styles.orbitAvatar} ${
+                className={`${styles.orbitAvatar} ${styles[relKind(team.data)]} ${
                   selected?.name === team.name ? styles.orbitAvatarActive : ""
                 }`}
                 style={{ width: ICON, height: ICON }}
@@ -138,15 +177,21 @@ export const RelationshipsSection: React.FC<RelationshipsSectionProps> = ({
   const hasSelected = selected !== null;
 
   return (
-    <Column fillWidth gap="xl">
-      <Heading
-        as="h2"
-        id="Mối quan hệ"
-        variant="display-strong-s"
-        marginBottom="m"
+    <Column fillWidth gap="48" style={{ paddingBottom: 96 }}>
+      <PageHero
+        kicker={`Liên minh · ${relationships.length} thế lực`}
+        title="Mối quan hệ"
+        subtitle="Đồng minh, đối thủ và những kẻ âm thầm đứng sau. Bấm vào một biểu tượng trên quỹ đạo để xem hồ sơ."
       >
-        Mối quan hệ
-      </Heading>
+        <div className={styles.legend}>
+          {(Object.keys(KIND_LABEL) as RelKind[]).map((k) => (
+            <span key={k} className={`${styles.legendItem} ${styles[k]}`}>
+              <span className={styles.legendDot} />
+              {KIND_LABEL[k]}
+            </span>
+          ))}
+        </div>
+      </PageHero>
 
       {/* Two-column layout: orbit (left) + detail (right) */}
       <div
@@ -156,7 +201,7 @@ export const RelationshipsSection: React.FC<RelationshipsSectionProps> = ({
         <div
           className={`${styles.orbitSide} ${hasSelected ? styles.orbitSideShifted : ""}`}
         >
-          <div className={styles.orbitContainer}>
+          <div className={styles.orbitContainer} ref={orbitRef}>
             {/* Center logo */}
             <div className={styles.centerLogo}>
               <Image
@@ -197,65 +242,119 @@ export const RelationshipsSection: React.FC<RelationshipsSectionProps> = ({
         <div
           className={`${styles.detailSide} ${hasSelected ? styles.detailSideOpen : ""}`}
         >
-          {selected && (
-            <Backlight key={`bl-${selected.name}`} blur={28}>
-              <div className={styles.detailCard}>
-                {/* Blurred background logo */}
-                <div className={styles.detailBg} aria-hidden>
-                  {/* eslint-disable-next-line @next/next/no-img-element */}
-                  <img src={selected.img} alt="" />
-                </div>
-
-                {/* Close button */}
-                <button
-                  type="button"
-                  className={styles.closeButton}
-                  onClick={() => setSelected(null)}
-                  aria-label="Đóng"
+          {selected &&
+            (() => {
+              const kind = relKind(selected);
+              const { body, members } = splitMembers(selected.descriptions);
+              return (
+                <SpotlightCard
+                  key={selected.name}
+                  className={`${styles.detailCard} ${styles[kind]}`}
                 >
-                  ✕
-                </button>
+                  <div className={styles.detailBg} aria-hidden>
+                    {/* eslint-disable-next-line @next/next/no-img-element */}
+                    <img src={selected.img} alt="" />
+                  </div>
 
-                <Flex gap="m" vertical="center">
-                  <PixelImage
-                    key={selected.name}
-                    src={selected.img}
-                    alt={selected.name}
-                    width={80}
-                    height={80}
-                    customGrid={{ rows: 4, cols: 4 }}
-                    pixelFadeInDuration={800}
-                    maxAnimationDelay={600}
-                    className={styles.detailLogo}
-                  />
-                  <Column gap="4">
-                    <GlitchFx key={selected.name} speed="medium">
-                      <Text variant="heading-strong-l">
-                        <LetterFx speed="medium" trigger="instant">
-                          {selected.name}
-                        </LetterFx>
+                  <button
+                    type="button"
+                    className={styles.closeButton}
+                    onClick={() => setSelected(null)}
+                    aria-label="Đóng"
+                  >
+                    ✕
+                  </button>
+
+                  <Flex gap="m" vertical="center">
+                    <PixelImage
+                      key={selected.name}
+                      src={selected.img}
+                      alt={selected.name}
+                      width={80}
+                      height={80}
+                      customGrid={{ rows: 4, cols: 4 }}
+                      pixelFadeInDuration={800}
+                      maxAnimationDelay={600}
+                      className={styles.detailLogo}
+                    />
+                    <Column gap="8">
+                      <span className={styles.kindBadge}>
+                        {selected.relationship}
+                      </span>
+                      <GlitchFx key={selected.name} speed="medium">
+                        <Text variant="heading-strong-xl">
+                          <LetterFx speed="medium" trigger="instant">
+                            {selected.name}
+                          </LetterFx>
+                        </Text>
+                      </GlitchFx>
+                    </Column>
+                  </Flex>
+                  <Column gap="s" className={styles.detailBody}>
+                    {body.map((desc, i) => (
+                      <Text
+                        key={`${selected.name}-desc-${i}`}
+                        variant="body-default-m"
+                      >
+                        {desc}
                       </Text>
-                    </GlitchFx>
-                    <Text variant="body-default-s" onBackground="neutral-weak">
-                      {selected.relationship}
-                    </Text>
+                    ))}
                   </Column>
-                </Flex>
-                <Column gap="s" style={{ marginTop: "var(--static-space-16)" }}>
-                  {selected.descriptions.map((desc, i) => (
-                    <Text
-                      key={`${selected.name}-desc-${i}`}
-                      variant="body-default-m"
-                    >
-                      {desc}
-                    </Text>
-                  ))}
-                </Column>
-              </div>
-            </Backlight>
-          )}
+                  {members.length > 0 && (
+                    <div className={styles.members}>
+                      <span className={styles.membersLabel}>Thành viên</span>
+                      <div className={styles.memberChips}>
+                        {members.map((m) => (
+                          <span key={m} className={styles.memberChip}>
+                            {m}
+                          </span>
+                        ))}
+                      </div>
+                    </div>
+                  )}
+                </SpotlightCard>
+              );
+            })()}
         </div>
       </div>
+
+      <section>
+        <SectionTitle index="01" title="Các thế lực" id="the-luc" />
+        <div className={styles.factions}>
+          {FACTION_ORDER.map((name) => findRel(relationships, name))
+            .filter((rel): rel is Relationship => rel !== null)
+            .map((rel) => {
+              const kind = relKind(rel);
+              return (
+                <SpotlightCard
+                  key={rel.name}
+                  className={`${styles.faction} ${styles[kind]} ${
+                    selected?.name === rel.name ? styles.factionActive : ""
+                  }`}
+                >
+                  <button
+                    type="button"
+                    className={styles.factionBtn}
+                    onClick={() => selectFromCard(rel)}
+                  >
+                    <span className={styles.factionLogo}>
+                      <Image src={rel.img} alt="" fill sizes="56px" />
+                    </span>
+                    <span className={styles.factionText}>
+                      <span className={styles.factionName}>{rel.name}</span>
+                      <span className={styles.kindBadge}>
+                        {rel.relationship}
+                      </span>
+                    </span>
+                    <span className={styles.factionDesc}>
+                      {rel.descriptions[0]}
+                    </span>
+                  </button>
+                </SpotlightCard>
+              );
+            })}
+        </div>
+      </section>
     </Column>
   );
 };

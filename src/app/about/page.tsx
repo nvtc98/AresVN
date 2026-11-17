@@ -5,6 +5,7 @@ import { getActivePlayers } from "@/data/players";
 import { PageHero, SectionTitle } from "@/components/fx/PageHero";
 import { SpotlightCard } from "@/components/fx/SpotlightCard";
 import { StatsStrip } from "@/components/fx/StatsStrip";
+import { Acrostic } from "@/components/about/Acrostic";
 import styles from "@/components/about/AboutPage.module.scss";
 
 export async function generateMetadata() {
@@ -83,12 +84,22 @@ export default function About() {
       </section>
 
       <section>
-        <SectionTitle index="02" title="Hành trình" id="hanh-trinh" />
+        <SectionTitle index="02" title="Tuyên ngôn" id="tuyen-ngon" />
+        <Acrostic lines={about.acrostic} />
+      </section>
+
+      <section>
+        <SectionTitle index="03" title="Hành trình" id="hanh-trinh" />
         <ol className={styles.timeline}>
           {about.timeline.map((e) => (
             <li key={e.date}>
               <SpotlightCard className={styles.event}>
-                <span className={styles.eventDate}>{e.date}</span>
+                <div className={styles.eventMeta}>
+                  <span className={styles.eventDate}>{e.date}</span>
+                  {"era" in e && e.era && (
+                    <span className={styles.eventEra}>{e.era}</span>
+                  )}
+                </div>
                 <div>
                   <div className={styles.eventTitle}>{e.title}</div>
                   <div className={styles.eventText}>{e.text}</div>
@@ -100,7 +111,7 @@ export default function About() {
       </section>
 
       <section>
-        <SectionTitle index="03" title="Đấu trường" id="dau-truong" />
+        <SectionTitle index="04" title="Đấu trường" id="dau-truong" />
         <div className={styles.games}>
           {about.games.map((g) => (
             <SpotlightCard key={g.code} className={styles.game}>
@@ -120,7 +131,7 @@ export default function About() {
 
       {about.youtubeVideoId && (
         <section>
-          <SectionTitle index="04" title="Video giới thiệu" id="video" />
+          <SectionTitle index="05" title="Video giới thiệu" id="video" />
           <SpotlightCard className={styles.video}>
             <iframe
               src={`https://www.youtube-nocookie.com/embed/${about.youtubeVideoId}`}

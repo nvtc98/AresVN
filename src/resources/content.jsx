@@ -128,6 +128,15 @@ const about = {
     },
   ],
   youtubeVideoId: "1WYTTNxiAlA",
+  // Tuyên ngôn A-R-E-S-V-N: chữ cái đầu của mỗi câu chính là chữ acrostic.
+  acrostic: [
+    "AWPer team tôi bị gay",
+    "Rạp xiếc trung ương",
+    "Earless",
+    "Súng lỗi à?",
+    "Vãi cả -99",
+    "Nomad has left the team",
+  ],
   motto:
     "Rạp xiếc không tự sinh ra hay mất đi mà chỉ chuyển từ game này sang game khác.",
   games: [
@@ -139,23 +148,20 @@ const about = {
     { code: "L4D2", name: "Left 4 Dead 2" },
     { code: "PHAS", name: "Phasmophobia" },
   ],
-  // Mốc thời gian: các mốc có ngày cụ thể lấy từ nội dung hiện có,
-  // các mốc chỉ ghi năm là dữ liệu mẫu - chỉnh lại cho đúng.
+  // Nguồn: AresVN Wiki – Biên niên sử (aresvn.miraheze.org). Chỉ giữ các
+  // chương "epic"; các giai đoạn trầm (Civil War, NNN, TTT...) được lược bỏ.
   timeline: [
     {
-      date: "21.02.2019",
-      title: "Khai sinh Việt Chiến Thần",
-      text: "AresVN ra đời với tư cách một đội Counter-Strike: Global Offensive.",
+      date: "21.02.2019 · 10:13",
+      era: "Genesis",
+      title: "Khai sinh từ hư vô",
+      text: "h1enle đọc lên cái tên AresVN. Không biểu quyết, không phương án dự phòng — chỉ một lần đọc thành lời và tất cả đều hiểu. h1enle, Hyle, Breezee, env1, D O R M đứng cạnh nhau. Màn đêm bị xé toạc.",
     },
     {
-      date: "2020",
-      title: "Mở rộng đấu trường",
-      text: "Valorant và Rainbow Six Siege chính thức gia nhập rạp xiếc.",
-    },
-    {
-      date: "2021",
-      title: "AresVN Collab",
-      text: "Chuỗi stream giao lưu cùng Afterschool Weather Club bắt đầu.",
+      date: "Kỷ nguyên II",
+      era: "Kaleidoscope",
+      title: "Bùng nổ bản sắc",
+      text: "Chinh phạt VALORANT, mở rộng văn hóa, chia core team và sub team, thu nạp thêm chiến binh mới. Rạp xiếc lan sang mọi chiến trường từ PvP đến PvE.",
     },
     {
       date: "27.12.2022",
@@ -163,14 +169,27 @@ const about = {
       text: "Trận giao hữu lịch sử giữa hai đồng minh AresVN và Paragames Team.",
     },
     {
-      date: "2023",
-      title: "Đội hình mới",
-      text: "Roster 2023 ra mắt với đầy đủ IGL, AWPer, Entry và Support.",
+      date: "2025",
+      title: "Biên niên sử được viết",
+      text: "AresVN Wiki ra đời, khắc ghi mọi chiến tích, liên minh và truyền thuyết của Việt Chiến Thần.",
     },
     {
-      date: "2025",
-      title: "Ra mắt wiki",
-      text: "Wiki AresVN ra đời, lưu giữ mọi mối quan hệ và chiến tích.",
+      date: "02.09.2025",
+      era: "Operation: Emblem Lost",
+      title: "Giành lại biểu trưng",
+      text: "Một thế lực bí ẩn tráo đổi biểu trưng AresVN trên mọi nền tảng. Cả đội hội quân offline tại Dino Gaming — trận chiến vừa khép lại, biểu trưng đồng loạt trở về. AresVN khôi phục nền văn minh.",
+    },
+    {
+      date: "27.02.2026",
+      era: "EAT",
+      title: "env1 Above Time",
+      text: "env1 vượt khỏi Time Rift, mang bản thể Gab trở lại và tuyên bố: \"EAT!\". Lịch sử bước sang kỷ nguyên mới.",
+    },
+    {
+      date: "Hiện tại",
+      era: "Assemble",
+      title: "AresVN Assemble",
+      text: "Mỗi người một lối đi, nhưng chỉ cần một lệnh hiệu triệu, tất cả lại hội quân dưới một mái nhà — khí thế vẹn nguyên, ăn ý đến kỳ lạ.",
     },
   ],
 };
@@ -368,6 +387,7 @@ const testimonials = [
     img: "/images/testimonials/thien.png",
     text: "cho join với",
     name: "Thienxaoloz",
+    jumpscare: true,
     tag: "Ứng viên",
     rating: 5,
   },

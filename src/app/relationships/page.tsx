@@ -14,7 +14,7 @@ export async function generateMetadata() {
 
 export default function RelationshipsPage() {
   return (
-    <Column maxWidth="xl" gap="xl">
+    <Column fillWidth style={{ maxWidth: 1180 }}>
       <Schema
         as="webPage"
         baseURL={baseURL}

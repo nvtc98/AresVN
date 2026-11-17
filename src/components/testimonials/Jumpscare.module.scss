@@ -1,0 +1,195 @@
+.overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 10000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  background: #000;
+  cursor: pointer;
+  animation:
+    shake 0.09s linear infinite,
+    out 1.4s ease-in forwards;
+}
+
+/* blinding red-white flash on impact */
+.flash {
+  position: absolute;
+  inset: 0;
+  z-index: 3;
+  pointer-events: none;
+  animation: flash 0.45s steps(1) forwards;
+}
+
+.face {
+  position: relative;
+  width: min(110vw, 110vh);
+  aspect-ratio: 1;
+  animation: slam 0.12s cubic-bezier(0.2, 1.6, 0.4, 1) both;
+
+  img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+}
+
+.main {
+  animation: flicker 0.16s steps(2) infinite;
+  filter: contrast(1.5) saturate(1.4);
+}
+
+/* chromatic aberration ghosts */
+.red,
+.cyan {
+  mix-blend-mode: screen;
+  opacity: 0.75;
+}
+
+.red {
+  filter: sepia(1) saturate(8) hue-rotate(-50deg);
+  animation: splitL 0.1s steps(2) infinite;
+}
+
+.cyan {
+  filter: sepia(1) saturate(8) hue-rotate(150deg);
+  animation: splitR 0.1s steps(2) infinite;
+}
+
+.noise {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  pointer-events: none;
+  opacity: 0.35;
+  background: repeating-linear-gradient(
+    to bottom,
+    rgba(255, 255, 255, 0.12) 0 2px,
+    transparent 2px 4px
+  );
+  animation: roll 0.2s linear infinite;
+}
+
+.vignette {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  pointer-events: none;
+  background: radial-gradient(circle, transparent 35%, rgba(120, 0, 0, 0.85) 100%);
+}
+
+@keyframes slam {
+  0% {
+    transform: scale(0.15) rotate(-12deg);
+  }
+  100% {
+    transform: scale(1) rotate(0);
+  }
+}
+
+@keyframes shake {
+  0% {
+    transform: translate(0, 0);
+  }
+  25% {
+    transform: translate(-14px, 9px) rotate(-1deg);
+  }
+  50% {
+    transform: translate(12px, -11px) rotate(1deg);
+  }
+  75% {
+    transform: translate(-9px, -7px);
+  }
+  100% {
+    transform: translate(10px, 12px);
+  }
+}
+
+@keyframes flash {
+  0% {
+    background: #fff;
+  }
+  12% {
+    background: #ff0022;
+  }
+  24% {
+    background: transparent;
+  }
+  36% {
+    background: rgba(255, 255, 255, 0.85);
+  }
+  48% {
+    background: transparent;
+  }
+}
+
+@keyframes flicker {
+  0% {
+    filter: contrast(1.5) saturate(1.4);
+  }
+  100% {
+    filter: invert(1) contrast(2) hue-rotate(160deg);
+  }
+}
+
+@keyframes splitL {
+  0% {
+    transform: translate(-18px, 4px);
+  }
+  100% {
+    transform: translate(-6px, -8px);
+  }
+}
+
+@keyframes splitR {
+  0% {
+    transform: translate(16px, -6px);
+  }
+  100% {
+    transform: translate(6px, 9px);
+  }
+}
+
+@keyframes roll {
+  to {
+    background-position: 0 8px;
+  }
+}
+
+@keyframes out {
+  0%,
+  80% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+/* Still a surprise, but no strobing or shaking for motion-sensitive visitors */
+@media (prefers-reduced-motion: reduce) {
+  .overlay,
+  .flash,
+  .main,
+  .red,
+  .cyan,
+  .noise {
+    animation: none;
+  }
+
+  .overlay {
+    animation: out 1.4s ease-in forwards;
+  }
+
+  .face {
+    animation: none;
+  }
+
+  .red,
+  .cyan {
+    display: none;
+  }
+}

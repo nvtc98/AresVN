@@ -70,6 +70,171 @@
   color: var(--neutral-on-background-weak);
 }
 
+/* ---------- acrostic A-R-E-S-V-N (horizontal, hover to extend) ---------- */
+
+.acrostic {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+}
+
+.acroRow {
+  display: flex;
+  justify-content: center;
+  align-items: baseline;
+  gap: clamp(8px, 1.6vw, 20px);
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.acroItem {
+  display: flex;
+  align-items: baseline;
+  cursor: default;
+  outline: none;
+  border-radius: var(--radius-m);
+
+  &:focus-visible {
+    box-shadow: 0 0 0 2px var(--brand-solid-strong);
+  }
+}
+
+.acroLetter {
+  position: relative;
+  font-family: var(--font-heading), sans-serif;
+  font-size: clamp(44px, 7vw, 88px);
+  font-weight: 900;
+  line-height: 1;
+  color: transparent;
+  -webkit-text-stroke: 1.5px var(--brand-solid-strong);
+  text-shadow: 0 0 28px color-mix(in srgb, var(--brand-solid-strong) 35%, transparent);
+  transition: -webkit-text-stroke-color 0.2s ease;
+
+  /* RGB split layers, only visible while open */
+  &::before,
+  &::after {
+    content: attr(data-letter);
+    position: absolute;
+    inset: 0;
+    opacity: 0;
+    -webkit-text-stroke: 0;
+    pointer-events: none;
+    mix-blend-mode: screen;
+    transition: opacity 0.15s ease;
+  }
+
+  &::before {
+    color: #ff2d55;
+    transform: translate(-3px, 1px);
+  }
+
+  &::after {
+    color: #22d3ee;
+    transform: translate(3px, -1px);
+  }
+}
+
+/* the rest of the phrase: collapsed to zero width until opened */
+.acroRest {
+  display: grid;
+  grid-template-columns: 0fr;
+  opacity: 0;
+  transition:
+    grid-template-columns 0.45s cubic-bezier(0.2, 0.7, 0.2, 1),
+    opacity 0.3s ease;
+
+  span {
+    overflow: hidden;
+    white-space: nowrap;
+    font-size: clamp(18px, 2.4vw, 30px);
+    font-weight: 700;
+    color: var(--neutral-on-background-strong);
+    text-shadow: 0 0 18px color-mix(in srgb, var(--brand-solid-strong) 40%, transparent);
+  }
+}
+
+.acroOpen {
+  .acroLetter {
+    color: transparent;
+    background: linear-gradient(135deg, var(--brand-solid-strong), var(--accent-solid-strong));
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-stroke-color: transparent;
+    animation: acroGlitch 0.35s steps(2) infinite;
+
+    &::before,
+    &::after {
+      opacity: 0.8;
+    }
+  }
+
+  .acroRest {
+    grid-template-columns: 1fr;
+    opacity: 1;
+  }
+}
+
+@keyframes acroGlitch {
+  0% {
+    transform: translate(0);
+  }
+  50% {
+    transform: translate(-2px, 1px) skewX(-6deg);
+  }
+  100% {
+    transform: translate(2px, -1px);
+  }
+}
+
+/* caption: shows the full phrase on small screens, a hint elsewhere */
+.acroCaption {
+  min-height: 1.6em;
+  margin: 0;
+  font-size: 18px;
+  font-weight: 600;
+  text-align: center;
+  color: var(--neutral-on-background-strong);
+
+  b {
+    color: var(--brand-solid-strong);
+  }
+
+  @media (min-width: 721px) {
+    .acroFull {
+      display: none;
+    }
+  }
+}
+
+.acroHint {
+  font-family: var(--font-code), monospace;
+  font-size: 11px;
+  font-weight: 400;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  color: var(--neutral-on-background-weak);
+}
+
+@media (max-width: 720px) {
+  .acroOpen .acroRest {
+    grid-template-columns: 0fr;
+    opacity: 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .acroRest {
+    transition: none;
+  }
+
+  .acroOpen .acroLetter {
+    animation: none;
+  }
+}
+
 /* ---------- timeline ---------- */
 
 .timeline {
@@ -100,7 +265,7 @@
 .event {
   position: relative;
   display: grid;
-  grid-template-columns: 140px 1fr;
+  grid-template-columns: 170px 1fr;
   gap: 16px;
   align-items: baseline;
   padding: 20px 24px;
@@ -126,6 +291,25 @@
     border: 2px solid var(--brand-solid-strong);
     box-shadow: 0 0 12px var(--brand-solid-strong);
   }
+}
+
+.eventMeta {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 8px;
+}
+
+.eventEra {
+  padding: 2px 8px;
+  border-radius: 999px;
+  border: 1px solid color-mix(in srgb, var(--accent-solid-strong) 50%, transparent);
+  background: color-mix(in srgb, var(--accent-solid-strong) 12%, transparent);
+  font-family: var(--font-code), monospace;
+  font-size: 10px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--neutral-on-background-strong);
 }
 
 .eventDate {

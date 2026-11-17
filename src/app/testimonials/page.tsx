@@ -12,6 +12,7 @@ import {
   FeaturedTestimonial,
   TestimonialWall,
 } from "@/components/testimonials/TestimonialWall";
+import { JumpscareOverlay } from "@/components/testimonials/Jumpscare";
 import styles from "@/components/testimonials/Testimonials.module.scss";
 
 export async function generateMetadata() {
@@ -49,6 +50,7 @@ export default function TestimonialsPage() {
       />
 
       <FeaturedTestimonial items={testimonials} />
+      <JumpscareOverlay />
 
       <section>
         <SectionTitle index="01" title="Bức tường danh vọng" id="buc-tuong" />

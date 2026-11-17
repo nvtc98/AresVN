@@ -5,7 +5,10 @@ import Image from "next/image";
 import classNames from "classnames";
 import { SpotlightCard } from "@/components/fx/SpotlightCard";
 import { Stars } from "@/components/fx/PageHero";
+import { triggerJumpscare } from "./Jumpscare";
 import styles from "./Testimonials.module.scss";
+
+const SCARE_SRC = "/images/testimonials/thien-scare.webp";
 
 export interface Testimonial {
   img?: string;
@@ -13,12 +16,24 @@ export interface Testimonial {
   name: string;
   tag?: string;
   rating?: number;
+  /** Easter egg: hovering/tapping the avatar triggers the jumpscare. */
+  jumpscare?: boolean;
 }
 
-function Avatar({ t }: { t: Testimonial }) {
+/** Hover/tap handlers that fire the jumpscare for flagged testimonials. */
+function scareProps(t: Testimonial) {
+  return t.jumpscare
+    ? {
+        onMouseEnter: () => triggerJumpscare(SCARE_SRC),
+        onClick: () => triggerJumpscare(SCARE_SRC),
+      }
+    : {};
+}
+
+function Avatar({ t, scare = false }: { t: Testimonial; scare?: boolean }) {
   if (t.img) {
     return (
-      <span className={styles.avatar}>
+      <span className={styles.avatar} {...(scare ? scareProps(t) : {})}>
         <Image src={t.img} alt="" fill sizes="40px" />
       </span>
     );
@@ -63,7 +78,7 @@ export function FeaturedTestimonial({ items }: { items: Testimonial[] }) {
           {t.text}
         </p>
         <div key={`w-${i}`} className={styles.who}>
-          <Avatar t={t} />
+          <Avatar t={t} scare />
           <span className={styles.name}>{t.name}</span>
           {t.tag && <span className={styles.tag}>{t.tag}</span>}
         </div>
@@ -94,7 +109,7 @@ export function TestimonialWall({ items }: { items: Testimonial[] }) {
   return (
     <div className={styles.wall}>
       {items.map((t) => (
-        <SpotlightCard key={t.name} className={styles.card}>
+        <SpotlightCard key={t.name} className={styles.card} {...scareProps(t)}>
           <div className={styles.cardHead}>
             {t.rating ? <Stars value={t.rating} /> : <span />}
             {t.tag && <span className={styles.tag}>{t.tag}</span>}
