@@ -5,13 +5,8 @@ import "@/resources/custom.css";
 import classNames from "classnames";
 
 import { Column, Flex, Meta } from "@once-ui-system/core";
-import {
-  DockNav,
-  RouteGuard,
-  Providers,
-  DynamicBackground,
-} from "@/components";
-import { ConditionalFooter } from "@/components/ConditionalFooter";
+import { Providers } from "@/components";
+import { AppChrome } from "@/components/AppChrome";
 import { baseURL, fonts, style, dataStyle, home } from "@/resources";
 
 export async function generateMetadata() {
@@ -111,19 +106,7 @@ export default async function RootLayout({
           padding="0"
           horizontal="center"
         >
-          <DynamicBackground />
-          <Flex
-            fillWidth
-            minHeight="16"
-            // hide="s"
-          />
-          <DockNav />
-          <Flex zIndex={0} fillWidth padding="l" horizontal="center" flex={1}>
-            <Flex horizontal="center" fillWidth minHeight="0">
-              <RouteGuard>{children}</RouteGuard>
-            </Flex>
-          </Flex>
-          <ConditionalFooter />
+          <AppChrome>{children}</AppChrome>
         </Column>
       </Providers>
     </Flex>

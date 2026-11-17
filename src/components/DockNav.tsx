@@ -14,6 +14,7 @@ import {
   UserIcon,
   ImageIcon,
   SignpostIcon,
+  GameControllerIcon,
 } from "@phosphor-icons/react";
 import { useTheme } from "@once-ui-system/core";
 
@@ -130,6 +131,13 @@ export const DockNav = () => {
       routeKey: "/testimonials",
       matchPrefix: true,
       disabled: true,
+    },
+    {
+      href: "/card-game",
+      icon: <GameControllerIcon className={styles.icon} />,
+      label: "Card Game",
+      routeKey: "/card-game",
+      matchPrefix: true,
     },
   ];
 

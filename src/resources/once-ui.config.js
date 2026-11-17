@@ -12,6 +12,7 @@ const routes = {
   "/gallery": true,
   "/relationships": true,
   "/testimonials": true,
+  "/card-game": true,
   "/test-vanta": true,
   "/test-granim": true,
 };
