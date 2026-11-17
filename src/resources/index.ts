@@ -11,6 +11,7 @@ export {
   testimonialsPage,
   gallery,
   relationships,
+  friendProfiles,
   testimonials,
   features,
 } from "./content";

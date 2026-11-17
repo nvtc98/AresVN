@@ -1,0 +1,284 @@
+.ally {
+  --kind: #22d3ee;
+}
+
+.rival {
+  --kind: #ff4d5e;
+}
+
+.secret {
+  --kind: #a78bfa;
+}
+
+.wrap {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+/* ---------- filters ---------- */
+
+.filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 7px 14px;
+  border-radius: 999px;
+  border: 1px solid var(--neutral-alpha-medium);
+  background: transparent;
+  color: var(--neutral-on-background-weak);
+  font-size: 13px;
+  cursor: pointer;
+  transition:
+    color 0.2s ease,
+    border-color 0.2s ease,
+    background 0.2s ease;
+
+  &:hover {
+    color: var(--neutral-on-background-strong);
+    border-color: var(--neutral-alpha-strong);
+  }
+}
+
+.chipActive {
+  color: var(--neutral-on-background-strong);
+  border-color: var(--kind, var(--brand-solid-strong));
+  background: color-mix(in srgb, var(--kind, var(--brand-solid-strong)) 14%, transparent);
+}
+
+.dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--kind);
+  box-shadow: 0 0 8px var(--kind);
+}
+
+.count {
+  font-family: var(--font-code), monospace;
+  font-size: 11px;
+  opacity: 0.7;
+}
+
+/* ---------- grid ---------- */
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(210px, 1fr));
+  grid-auto-flow: dense;
+  gap: 10px;
+}
+
+.card {
+  position: relative;
+  overflow: hidden;
+  border-radius: var(--radius-l);
+  border: 1px solid var(--neutral-alpha-medium);
+  background: color-mix(in srgb, var(--page-background) 72%, transparent);
+  animation: cardIn 0.4s cubic-bezier(0.2, 0.7, 0.2, 1) both;
+  animation-delay: var(--delay, 0ms);
+  transition:
+    border-color 0.2s ease,
+    box-shadow 0.2s ease;
+
+  &::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 2px;
+    background: var(--kind);
+    opacity: 0.7;
+  }
+
+  &:hover {
+    border-color: color-mix(in srgb, var(--kind) 55%, transparent);
+  }
+}
+
+@keyframes cardIn {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+}
+
+.open {
+  grid-column: span 2;
+  border-color: var(--kind);
+  box-shadow: 0 16px 40px -16px color-mix(in srgb, var(--kind) 55%, transparent);
+
+  @media (max-width: 520px) {
+    grid-column: span 1;
+  }
+}
+
+.head {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  width: 100%;
+  padding: 14px 14px 14px 18px;
+  border: none;
+  background: transparent;
+  color: inherit;
+  text-align: left;
+  cursor: pointer;
+}
+
+.avatar {
+  position: relative;
+  display: flex;
+  flex-shrink: 0;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  overflow: hidden;
+  border-radius: 50%;
+  border: 1px solid color-mix(in srgb, var(--kind) 60%, transparent);
+  background: radial-gradient(
+    circle at 30% 25%,
+    color-mix(in srgb, var(--kind) 55%, #05070b),
+    #05070b 80%
+  );
+  font-family: var(--font-code), monospace;
+  font-size: 13px;
+  font-weight: 700;
+  color: #fff;
+
+  img {
+    object-fit: cover;
+  }
+}
+
+.who {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  min-width: 0;
+}
+
+.name {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  font-weight: 700;
+  color: var(--neutral-on-background-strong);
+}
+
+.team {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  font-size: 12px;
+  color: var(--neutral-on-background-weak);
+}
+
+.aresBadge {
+  margin-left: auto;
+  flex-shrink: 0;
+  padding: 2px 8px;
+  border-radius: 999px;
+  border: 1px solid color-mix(in srgb, var(--accent-solid-strong) 60%, transparent);
+  background: color-mix(in srgb, var(--accent-solid-strong) 14%, transparent);
+  font-family: var(--font-code), monospace;
+  font-size: 10px;
+  letter-spacing: 0.1em;
+  color: var(--neutral-on-background-strong);
+}
+
+/* ---------- expanded profile ---------- */
+
+.body {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 0 18px 18px;
+  animation: cardIn 0.3s ease both;
+}
+
+.teamRow {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.teamLogo {
+  position: relative;
+  width: 28px;
+  height: 28px;
+  overflow: hidden;
+  border-radius: 50%;
+
+  img {
+    object-fit: cover;
+  }
+}
+
+.kindBadge {
+  padding: 3px 10px;
+  border-radius: 999px;
+  border: 1px solid color-mix(in srgb, var(--kind) 50%, transparent);
+  background: color-mix(in srgb, var(--kind) 12%, transparent);
+  font-family: var(--font-code), monospace;
+  font-size: 10px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--neutral-on-background-strong);
+}
+
+.bio {
+  margin: 0;
+  line-height: 1.6;
+  color: var(--neutral-on-background-strong);
+}
+
+.pending {
+  font-style: italic;
+  color: var(--neutral-on-background-weak);
+}
+
+.note {
+  margin: 0;
+  font-size: 13px;
+  color: var(--accent-on-background-weak);
+}
+
+/* ---------- redacted members ---------- */
+
+.card.classified .name {
+  font-family: var(--font-code), monospace;
+  letter-spacing: 0.1em;
+  animation: redact 2.4s steps(1) infinite;
+}
+
+@keyframes redact {
+  0%,
+  88% {
+    opacity: 1;
+  }
+  90% {
+    opacity: 0.2;
+    transform: translateX(2px);
+  }
+  94% {
+    opacity: 1;
+    transform: translateX(-1px);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .card,
+  .body,
+  .card.classified .name {
+    animation: none;
+  }
+}

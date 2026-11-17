@@ -2,23 +2,19 @@
 
 .splitLayout {
   position: relative;
+  display: flex;
+  align-items: center;
   width: 100%;
   min-height: 580px;
-  overflow: hidden;
 }
 
 /* ---- orbit side ---- */
 
 .orbitSide {
-  width: 100%;
+  flex: 1 1 auto;
+  min-width: 0;
   display: flex;
   justify-content: center;
-  margin-left: 0;
-  transition: margin-left 0.5s cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-.orbitSideShifted {
-  margin-left: -20%;
 }
 
 .orbitContainer {
@@ -50,22 +46,27 @@
 
 /* ---- detail side ---- */
 
+/* Desktop: a real second column that grows open, so tall content is never
+   clipped — the row simply gets taller. */
 .detailSide {
-  position: absolute;
-  top: 50%;
-  right: 0;
-  width: 38%;
-  transform: translate(110%, -50%);
-  opacity: 0;
-  transition:
-    transform 0.5s cubic-bezier(0.4, 0, 0.2, 1),
-    opacity 0.4s ease;
+  position: relative;
   z-index: 10;
+  flex: 0 0 0;
+  width: 0;
+  opacity: 0;
+  overflow: hidden;
+  transition:
+    flex-basis 0.5s cubic-bezier(0.4, 0, 0.2, 1),
+    width 0.5s cubic-bezier(0.4, 0, 0.2, 1),
+    opacity 0.4s ease;
 }
 
 .detailSideOpen {
-  transform: translate(0, -50%);
+  flex-basis: 420px;
+  width: 420px;
   opacity: 1;
+  overflow: visible;
+  padding: 24px 0;
 }
 
 .detailCard {
@@ -374,8 +375,18 @@
   padding: 4px 12px;
   border-radius: 999px;
   border: 1px solid var(--neutral-alpha-medium);
+  background: transparent;
   font-size: 13px;
   color: var(--neutral-on-background-strong);
+  cursor: pointer;
+  transition:
+    border-color 0.15s ease,
+    background 0.15s ease;
+
+  &:hover {
+    border-color: var(--kind);
+    background: color-mix(in srgb, var(--kind) 14%, transparent);
+  }
 }
 
 /* ---------- factions grid ---------- */
@@ -462,19 +473,19 @@
 
 @media (max-width: 860px) {
   .splitLayout {
-    overflow: visible;
-  }
-
-  .orbitSideShifted {
-    margin-left: 0;
+    flex-direction: column;
   }
 
   .detailSide {
-    position: static;
     width: 100%;
-    transform: none;
+    flex-basis: auto;
     opacity: 1;
     display: none;
+    transition: none;
+  }
+
+  .detailSideOpen {
+    padding: 0;
   }
 
   .detailSideOpen {

@@ -1,12 +1,21 @@
 "use client";
 
-import { useState, useCallback, useRef } from "react";
+import { useState, useCallback, useRef, useMemo } from "react";
 import Image from "next/image";
 import { PixelImage } from "@/components/magicui/PixelImage";
 import { PageHero, SectionTitle } from "@/components/fx/PageHero";
 import { SpotlightCard } from "@/components/fx/SpotlightCard";
 import { Column, Flex, GlitchFx, LetterFx, Text } from "@once-ui-system/core";
+import { Friends, type Friend } from "@/components/relationships/Friends";
+import { friendProfiles } from "@/resources";
+import { players } from "@/data/players";
 import styles from "./RelationshipsSection.module.scss";
+
+const profiles = friendProfiles as Record<
+  string,
+  { bio?: string; img?: string }
+>;
+const aresNames = new Set(players.map((p) => p.name.toLowerCase()));
 
 interface Relationship {
   img: string;
@@ -75,6 +84,33 @@ export const RelationshipsSection: React.FC<RelationshipsSectionProps> = ({
   relationships,
 }) => {
   const [selected, setSelected] = useState<Relationship | null>(null);
+  const [selectedFriend, setSelectedFriend] = useState<string | null>(null);
+
+  const orderedRels = useMemo(
+    () =>
+      FACTION_ORDER.map((name) => findRel(relationships, name)).filter(
+        (rel): rel is Relationship => rel !== null,
+      ),
+    [relationships],
+  );
+
+  // Everyone listed under "Thành viên:" of each team, enriched by friendProfiles.
+  const friends: Friend[] = useMemo(
+    () =>
+      orderedRels.flatMap((rel) =>
+        splitMembers(rel.descriptions).members.map((name) => ({
+          name,
+          team: rel.name,
+          teamImg: rel.img,
+          kind: relKind(rel),
+          relationship: rel.relationship,
+          bio: profiles[name]?.bio,
+          img: profiles[name]?.img,
+          isAres: aresNames.has(name.toLowerCase()),
+        })),
+      ),
+    [orderedRels],
+  );
 
   const innerOrbit: OrbitTeam[] = [
     {
@@ -198,9 +234,7 @@ export const RelationshipsSection: React.FC<RelationshipsSectionProps> = ({
         className={`${styles.splitLayout} ${hasSelected ? styles.splitLayoutOpen : ""}`}
       >
         {/* Left: orbit */}
-        <div
-          className={`${styles.orbitSide} ${hasSelected ? styles.orbitSideShifted : ""}`}
-        >
+        <div className={styles.orbitSide}>
           <div className={styles.orbitContainer} ref={orbitRef}>
             {/* Center logo */}
             <div className={styles.centerLogo}>
@@ -305,9 +339,15 @@ export const RelationshipsSection: React.FC<RelationshipsSectionProps> = ({
                       <span className={styles.membersLabel}>Thành viên</span>
                       <div className={styles.memberChips}>
                         {members.map((m) => (
-                          <span key={m} className={styles.memberChip}>
+                          <button
+                            key={m}
+                            type="button"
+                            className={styles.memberChip}
+                            onClick={() => setSelectedFriend(m)}
+                            title="Xem hồ sơ"
+                          >
                             {m}
-                          </span>
+                          </button>
                         ))}
                       </div>
                     </div>
@@ -321,39 +361,45 @@ export const RelationshipsSection: React.FC<RelationshipsSectionProps> = ({
       <section>
         <SectionTitle index="01" title="Các thế lực" id="the-luc" />
         <div className={styles.factions}>
-          {FACTION_ORDER.map((name) => findRel(relationships, name))
-            .filter((rel): rel is Relationship => rel !== null)
-            .map((rel) => {
-              const kind = relKind(rel);
-              return (
-                <SpotlightCard
-                  key={rel.name}
-                  className={`${styles.faction} ${styles[kind]} ${
-                    selected?.name === rel.name ? styles.factionActive : ""
-                  }`}
+          {orderedRels.map((rel) => {
+            const kind = relKind(rel);
+            return (
+              <SpotlightCard
+                key={rel.name}
+                className={`${styles.faction} ${styles[kind]} ${
+                  selected?.name === rel.name ? styles.factionActive : ""
+                }`}
+              >
+                <button
+                  type="button"
+                  className={styles.factionBtn}
+                  onClick={() => selectFromCard(rel)}
                 >
-                  <button
-                    type="button"
-                    className={styles.factionBtn}
-                    onClick={() => selectFromCard(rel)}
-                  >
-                    <span className={styles.factionLogo}>
-                      <Image src={rel.img} alt="" fill sizes="56px" />
-                    </span>
-                    <span className={styles.factionText}>
-                      <span className={styles.factionName}>{rel.name}</span>
-                      <span className={styles.kindBadge}>
-                        {rel.relationship}
-                      </span>
-                    </span>
-                    <span className={styles.factionDesc}>
-                      {rel.descriptions[0]}
-                    </span>
-                  </button>
-                </SpotlightCard>
-              );
-            })}
+                  <span className={styles.factionLogo}>
+                    <Image src={rel.img} alt="" fill sizes="56px" />
+                  </span>
+                  <span className={styles.factionText}>
+                    <span className={styles.factionName}>{rel.name}</span>
+                    <span className={styles.kindBadge}>{rel.relationship}</span>
+                  </span>
+                  <span className={styles.factionDesc}>
+                    {rel.descriptions[0]}
+                  </span>
+                </button>
+              </SpotlightCard>
+            );
+          })}
         </div>
+      </section>
+
+      <section>
+        <SectionTitle index="02" title="Bạn bè" id="ban-be" />
+        <Friends
+          friends={friends}
+          teams={orderedRels.map((r) => ({ name: r.name, kind: relKind(r) }))}
+          selected={selectedFriend}
+          onSelect={setSelectedFriend}
+        />
       </section>
     </Column>
   );

@@ -310,9 +310,9 @@ const relationships = [
     name: "The Eyes",
     relationship: "Đồng minh ẩn mật",
     descriptions: [
-      "The Eyes là đồng minh ẩn mật của AresVN, dù từng sánh vai và hội ngộ trong nhiều trận chiến, hầu hết thành viên của hai bên chẳng hề hay biết về sự tồn tại của nhau. AresVN gọi The Eyes là Ocean Eyes.",
-      'Trong sự kiện AresVN: Thanh Trừng, quy tắc phán xét số 3 có nội dung: "Bạn được miễn nếu bạn thuộc Ocean Eyes" như một chi tiết thú vị nhỏ thể hiện mối giao hảo.',
-      "Cùng với sự ra mắt của wiki năm 2025, Ocean Eyes chính thức xuất hiện trong danh sách quan hệ của AresVN dưới sự xác nhận và đóng góp của Sir thoái vị.",
+      "The Eyes là đồng minh ẩn mật của AresVN, dù từng sánh vai và hội ngộ trong nhiều trận chiến, hầu hết thành viên của hai bên chẳng hề hay biết về sự tồn tại của nhau.",
+      'Trong sự kiện AresVN: Thanh Trừng, quy tắc phán xét số 3 có nội dung: "Bạn được miễn nếu bạn thuộc The Eyes" như một chi tiết thú vị nhỏ thể hiện mối giao hảo.',
+      "Cùng với sự ra mắt của wiki năm 2025, The Eyes chính thức xuất hiện trong danh sách quan hệ của AresVN dưới sự xác nhận và đóng góp của Sir thoái vị.",
       "Thành viên: Ocean Eyes, Wicked Eyes, Crystal Eyes, Stella Eyes, Gentle Eyes, Astral Eyes, Darkin Eyes.",
     ],
   },
@@ -347,6 +347,19 @@ const relationships = [
     ],
   },
 ];
+
+// Hồ sơ bạn bè (mục "02 / Bạn bè" trên trang Mối quan hệ). Danh sách người
+// được lấy tự động từ dòng "Thành viên:" của từng team ở trên; ở đây chỉ cần
+// thêm thông tin cho ai có. Người không có mục ở đây hiện "Đang cập nhật".
+// Trường hỗ trợ: bio (string), img (đường dẫn ảnh, tuỳ chọn).
+const friendProfiles = {
+  sund0wn: {
+    bio: "Người sáng lập Afterschool Weather Club ngày 27/09/2021 — nơi game, hội họa và âm nhạc gặp nhau sau giờ học.",
+  },
+  Nomad: {
+    bio: "Chủ hội Nomads' Tavern. Người du mục yêu đại dương và những con tàu, nay neo đậu tại quán rượu của riêng mình.",
+  },
+};
 
 // rating/tag và các mục không có ảnh là dữ liệu mẫu cho vui - chỉnh tuỳ ý.
 const testimonials = [
@@ -427,6 +440,7 @@ export {
   testimonialsPage,
   gallery,
   relationships,
+  friendProfiles,
   testimonials,
   features,
 };
