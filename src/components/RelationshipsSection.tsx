@@ -48,19 +48,17 @@ const FACTION_ORDER = [
   "RinFarm",
 ];
 
-type RelKind = "ally" | "rival" | "secret";
+type RelKind = "ally" | "rival";
 
 function relKind(rel: Relationship | null): RelKind {
   const r = rel?.relationship.toLowerCase() ?? "";
   if (r.includes("đối thủ")) return "rival";
-  if (r.includes("ẩn mật")) return "secret";
   return "ally";
 }
 
 const KIND_LABEL: Record<RelKind, string> = {
   ally: "Đồng minh",
   rival: "Đối thủ",
-  secret: "Ẩn mật",
 };
 
 /** Tách đoạn "Thành viên: a, b, c." thành danh sách chip. */

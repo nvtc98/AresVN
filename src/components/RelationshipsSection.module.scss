@@ -234,8 +234,7 @@
 }
 
 .orbitAvatar.ally,
-.orbitAvatar.rival,
-.orbitAvatar.secret {
+.orbitAvatar.rival {
   border-color: color-mix(in srgb, var(--kind) 55%, transparent);
 
   &:hover {
@@ -297,10 +296,6 @@
 
 .rival {
   --kind: #ff4d5e;
-}
-
-.secret {
-  --kind: #a78bfa;
 }
 
 .legend {

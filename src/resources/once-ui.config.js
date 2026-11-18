@@ -19,7 +19,7 @@ const routes = {
 const display = {
   location: false,
   time: false,
-  themeSwitcher: true,
+  themeSwitcher: false,
 };
 
 // Enable password protection on selected routes
@@ -65,7 +65,7 @@ const fonts = {
 
 // default customization applied to the HTML in the main layout.tsx
 const style = {
-  theme: "system", // dark | light | system
+  theme: "dark", // luôn dark mode
   neutral: "gray", // sand | gray | slate | custom
   brand: "cyan", // blue | indigo | violet | magenta | pink | red | orange | yellow | moss | green | emerald | aqua | cyan | custom
   accent: "red", // blue | indigo | violet | magenta | pink | red | orange | yellow | moss | green | emerald | aqua | cyan | custom

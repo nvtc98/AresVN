@@ -235,107 +235,264 @@
   }
 }
 
-/* ---------- timeline ---------- */
+/* ---------- timeline (trục giữa, xen kẽ 2 bên) ---------- */
 
-.timeline {
+.tl {
   position: relative;
   display: flex;
   flex-direction: column;
-  gap: 16px;
+  gap: 28px;
   margin: 0;
-  padding: 0 0 0 32px;
+  padding: 0;
   list-style: none;
 
   &::before {
     content: "";
     position: absolute;
-    left: 7px;
-    top: 8px;
-    bottom: 8px;
+    left: 50%;
+    top: 0;
+    bottom: 0;
     width: 2px;
+    transform: translateX(-50%);
     background: linear-gradient(
       to bottom,
       var(--brand-solid-strong),
       color-mix(in srgb, var(--accent-solid-strong) 70%, transparent),
+      var(--brand-solid-strong)
+    );
+    opacity: 0.7;
+  }
+}
+
+/* ===== GIAI ĐOẠN: banner rộng toàn chiều ngang, nút lớn trên trục ===== */
+
+.tlPhase {
+  position: relative;
+  width: 100%;
+  padding-top: 34px;
+
+  /* nút lớn */
+  &::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 50%;
+    width: 28px;
+    height: 28px;
+    transform: translateX(-50%);
+    border-radius: 50%;
+    background: var(--brand-solid-strong);
+    border: 4px solid var(--page-background);
+    box-shadow: 0 0 0 2px var(--brand-solid-strong), 0 0 24px var(--brand-solid-strong);
+  }
+}
+
+.phaseCard {
+  position: relative;
+  display: flex;
+  align-items: flex-end;
+  min-height: 340px;
+  overflow: hidden;
+  padding: 0;
+  border-radius: 20px;
+}
+
+.phaseImg {
+  position: absolute;
+  inset: 0;
+
+  img {
+    object-fit: cover;
+  }
+
+  &::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      to top,
+      color-mix(in srgb, var(--page-background) 96%, transparent) 10%,
+      color-mix(in srgb, var(--page-background) 60%, transparent) 55%,
       transparent
     );
   }
 }
 
-.event {
+.phaseBody {
   position: relative;
-  display: grid;
-  grid-template-columns: 170px 1fr;
-  gap: 16px;
-  align-items: baseline;
-  padding: 20px 24px;
-
-  @media (max-width: 640px) {
-    grid-template-columns: 1fr;
-    gap: 4px;
-  }
+  width: 100%;
+  max-width: 760px;
+  padding: 28px 32px 32px;
 }
 
-.timeline > li {
+.phaseNo {
+  font-family: var(--font-code), monospace;
+  font-size: 12px;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  color: var(--brand-on-background-weak);
+}
+
+.phaseTitle {
+  margin: 6px 0 10px;
+  font-family: var(--font-heading), sans-serif;
+  font-size: clamp(28px, 4vw, 44px);
+  font-weight: 800;
+  line-height: 1.05;
+  color: var(--neutral-on-background-strong);
+}
+
+.phaseDate {
+  display: block;
+  margin-bottom: 12px;
+  font-family: var(--font-code), monospace;
+  font-size: 13px;
+  letter-spacing: 0.08em;
+  color: var(--accent-on-background-weak);
+}
+
+.phaseText {
+  margin: 0;
+  color: var(--neutral-on-background-medium);
+  line-height: 1.6;
+}
+
+/* ===== SỰ KIỆN: chỉ một chấm nhỏ + nhãn ngắn, xen kẽ hai bên ===== */
+
+.tlEvent {
   position: relative;
+  width: calc(50% - 26px);
+  outline: none;
 
   &::after {
     content: "";
     position: absolute;
-    left: -31px;
-    top: 26px;
-    width: 12px;
-    height: 12px;
+    top: 6px;
+    width: 10px;
+    height: 10px;
     border-radius: 50%;
     background: var(--page-background);
-    border: 2px solid var(--brand-solid-strong);
-    box-shadow: 0 0 12px var(--brand-solid-strong);
+    border: 2px solid var(--accent-solid-strong);
+    transition:
+      background 0.2s ease,
+      box-shadow 0.2s ease;
+  }
+
+  &:hover::after,
+  &:focus-visible::after {
+    background: var(--accent-solid-strong);
+    box-shadow: 0 0 12px var(--accent-solid-strong);
   }
 }
 
-.eventMeta {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  gap: 8px;
+.evLeft {
+  align-self: flex-start;
+  text-align: right;
+
+  &::after {
+    right: -31px;
+  }
 }
 
-.eventEra {
-  padding: 2px 8px;
-  border-radius: 999px;
-  border: 1px solid color-mix(in srgb, var(--accent-solid-strong) 50%, transparent);
-  background: color-mix(in srgb, var(--accent-solid-strong) 12%, transparent);
+.evRight {
+  align-self: flex-end;
+  text-align: left;
+
+  &::after {
+    left: -31px;
+  }
+}
+
+.evDate {
+  display: block;
   font-family: var(--font-code), monospace;
-  font-size: 10px;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  color: var(--neutral-on-background-strong);
-}
-
-.eventDate {
-  font-family: var(--font-code), monospace;
-  font-size: 14px;
-  letter-spacing: 0.08em;
-  color: var(--brand-on-background-weak);
-}
-
-.eventTitle {
-  font-weight: 600;
-  font-size: 18px;
-  color: var(--neutral-on-background-strong);
-}
-
-.eventText {
-  margin-top: 4px;
+  font-size: 11px;
+  letter-spacing: 0.1em;
   color: var(--neutral-on-background-weak);
+}
+
+.evTitle {
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--neutral-on-background-strong);
+}
+
+.evText {
+  margin: 4px 0 0;
+  font-size: 13px;
+  line-height: 1.5;
+  color: var(--neutral-on-background-weak);
+}
+
+/* thiết bị có hover: chi tiết hiện khi rê chuột / focus */
+@media (hover: hover) {
+  .evText {
+    max-height: 0;
+    opacity: 0;
+    overflow: hidden;
+    transition:
+      max-height 0.3s ease,
+      opacity 0.3s ease;
+  }
+
+  .tlEvent:hover .evText,
+  .tlEvent:focus-visible .evText {
+    max-height: 200px;
+    opacity: 1;
+  }
+}
+
+@media (max-width: 800px) {
+  .tl::before {
+    left: 7px;
+    transform: none;
+  }
+
+  .tlPhase {
+    padding-left: 32px;
+
+    &::before {
+      left: 7px;
+    }
+  }
+
+  .phaseCard {
+    min-height: 280px;
+  }
+
+  .phaseBody {
+    padding: 20px;
+  }
+
+  .tlEvent {
+    width: auto;
+    align-self: stretch;
+    margin-left: 32px;
+    text-align: left;
+  }
+
+  .evLeft::after,
+  .evRight::after {
+    left: -31px;
+    right: auto;
+  }
 }
 
 /* ---------- games ---------- */
 
 .games {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  grid-template-columns: repeat(var(--cols, 6), 1fr);
   gap: 12px;
+  --cols: 6;
+
+  @media (max-width: 1100px) {
+    --cols: 4;
+  }
+
+  @media (max-width: 720px) {
+    --cols: 2;
+  }
 }
 
 .game {
@@ -392,6 +549,52 @@
   &:hover {
     border-color: var(--accent-solid-strong);
     color: var(--neutral-on-background-strong);
+  }
+}
+
+.gamesCollapsed {
+  /* chỉ hiện 2 hàng: số cột đổi theo breakpoint, ẩn phần dư */
+  --cols: 6;
+
+  > :nth-child(n + 13) {
+    display: none;
+  }
+
+  @media (max-width: 1100px) {
+    --cols: 4;
+
+    > :nth-child(n + 9) {
+      display: none;
+    }
+  }
+
+  @media (max-width: 720px) {
+    --cols: 2;
+
+    > :nth-child(n + 5) {
+      display: none;
+    }
+  }
+}
+
+.gamesToggle {
+  display: block;
+  margin: 20px auto 0;
+  padding: 8px 20px;
+  border-radius: 999px;
+  border: 1px solid var(--neutral-alpha-medium);
+  background: transparent;
+  font-family: var(--font-code), monospace;
+  font-size: 13px;
+  color: var(--neutral-on-background-strong);
+  cursor: pointer;
+  transition:
+    border-color 0.2s ease,
+    box-shadow 0.2s ease;
+
+  &:hover {
+    border-color: var(--brand-solid-strong);
+    box-shadow: 0 0 14px color-mix(in srgb, var(--brand-solid-strong) 40%, transparent);
   }
 }
 

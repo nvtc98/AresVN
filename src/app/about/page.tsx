@@ -6,6 +6,8 @@ import { PageHero, SectionTitle } from "@/components/fx/PageHero";
 import { SpotlightCard } from "@/components/fx/SpotlightCard";
 import { StatsStrip } from "@/components/fx/StatsStrip";
 import { Acrostic } from "@/components/about/Acrostic";
+import { Timeline } from "@/components/about/Timeline";
+import { GamesGrid } from "@/components/about/GamesGrid";
 import styles from "@/components/about/AboutPage.module.scss";
 
 export async function generateMetadata() {
@@ -24,7 +26,7 @@ export default function About() {
 
   const stats = [
     { value: 2019, from: 2000, label: "Thành lập" },
-    { value: about.games.length, suffix: "+", label: "Tựa game" },
+    { value: 50, suffix: "+", label: "Tựa game" },
     { value: getActivePlayers().length, label: "Thành viên" },
     { value: relationships.length, label: "Đồng minh" },
   ];
@@ -78,7 +80,7 @@ export default function About() {
               &ldquo;
             </span>
             <p className={styles.motto}>{about.motto}</p>
-            <span className={styles.mottoFoot}>— Phương châm AresVN</span>
+            <span className={styles.mottoFoot}>— AresVN</span>
           </SpotlightCard>
         </div>
       </section>
@@ -90,36 +92,12 @@ export default function About() {
 
       <section>
         <SectionTitle index="03" title="Hành trình" id="hanh-trinh" />
-        <ol className={styles.timeline}>
-          {about.timeline.map((e) => (
-            <li key={e.date}>
-              <SpotlightCard className={styles.event}>
-                <div className={styles.eventMeta}>
-                  <span className={styles.eventDate}>{e.date}</span>
-                  {"era" in e && e.era && (
-                    <span className={styles.eventEra}>{e.era}</span>
-                  )}
-                </div>
-                <div>
-                  <div className={styles.eventTitle}>{e.title}</div>
-                  <div className={styles.eventText}>{e.text}</div>
-                </div>
-              </SpotlightCard>
-            </li>
-          ))}
-        </ol>
+        <Timeline items={about.timeline} />
       </section>
 
       <section>
         <SectionTitle index="04" title="Đấu trường" id="dau-truong" />
-        <div className={styles.games}>
-          {about.games.map((g) => (
-            <SpotlightCard key={g.code} className={styles.game}>
-              <span className={styles.gameCode}>{g.code}</span>
-              <span className={styles.gameName}>{g.name}</span>
-            </SpotlightCard>
-          ))}
-        </div>
+        <GamesGrid games={about.games} />
         <div className={styles.aliases}>
           {aliases.map((a) => (
             <span key={a} className={styles.alias}>
