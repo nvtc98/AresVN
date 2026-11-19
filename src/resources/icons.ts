@@ -34,6 +34,7 @@ import {
   FaThreads,
   FaSteam,
   FaYoutube,
+  FaBookOpen,
 } from "react-icons/fa6";
 
 export const iconLibrary: Record<string, IconType> = {
@@ -58,6 +59,7 @@ export const iconLibrary: Record<string, IconType> = {
   threads: FaThreads,
   steam: FaSteam,
   youtube: FaYoutube,
+  wiki: FaBookOpen,
   arrowUpRightFromSquare: HiArrowTopRightOnSquare,
   document: HiOutlineDocument,
   rocket: HiOutlineRocketLaunch,

@@ -238,169 +238,237 @@
 /* ---------- timeline (trục giữa, xen kẽ 2 bên) ---------- */
 
 .tl {
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  gap: 28px;
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 0 16px;
   margin: 0;
-  padding: 0;
+  padding: 0 0 12px;
   list-style: none;
-
-  &::before {
-    content: "";
-    position: absolute;
-    left: 50%;
-    top: 0;
-    bottom: 0;
-    width: 2px;
-    transform: translateX(-50%);
-    background: linear-gradient(
-      to bottom,
-      var(--brand-solid-strong),
-      color-mix(in srgb, var(--accent-solid-strong) 70%, transparent),
-      var(--brand-solid-strong)
-    );
-    opacity: 0.7;
-  }
 }
 
-/* ===== GIAI ĐOẠN: banner rộng toàn chiều ngang, nút lớn trên trục ===== */
-
-.tlPhase {
-  position: relative;
-  width: 100%;
-  padding-top: 34px;
-
-  /* nút lớn */
-  &::before {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 50%;
-    width: 28px;
-    height: 28px;
-    transform: translateX(-50%);
-    border-radius: 50%;
-    background: var(--brand-solid-strong);
-    border: 4px solid var(--page-background);
-    box-shadow: 0 0 0 2px var(--brand-solid-strong), 0 0 24px var(--brand-solid-strong);
-  }
+.tlCol {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  min-width: 0;
 }
 
 .phaseCard {
   position: relative;
-  display: flex;
-  align-items: flex-end;
-  min-height: 340px;
+  flex: none;
+  height: 280px; /* cố định: mở mô tả không làm trục bị xê dịch */
   overflow: hidden;
   padding: 0;
-  border-radius: 20px;
+  background-color: var(--page-background);
+  border-radius: 16px;
+  border: 1px solid color-mix(in srgb, var(--c) 45%, transparent);
+  transition: opacity 0.25s ease, filter 0.25s ease;
+}
+
+/* khi một sự kiện đang hiện, làm tối các card giai đoạn */
+.tl:has(.evDot:hover, .evDot:focus) .phaseCard {
+  opacity: 0.25;
+  filter: saturate(0.6);
 }
 
 .phaseImg {
   position: absolute;
-  inset: 0;
+  top: 0;
+  left: 0;
+  right: 0;
+  aspect-ratio: 3 / 2; /* ảnh landscape hiển thị trọn khung, tiêu đề nằm dưới ảnh */
 
   img {
     object-fit: cover;
   }
-
-  &::after {
-    content: "";
-    position: absolute;
-    inset: 0;
-    background: linear-gradient(
-      to top,
-      color-mix(in srgb, var(--page-background) 96%, transparent) 10%,
-      color-mix(in srgb, var(--page-background) 60%, transparent) 55%,
-      transparent
-    );
-  }
 }
 
+/* nội dung neo đáy card; mô tả mở ra thì lớn dần lên phía trên ảnh */
 .phaseBody {
-  position: relative;
-  width: 100%;
-  max-width: 760px;
-  padding: 28px 32px 32px;
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  padding: 64px 18px 14px;
+  background: linear-gradient(
+    to bottom,
+    transparent,
+    color-mix(in srgb, var(--page-background) 85%, transparent) 38px,
+    var(--page-background) 64px
+  );
+}
+
+.phaseCard:hover .phaseBody,
+.phaseCard:focus-within .phaseBody {
+  background: linear-gradient(
+    to bottom,
+    transparent,
+    color-mix(in srgb, var(--page-background) 90%, transparent) 30px,
+    var(--page-background) 56px
+  );
 }
 
 .phaseNo {
   font-family: var(--font-code), monospace;
-  font-size: 12px;
-  letter-spacing: 0.24em;
+  font-size: 11px;
+  letter-spacing: 0.22em;
   text-transform: uppercase;
-  color: var(--brand-on-background-weak);
+  color: var(--c);
 }
 
 .phaseTitle {
-  margin: 6px 0 10px;
+  margin: 4px 0 0;
   font-family: var(--font-heading), sans-serif;
-  font-size: clamp(28px, 4vw, 44px);
+  font-size: 20px;
   font-weight: 800;
-  line-height: 1.05;
+  line-height: 1.1;
   color: var(--neutral-on-background-strong);
 }
 
-.phaseDate {
-  display: block;
-  margin-bottom: 12px;
-  font-family: var(--font-code), monospace;
-  font-size: 13px;
-  letter-spacing: 0.08em;
-  color: var(--accent-on-background-weak);
+/* mô tả: mặc định thu gọn, rê chuột vào card thì mở ra (trượt mượt) */
+.phaseMore {
+  display: grid;
+  grid-template-rows: 1fr;
+  transition: grid-template-rows 0.35s ease, opacity 0.35s ease;
+
+  > * {
+    min-height: 0;
+    overflow: hidden;
+  }
+}
+
+@media (hover: hover) {
+  .phaseMore {
+    grid-template-rows: 0fr;
+    opacity: 0;
+  }
+
+  .phaseCard:hover .phaseMore,
+  .phaseCard:focus-within .phaseMore {
+    grid-template-rows: 1fr;
+    opacity: 1;
+  }
 }
 
 .phaseText {
   margin: 0;
+  padding-top: 10px;
+  font-size: 13px;
+  line-height: 1.55;
   color: var(--neutral-on-background-medium);
-  line-height: 1.6;
 }
 
-/* ===== SỰ KIỆN: chỉ một chấm nhỏ + nhãn ngắn, xen kẽ hai bên ===== */
+/* ===== trục ngang: mỗi giai đoạn một đoạn màu riêng ===== */
 
-.tlEvent {
+.axis {
   position: relative;
-  width: calc(50% - 26px);
-  outline: none;
+  z-index: 10;
+  height: 20px;
+
+  &:has(.evDot:hover, .evDot:focus) {
+    z-index: 20;
+  }
+
+  &::before {
+    content: "";
+    position: absolute;
+    left: -8px;
+    right: -8px;
+    top: 50%;
+    height: 4px;
+    transform: translateY(-50%);
+    border-radius: 2px;
+    background: var(--c);
+    box-shadow: 0 0 14px color-mix(in srgb, var(--c) 60%, transparent);
+  }
+}
+
+/* mũi tên cuối trục: thời gian chạy sang phải */
+.tlCol:last-child .axis {
+  &::before {
+    right: 4px;
+  }
 
   &::after {
     content: "";
     position: absolute;
-    top: 6px;
-    width: 10px;
-    height: 10px;
-    border-radius: 50%;
-    background: var(--page-background);
-    border: 2px solid var(--accent-solid-strong);
-    transition:
-      background 0.2s ease,
-      box-shadow 0.2s ease;
-  }
-
-  &:hover::after,
-  &:focus-visible::after {
-    background: var(--accent-solid-strong);
-    box-shadow: 0 0 12px var(--accent-solid-strong);
+    right: -6px;
+    top: 50%;
+    transform: translateY(-50%);
+    border-left: 16px solid var(--c);
+    border-top: 10px solid transparent;
+    border-bottom: 10px solid transparent;
+    filter: drop-shadow(0 0 6px color-mix(in srgb, var(--c) 70%, transparent));
   }
 }
 
-.evLeft {
-  align-self: flex-start;
-  text-align: right;
+.axisNode {
+  position: absolute;
+  left: 0;
+  top: 50%;
+  width: 18px;
+  height: 18px;
+  transform: translateY(-50%);
+  border-radius: 50%;
+  background: var(--c);
+  border: 3px solid var(--page-background);
+  box-shadow: 0 0 0 2px var(--c);
+}
 
-  &::after {
-    right: -31px;
+/* ===== sự kiện: chấm nhỏ, hover mới hiện thông tin ===== */
+
+.evDot {
+  position: absolute;
+  top: 50%;
+  width: 12px;
+  height: 12px;
+  transform: translate(-50%, -50%);
+  border-radius: 50%;
+  background: var(--page-background);
+  border: 2px solid var(--c);
+  cursor: pointer;
+  outline: none;
+  transition:
+    transform 0.2s ease,
+    background 0.2s ease,
+    box-shadow 0.2s ease;
+
+  &:hover,
+  &:focus-visible {
+    z-index: 5;
+    transform: translate(-50%, -50%) scale(1.5);
+    background: var(--c);
+    box-shadow: 0 0 14px var(--c);
+  }
+
+  &:hover .evTip,
+  &:focus .evTip {
+    opacity: 1;
+    visibility: visible;
+    transform: translate(-50%, 0);
   }
 }
 
-.evRight {
-  align-self: flex-end;
+.evTip {
+  position: absolute;
+  bottom: calc(100% + 16px);
+  left: 50%;
+  width: 250px;
+  padding: 12px 14px;
+  transform: translate(-50%, 4px);
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
   text-align: left;
-
-  &::after {
-    left: -31px;
-  }
+  border-radius: 12px;
+  border: 1px solid color-mix(in srgb, var(--c) 55%, transparent);
+  background: color-mix(in srgb, var(--page-background) 94%, var(--c));
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+  transition:
+    opacity 0.18s ease,
+    transform 0.18s ease,
+    visibility 0.18s;
+  cursor: default;
 }
 
 .evDate {
@@ -408,73 +476,39 @@
   font-family: var(--font-code), monospace;
   font-size: 11px;
   letter-spacing: 0.1em;
-  color: var(--neutral-on-background-weak);
+  color: var(--c);
 }
 
 .evTitle {
-  font-size: 15px;
+  display: block;
+  margin-top: 2px;
+  font-size: 14px;
   font-weight: 600;
   color: var(--neutral-on-background-strong);
 }
 
 .evText {
-  margin: 4px 0 0;
-  font-size: 13px;
+  display: block;
+  margin-top: 6px;
+  font-size: 12px;
   line-height: 1.5;
-  color: var(--neutral-on-background-weak);
+  color: var(--neutral-on-background-medium);
 }
 
-/* thiết bị có hover: chi tiết hiện khi rê chuột / focus */
-@media (hover: hover) {
-  .evText {
-    max-height: 0;
-    opacity: 0;
-    overflow: hidden;
-    transition:
-      max-height 0.3s ease,
-      opacity 0.3s ease;
+/* nhỏ hơn 4 cột: cuộn ngang, vẫn thấy lần lượt từng giai đoạn */
+@media (max-width: 1000px) {
+  .tl {
+    grid-template-columns: none;
+    grid-auto-flow: column;
+    grid-auto-columns: min(300px, 80%);
+    gap: 0 16px;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    padding: 0 0 12px;
   }
 
-  .tlEvent:hover .evText,
-  .tlEvent:focus-visible .evText {
-    max-height: 200px;
-    opacity: 1;
-  }
-}
-
-@media (max-width: 800px) {
-  .tl::before {
-    left: 7px;
-    transform: none;
-  }
-
-  .tlPhase {
-    padding-left: 32px;
-
-    &::before {
-      left: 7px;
-    }
-  }
-
-  .phaseCard {
-    min-height: 280px;
-  }
-
-  .phaseBody {
-    padding: 20px;
-  }
-
-  .tlEvent {
-    width: auto;
-    align-self: stretch;
-    margin-left: 32px;
-    text-align: left;
-  }
-
-  .evLeft::after,
-  .evRight::after {
-    left: -31px;
-    right: auto;
+  .tlCol {
+    scroll-snap-align: start;
   }
 }
 

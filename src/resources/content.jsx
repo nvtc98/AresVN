@@ -35,7 +35,7 @@ const social = [
   },
   {
     name: "Wiki",
-    icon: "book",
+    icon: "wiki",
     link: "https://aresvn.miraheze.org",
   },
 ];
@@ -206,7 +206,7 @@ const about = {
       era: "Giai đoạn I",
       title: "AresVN: Genesis",
       img: "/images/timeline/genesis.webp",
-      text: "Không ai biết chính xác chúng tôi đã bắt đầu chơi cùng nhau từ khi nào — chỉ là những lần vào trận tự nhiên, những cuộc trò chuyện kéo dài hơn dự tính, cho đến khi nhận ra mình cần một danh xưng. Cái tên NoMoN suýt được chọn, rồi Ares bị trùng trên Steam. Đúng 10:13, h1enle đọc lên \"AresVN\" — h1enle, Hyle, Breezee, env1 và D O R M đứng cạnh nhau. Màn đêm bị xé toạc.",
+      text: "Vào đúng 10 giờ 13 phút — 21/02/2019, h1enle đọc lên cái tên ấy: AresVN. Khoảng cách không còn tồn tại, chúng tôi đang đứng cạnh nhau: h1enle - Hyle - Breezee - env1 - D O R M. Màn đêm bị xé toạc. AresVN chính thức được khai sinh từ hư vô.",
     },
     {
       kind: "phase",
@@ -246,7 +246,7 @@ const about = {
       kind: "event",
       date: "Sau 01.2026",
       title: "TTT — Team Tuyệt Thực",
-      text: "Hyle từ chối chơi để chờ env1, rồi cả team cùng tuyệt thực. Số người hoạt động giảm mạnh tới mức D O R M phải \"book chơi trước từ sáng sớm\".",
+      text: 'Hyle từ chối chơi để chờ env1, rồi cả team cùng tuyệt thực. Số người hoạt động giảm mạnh tới mức D O R M phải "book chơi trước từ sáng sớm".',
     },
     {
       kind: "event",
@@ -255,18 +255,24 @@ const about = {
       text: "Time Rift khép lại hoàn toàn, mọi dấu vết của env1 biến mất. Giữa vùng tối hư vô, mọi người thấp thoáng thấy một ánh nhìn bí ẩn — ngọn hải đăng thôi thúc cả team đòi lại env1.",
     },
     {
-      kind: "event",
-      date: "27.02.2026",
-      title: "EAT — env1 Above Time",
-      text: "env1 tái xuất với bản thể Gab và tuyên bố: \"EAT!\". Lịch sử bước vào kỷ nguyên mới.",
-    },
-    {
       kind: "phase",
       date: "27.02.2026 – nay",
       era: "Giai đoạn IV",
       title: "AresVN: Assemble",
       img: "/images/timeline/assemble.webp",
       text: "Mỗi người một lối đi, bận rộn với cuộc sống riêng, nhưng chỉ cần một lệnh hiệu triệu, tất cả lại hội quân dưới một mái nhà — khí thế vẹn nguyên, ăn ý đến kỳ lạ. Kỷ nguyên Assemble vẫn đang tiếp diễn.",
+    },
+    {
+      kind: "event",
+      date: "27.02.2026",
+      title: "EAT — env1 Above Time",
+      text: 'env1 tái xuất với bản thể Gab và tuyên bố: "EAT!". Lịch sử bước vào kỷ nguyên mới.',
+    },
+    {
+      kind: "event",
+      date: "17.10.2026",
+      title: "Khoác lại áo choàng AresVN",
+      text: "",
     },
   ],
 };
