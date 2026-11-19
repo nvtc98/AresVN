@@ -13,7 +13,7 @@ export interface PlayerProfile {
 
 export const players: PlayerProfile[] = [
   {
-    img: "images/members/new2023/h1enle.png",
+    img: "images/members/2026/h1enle.png",
     name: "h1enle",
     game: {
       cs: {
@@ -24,7 +24,7 @@ export const players: PlayerProfile[] = [
     },
   },
   {
-    img: "images/members/new2023/Hyle.png",
+    img: "images/members/2023/Hyle.png",
     name: "Hyle",
     game: {
       cs: {
@@ -36,7 +36,7 @@ export const players: PlayerProfile[] = [
     },
   },
   {
-    img: "images/members/new2023/Breezee.png",
+    img: "images/members/2023/Breezee.png",
     name: "Breezee",
     game: {
       cs: {
@@ -48,19 +48,19 @@ export const players: PlayerProfile[] = [
     },
   },
   {
-    img: "images/members/new2023/env1.png",
+    img: "images/members/2026/env1.png",
     name: "env1",
     game: {
       cs: {
         role: "Support",
         description:
           "AresVN env1 là chìa khóa hậu phương của đội với lối chơi thiên hướng hỗ trợ nhiều hơn là giao tranh. Anh để lại nhiều dấu ấn mạnh mẽ ở khả năng kiểm soát và di chuyển biến ảo. env1 cũng là một tuyển thủ rất tinh quái với hàng loạt nước đi làm tê liệt khả năng phán đoán của đối phương. Làm nền là vậy, anh cũng góp sức trong chiến đấu với không ít tình huống đầy đột phá, đặc biệt là clutch. Những chiến thắng rực rỡ của AresVN chưa bao giờ thiếu env1 đứng phía sau.",
-        color: "rgb(42 25 61)",
+        color: "#1a0c3e",
       },
     },
   },
   {
-    img: "images/members/new2023/DORM.png",
+    img: "images/members/2023/DORM.png",
     name: "D O R M",
     game: {
       cs: {
@@ -72,7 +72,7 @@ export const players: PlayerProfile[] = [
     },
   },
   {
-    img: "images/members/new2023/Nomad.png",
+    img: "images/members/2023/Nomad.png",
     name: "Nomad",
     game: {
       cs: {
@@ -84,7 +84,7 @@ export const players: PlayerProfile[] = [
     },
   },
   {
-    img: "images/members/new2023/sund0wn.png",
+    img: "images/members/2023/sund0wn.png",
     name: "sund0wn",
     game: {
       cs: {
@@ -96,7 +96,7 @@ export const players: PlayerProfile[] = [
     },
   },
   {
-    img: "images/members/new2023/TrieuIkoma.png",
+    img: "images/members/2023/TrieuIkoma.png",
     name: "TrieuIkoma",
     game: {
       cs: {
