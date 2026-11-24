@@ -8,6 +8,7 @@ import { StatsStrip } from "@/components/fx/StatsStrip";
 import { Acrostic } from "@/components/about/Acrostic";
 import { Timeline } from "@/components/about/Timeline";
 import { GamesGrid } from "@/components/about/GamesGrid";
+import { Disband } from "@/components/about/Disband";
 import styles from "@/components/about/AboutPage.module.scss";
 
 export async function generateMetadata() {
@@ -32,7 +33,7 @@ export default function About() {
   ];
 
   return (
-    <div className={styles.page}>
+    <div className={styles.page} data-snap-root>
       <Schema
         as="webPage"
         baseURL={baseURL}
@@ -122,6 +123,14 @@ export default function About() {
         </section>
       )}
 
+      <section>
+        <SectionTitle
+          index={about.youtubeVideoId ? "06" : "05"}
+          title="Không hài lòng?"
+          id="disband"
+        />
+        <Disband />
+      </section>
     </div>
   );
 }

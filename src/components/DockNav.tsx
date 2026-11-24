@@ -136,6 +136,7 @@ export const DockNav = () => {
   return (
     <div
       className={styles.dockWrapper}
+      data-snap
       role="navigation"
       aria-label="Main navigation"
     >

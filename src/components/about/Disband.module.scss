@@ -1,0 +1,307 @@
+/* Mục "Disband" + lớp phủ lời khẳng định. Chỉ dùng CSS thuần (không blur). */
+
+.card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+  padding: 40px 28px;
+  text-align: center;
+  background:
+    radial-gradient(
+      ellipse at 50% 120%,
+      color-mix(in srgb, #f43f5e 22%, transparent),
+      transparent 65%
+    ),
+    color-mix(in srgb, var(--page-background) 72%, transparent);
+}
+
+.kicker {
+  font-family: var(--font-code), monospace;
+  font-size: 12px;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: #fb7185;
+}
+
+.lead {
+  max-width: 34rem;
+  line-height: 1.7;
+  color: var(--neutral-on-background-medium);
+}
+
+.button {
+  position: relative;
+  padding: 16px 44px;
+  border: 1px solid color-mix(in srgb, #f43f5e 70%, transparent);
+  border-radius: 999px;
+  background: color-mix(in srgb, #f43f5e 14%, #0b0c12);
+  color: #ffe4e8;
+  font-family: var(--font-code), monospace;
+  font-size: 15px;
+  font-weight: 700;
+  letter-spacing: 0.32em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.25s ease,
+    border-color 0.25s ease;
+  box-shadow: 0 0 0 transparent;
+
+  &:hover:not(:disabled),
+  &:focus-visible {
+    transform: translateY(-2px) scale(1.03);
+    border-color: #fb7185;
+    box-shadow:
+      0 0 28px color-mix(in srgb, #f43f5e 55%, transparent),
+      inset 0 0 18px color-mix(in srgb, #f43f5e 30%, transparent);
+  }
+
+  &:active:not(:disabled) {
+    transform: scale(0.98);
+  }
+
+  &:disabled {
+    cursor: default;
+    opacity: 0.6;
+  }
+}
+
+.buttonGlow {
+  position: absolute;
+  inset: -1px;
+  border-radius: inherit;
+  background: radial-gradient(circle at 50% 0%, color-mix(in srgb, #f43f5e 45%, transparent), transparent 70%);
+  opacity: 0.55;
+  pointer-events: none;
+}
+
+.buttonLabel {
+  position: relative;
+}
+
+/* ---------- lớp phủ ---------- */
+
+.veil {
+  position: fixed;
+  inset: 0;
+  z-index: 2147483000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  background: rgba(3, 4, 8, 0);
+  transition: background 0.9s ease;
+
+  &[data-phase="void"] {
+    background: rgba(3, 4, 8, 0.6);
+  }
+
+  &[data-phase="dialog"] {
+    background: rgba(3, 4, 8, 0.72);
+  }
+
+  &[data-phase="message"] {
+    background: rgba(3, 4, 8, 0.94);
+    transition-duration: 0.6s;
+  }
+}
+
+.dialog {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 28px;
+  width: 100%;
+  max-width: 40rem;
+  margin: auto;
+  padding: 24px 0;
+  text-align: center;
+}
+
+.statements {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin: 0;
+  font-family: var(--font-heading), sans-serif;
+  font-size: clamp(24px, 4.6vw, 40px);
+  font-weight: 700;
+  line-height: 1.25;
+  color: var(--neutral-on-background-strong);
+
+  > span {
+    opacity: 0;
+    transform: translateY(10px);
+    animation: rise 0.7s ease forwards;
+    animation-delay: calc(var(--i) * 0.75s + 0.2s);
+  }
+
+  em {
+    font-style: normal;
+    color: #fb7185;
+    text-shadow: 0 0 22px color-mix(in srgb, #f43f5e 55%, transparent);
+  }
+}
+
+.turn,
+.vow,
+.sign,
+.close,
+.reason {
+  opacity: 0;
+  animation: rise 0.9s ease forwards;
+}
+
+.turn {
+  max-width: 32rem;
+  margin: 0;
+  line-height: 1.75;
+  color: var(--neutral-on-background-medium);
+  animation-delay: 0.4s;
+}
+
+.vow {
+  margin: 0;
+  font-family: var(--font-heading), sans-serif;
+  font-size: clamp(20px, 3.2vw, 28px);
+  font-weight: 600;
+  line-height: 1.5;
+  color: var(--neutral-on-background-strong);
+  animation-delay: 2.2s;
+
+  strong {
+    color: var(--brand-on-background-strong, #38bdf8);
+    text-shadow: 0 0 24px color-mix(in srgb, var(--brand-solid-strong, #38bdf8) 55%, transparent);
+  }
+}
+
+.sign {
+  font-family: var(--font-code), monospace;
+  font-size: 11px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--neutral-on-background-weak);
+  animation-delay: 3.4s;
+}
+
+.close {
+  padding: 12px 28px;
+  border: 1px solid var(--neutral-alpha-medium);
+  border-radius: 999px;
+  background: transparent;
+  color: var(--neutral-on-background-strong);
+  font-family: var(--font-code), monospace;
+  font-size: 13px;
+  cursor: pointer;
+  animation-delay: 3.8s;
+  transition:
+    border-color 0.2s ease,
+    box-shadow 0.2s ease;
+
+  &:hover,
+  &:focus-visible {
+    border-color: var(--brand-solid-strong);
+    box-shadow: 0 0 16px color-mix(in srgb, var(--brand-solid-strong) 40%, transparent);
+  }
+}
+
+@keyframes rise {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .statements > span,
+  .turn,
+  .vow,
+  .sign,
+  .reason,
+  .close {
+    animation-duration: 0.01s;
+    animation-delay: 0s;
+  }
+}
+
+.alert {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 14px;
+  width: min(92vw, 26rem);
+  padding: 32px 28px 28px;
+  border: 1px solid color-mix(in srgb, #f43f5e 55%, transparent);
+  border-radius: 16px;
+  background: #0b0c12;
+  text-align: center;
+  box-shadow: 0 0 60px color-mix(in srgb, #f43f5e 25%, transparent);
+  animation: pop 0.45s cubic-bezier(0.2, 1.3, 0.4, 1) both;
+}
+
+.alertKicker {
+  font-family: var(--font-code), monospace;
+  font-size: 11px;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: #fb7185;
+}
+
+.alertTitle {
+  margin: 0;
+  font-family: var(--font-heading), sans-serif;
+  font-size: 26px;
+  color: var(--neutral-on-background-strong);
+}
+
+.alertText {
+  margin: 0 0 8px;
+  color: var(--neutral-on-background-medium);
+}
+
+.ok {
+  min-width: 120px;
+  padding: 10px 28px;
+  border: 1px solid #fb7185;
+  border-radius: 999px;
+  background: color-mix(in srgb, #f43f5e 20%, #0b0c12);
+  color: #ffe4e8;
+  font-family: var(--font-code), monospace;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  cursor: pointer;
+
+  &:hover,
+  &:focus-visible {
+    box-shadow: 0 0 20px color-mix(in srgb, #f43f5e 55%, transparent);
+  }
+}
+
+.reason {
+  margin: 0;
+  font-family: var(--font-code), monospace;
+  font-size: 14px;
+  letter-spacing: 0.04em;
+  line-height: 1.7;
+  color: var(--neutral-on-background-medium);
+  opacity: 0;
+  animation: rise 0.9s ease forwards;
+  animation-delay: 3s;
+
+  em {
+    font-style: normal;
+    font-weight: 700;
+    color: #fb7185;
+  }
+}
+
+@keyframes pop {
+  from {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+}
