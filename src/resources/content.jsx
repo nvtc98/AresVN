@@ -363,6 +363,11 @@ const gallery = {
       alt: "Need popcorn",
       orientation: "horizontal",
     },
+    {
+      src: "/images/gallery/portfolio-10.jpg",
+      alt: "Không biết là chiến trường hay pháp trường luôn lmao",
+      orientation: "horizontal",
+    },
   ],
 };
 
